@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://sukbeta.github.io/web/</loc>
+    <lastmod>2020-04-23T07:11:47.596Z</lastmod>
+  </url>  <url>
     <loc>https://sukbeta.github.io/region-data-migration/</loc>
     <lastmod>2020-04-19T10:41:01.384Z</lastmod>
   </url>  <url>
@@ -9,9 +12,6 @@
   </url>  <url>
     <loc>https://sukbeta.github.io/docker-build-MacVlanNetwork/</loc>
     <lastmod>2020-04-19T08:51:26.101Z</lastmod>
-  </url>  <url>
-    <loc>https://sukbeta.github.io/web/</loc>
-    <lastmod>2020-03-25T02:38:27.659Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/tls-ciphers-list/</loc>
     <lastmod>2019-12-10T07:15:53.496Z</lastmod>
@@ -157,10 +157,10 @@
     <loc>https://sukbeta.github.io/nginx-installed-sticky/</loc>
     <lastmod>2018-12-03T07:30:14.467Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/parted-partition/</loc>
+    <loc>https://sukbeta.github.io/source-install-mesos/</loc>
     <lastmod>2018-12-03T07:30:14.466Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/source-install-mesos/</loc>
+    <loc>https://sukbeta.github.io/parted-partition/</loc>
     <lastmod>2018-12-03T07:30:14.466Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/marathon-DockerRegistry-user/</loc>
@@ -169,10 +169,10 @@
     <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
     <lastmod>2018-12-03T07:30:14.464Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
+    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
     <lastmod>2018-12-03T07:30:14.463Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
+    <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
     <lastmod>2018-12-03T07:30:14.463Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/marathon-constraints-configure/</loc>
