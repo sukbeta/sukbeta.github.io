@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>docker配置proxy代理用户名和密码</title>
+      <link href="/docker-proxy/"/>
+      <url>/docker-proxy/</url>
+      <content type="html"><![CDATA[<p>当运行Docker的服务器无法直接访问Internet时，需要使用代理。将Docker守护程序配置为使用代理服务器来访问Docker Hub等。有两种方法可以为docker配置代理。</p><ul><li>在 /etc/sysconfig/docker 文件中配置代理变量</li><li>配置环境变量</li></ul><h4 id="方法一：-在-etc-sysconfig-docker-文件中配置代理变量"><a href="#方法一：-在-etc-sysconfig-docker-文件中配置代理变量" class="headerlink" title="方法一： 在 /etc/sysconfig/docker 文件中配置代理变量"></a>方法一： 在 /etc/sysconfig/docker 文件中配置代理变量</h4><p>1、在 /etc/sysconfig/docker 文件中添加以下配置：</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HTTP_PROXY=&quot;http://USERNAME:PASSWORD@[your.proxy.server]:[port]&quot;</span><br><span class="line">export HTTPS_PROXY=&quot;https://USERNAME:PASSWORD@[your.proxy.server]:[port]&quot;</span><br></pre></td></tr></table></figure><p>For example :</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cat /etc/sysconfig/docker</span><br><span class="line">HTTP_PROXY=&quot;http://username:password@192.168.1.1:8080&quot;</span><br><span class="line">HTTPS_PROXY=&quot;https://username:password@192.168.1.1:8080&quot;</span><br></pre></td></tr></table></figure><p>2、设置代理后，重新启动Docker守护程序。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service docker restart</span><br></pre></td></tr></table></figure><h4 id="方法二：-配置环境变量方式"><a href="#方法二：-配置环境变量方式" class="headerlink" title="方法二： 配置环境变量方式"></a>方法二： 配置环境变量方式</h4><p>1、创建目录（如果没有）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mkdir /etc/systemd/system/docker.service.d</span><br></pre></td></tr></table></figure><p>2、编辑一个peoxy的配置文件   /etc/systemd/system/docker.service.d/http-proxy.conf  ，添加内容为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/systemd/system/docker.service.d/http-proxy.conf</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;HTTP_PROXY=http://username:password@192.168.1.1:8080/&quot;</span><br><span class="line">Environment=&quot;HTTPS_PROXY=https://username:password@192.168.1.1:8080/&quot;</span><br><span class="line">Environment=&quot;NO_PROXY= hostname.example.com,172.16.0.12&quot;</span><br></pre></td></tr></table></figure><p>3、重新加载systemd守护程序</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl daemon-reload</span><br></pre></td></tr></table></figure><p>4、重启docker</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl restart docker</span><br></pre></td></tr></table></figure><p>5、验证配置是否已加载：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl show docker --property Environment</span><br><span class="line">Environment=HTTP_PROXY=http://username:password@192.168.1.1:8080/ HTTPS_PROXY=https://username:password@192.168.1.1:8080/ NO_PROXY= hostname.example.com,172.16.0.12</span><br></pre></td></tr></table></figure><p>这样配置完成之后在 docker pull 镜像就可以了  </p><ul><li>验证第二种配置生效</li></ul>]]></content>
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>hbase在线平滑迁移region数据</title>
       <link href="/region-data-migration/"/>
       <url>/region-data-migration/</url>
@@ -338,9 +359,9 @@
       
         <tags>
             
-            <tag> linux </tag>
-            
             <tag> shell </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
@@ -850,9 +871,9 @@
       
         <tags>
             
-            <tag> shell </tag>
-            
             <tag> ssh </tag>
+            
+            <tag> shell </tag>
             
         </tags>
       

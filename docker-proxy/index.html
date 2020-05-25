@@ -96,7 +96,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -107,16 +107,20 @@
 
 
 
-<meta name="description" content="一步一步往前走！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="舒克贝塔">
-<meta property="og:url" content="https://sukbeta.github.io/categories/docker/index.html">
+<meta name="description" content="当运行Docker的服务器无法直接访问Internet时，需要使用代理。将Docker守护程序配置为使用代理服务器来访问Docker Hub等。有两种方法可以为docker配置代理。  在 /etc/sysconfig/docker 文件中配置代理变量 配置环境变量  方法一： 在 /etc/sysconfig/docker 文件中配置代理变量1、在 /etc/sysconfig/docker 文">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker配置proxy代理用户名和密码">
+<meta property="og:url" content="https://sukbeta.github.io/docker-proxy/index.html">
 <meta property="og:site_name" content="舒克贝塔">
-<meta property="og:description" content="一步一步往前走！">
+<meta property="og:description" content="当运行Docker的服务器无法直接访问Internet时，需要使用代理。将Docker守护程序配置为使用代理服务器来访问Docker Hub等。有两种方法可以为docker配置代理。  在 /etc/sysconfig/docker 文件中配置代理变量 配置环境变量  方法一： 在 /etc/sysconfig/docker 文件中配置代理变量1、在 /etc/sysconfig/docker 文">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://sukbeta.github.io/docker-proxy/”https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg“">
+<meta property="og:updated_time" content="2020-05-25T08:56:03.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="舒克贝塔">
-<meta name="twitter:description" content="一步一步往前走！">
+<meta name="twitter:title" content="docker配置proxy代理用户名和密码">
+<meta name="twitter:description" content="当运行Docker的服务器无法直接访问Internet时，需要使用代理。将Docker守护程序配置为使用代理服务器来访问Docker Hub等。有两种方法可以为docker配置代理。  在 /etc/sysconfig/docker 文件中配置代理变量 配置环境变量  方法一： 在 /etc/sysconfig/docker 文件中配置代理变量1、在 /etc/sysconfig/docker 文">
+<meta name="twitter:image" content="https://sukbeta.github.io/docker-proxy/”https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg“">
 
 
 
@@ -146,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://sukbeta.github.io/categories/docker/"/>
+  <link rel="canonical" href="https://sukbeta.github.io/docker-proxy/"/>
 
 
 
 
 
-  <title>分类: docker | 舒克贝塔</title>
+  <title>docker配置proxy代理用户名和密码 | 舒克贝塔</title>
   
 
 
@@ -181,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -339,167 +343,286 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>docker<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/docker-proxy/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/docker-proxy/" itemprop="url">
-              
-                <span itemprop="name">docker配置proxy代理用户名和密码</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">docker配置proxy代理用户名和密码</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-25T16:46:50+08:00"
-              content="2020-05-25" >
-          05-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-25T16:46:50+08:00">
+                2020-05-25
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/docker-proxy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/docker-proxy/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 游览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/”https:/file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg“" rel="gallery_ckam9at1r000ml0pzi59s7k7p"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/”https:/file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg“" itemprop="contentUrl"/>
+              </a>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/docker-restart-always/" itemprop="url">
-              
-                <span itemprop="name">docker启动容器的时候携带"--restart=always"参数后如何删除容器</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-04-19T16:16:43+08:00"
-              content="2020-04-19" >
-          04-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+          
+          </div>
+        </div>
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/docker-logs-explantion/" itemprop="url">
-              
-                <span itemprop="name">查看docker容器日志</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-26T10:52:31+08:00"
-              content="2019-03-26" >
-          03-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/docker-ulimit-configure/" itemprop="url">
-              
-                <span itemprop="name">docker ulimit 配置</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-21T16:47:35+08:00"
-              content="2018-11-21" >
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/docker-build-MacVlanNetwork/" itemprop="url">
-              
-                <span itemprop="name">docker搭建macvlan网络</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-14T10:57:34+08:00"
-              content="2018-06-14" >
-          06-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>当运行Docker的服务器无法直接访问Internet时，需要使用代理。将Docker守护程序配置为使用代理服务器来访问Docker Hub等。有两种方法可以为docker配置代理。</p>
+<ul>
+<li>在 /etc/sysconfig/docker 文件中配置代理变量</li>
+<li>配置环境变量</li>
+</ul>
+<h4 id="方法一：-在-etc-sysconfig-docker-文件中配置代理变量"><a href="#方法一：-在-etc-sysconfig-docker-文件中配置代理变量" class="headerlink" title="方法一： 在 /etc/sysconfig/docker 文件中配置代理变量"></a>方法一： 在 /etc/sysconfig/docker 文件中配置代理变量</h4><p>1、在 /etc/sysconfig/docker 文件中添加以下配置：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HTTP_PROXY=&quot;http://USERNAME:PASSWORD@[your.proxy.server]:[port]&quot;</span><br><span class="line">export HTTPS_PROXY=&quot;https://USERNAME:PASSWORD@[your.proxy.server]:[port]&quot;</span><br></pre></td></tr></table></figure>
+<p>For example :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cat /etc/sysconfig/docker</span><br><span class="line">HTTP_PROXY=&quot;http://username:password@192.168.1.1:8080&quot;</span><br><span class="line">HTTPS_PROXY=&quot;https://username:password@192.168.1.1:8080&quot;</span><br></pre></td></tr></table></figure>
+<p>2、设置代理后，重新启动Docker守护程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service docker restart</span><br></pre></td></tr></table></figure>
+<h4 id="方法二：-配置环境变量方式"><a href="#方法二：-配置环境变量方式" class="headerlink" title="方法二： 配置环境变量方式"></a>方法二： 配置环境变量方式</h4><p>1、创建目录（如果没有）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mkdir /etc/systemd/system/docker.service.d</span><br></pre></td></tr></table></figure>
+<p>2、编辑一个peoxy的配置文件   /etc/systemd/system/docker.service.d/http-proxy.conf  ，添加内容为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># vim /etc/systemd/system/docker.service.d/http-proxy.conf</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;HTTP_PROXY=http://username:password@192.168.1.1:8080/&quot;</span><br><span class="line">Environment=&quot;HTTPS_PROXY=https://username:password@192.168.1.1:8080/&quot;</span><br><span class="line">Environment=&quot;NO_PROXY= hostname.example.com,172.16.0.12&quot;</span><br></pre></td></tr></table></figure>
+<p>3、重新加载systemd守护程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<p>4、重启docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>5、验证配置是否已加载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl show docker --property Environment</span><br><span class="line">Environment=HTTP_PROXY=http://username:password@192.168.1.1:8080/ HTTPS_PROXY=https://username:password@192.168.1.1:8080/ NO_PROXY= hostname.example.com,172.16.0.12</span><br></pre></td></tr></table></figure>
+<p>这样配置完成之后在 docker pull 镜像就可以了  </p>
+<ul>
+<li>验证第二种配置生效</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="北极企鹅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="北极企鹅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/region-data-migration/" rel="next" title="hbase在线平滑迁移region数据">
+                <i class="fa fa-chevron-left"></i> hbase在线平滑迁移region数据
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+	<!-- google adsense -->
+	<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+
+	<div align="center">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sukbeta-1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:570px;height:250px"
+     data-ad-client="ca-pub-7874588734245173"
+     data-ad-slot="5382403634"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+	<!-- google adsense -->
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
 
 
           </div>
@@ -507,6 +630,31 @@
 
 
           
+
+<!-- google adsenen -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- head -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8243248314488866"
+     data-ad-slot="1571553111"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- google adsenen -->
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -527,8 +675,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -642,6 +799,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一：-在-etc-sysconfig-docker-文件中配置代理变量"><span class="nav-number">1.</span> <span class="nav-text">方法一： 在 /etc/sysconfig/docker 文件中配置代理变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：-配置环境变量方式"><span class="nav-number">2.</span> <span class="nav-text">方法二： 配置环境变量方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -800,6 +973,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -847,6 +1024,30 @@
     
 
     
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
@@ -887,6 +1088,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 

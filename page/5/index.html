@@ -354,6 +354,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/ssh-remote-exec-command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ssh-remote-exec-command/" itemprop="url">一个简单好用的ssh远程执行命令的脚本</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-18T15:20:38+08:00">
+                2018-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/ssh-remote-exec-command/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/ssh-remote-exec-command/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          运维经常需要到其他机器上执行命令，copy等操作。其实也有很多工具可以实现的，如jenkins、saltstack、ansible等等。这样还需要安装工具什么的。下面的小脚本不需要任何工具。先实现copy和执行命令吧。
+好了，直接看脚本吧。
+脚本内容123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#!/bin/bashCOMMAND=$1shiftSLAVES=$1shift#distribute filesif [ $COMMAND == &quot;distribute&quot; ] || [ $COMMAND == &quot;copy&quot; ];then  SRC=$1  shift   DEST=$1  shift  if [ -f $SLAVES ];then  cat $SLAVES | while read slave  do    #已#开头的注释可略过    echo &quot;$sl
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ssh-remote-exec-command/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/zk-delete-log/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1841,174 +2001,6 @@ systemctl daemon-reloadsystemctl restart docker
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/parted-partition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/parted-partition/" itemprop="url">parted 分区方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T14:41:08+08:00">
-                2018-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/parted-partition/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/parted-partition/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          使用说明parted 支持2TB以上的磁盘分区，并且允许调整分区的大小。
-分区表MBR分区表：（MBR含义：主引导记录）
-所支持的最大卷：2T （T; terabytes,1TB=1024GB）
-对分区的设限：最多4个主分区或3个主分区加一个扩展分区。
-
-GPT分区表：（GPT含义：GUID分区表）
-支持最大卷：18EB，（E：exabytes,1EB=1024TB）  
-每个磁盘最多支持128个分区
-
-使用案例大于2T的整个磁盘分一个分区1234567891011121314151617parted /dev/sdb	可以输入p打印磁盘信息，查看分区的情况，找到起始和结束位置。mklabel gpt　　设置分区类型为gptmkpart primary 0% 100%　　primary指分区类型为主分区，0是分区开始位置，100%是分区结束位置。相同的命令为：mkpart primary 0 -1 或者是：mkpart  primary 0  XXX 结束的空间print　　打印当前分区,查看分区设置是否正确　　quit　　退出　　mkfs.xfs /dev/sdb1	格式化
-设置lv
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/parted-partition/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2059,7 +2051,7 @@ GPT分区表：（GPT含义：GUID分区表）
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
