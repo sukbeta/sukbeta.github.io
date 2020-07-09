@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sukbeta.github.io/web/</loc>
-    <lastmod>2020-06-28T03:28:57.628Z</lastmod>
+    <lastmod>2020-07-09T06:41:49.539Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/docker-share-troubleshooting/</loc>
     <lastmod>2020-05-28T08:34:04.565Z</lastmod>
@@ -163,10 +163,10 @@
     <loc>https://sukbeta.github.io/nginx-installed-sticky/</loc>
     <lastmod>2018-12-03T07:30:14.467Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/parted-partition/</loc>
+    <loc>https://sukbeta.github.io/source-install-mesos/</loc>
     <lastmod>2018-12-03T07:30:14.466Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/source-install-mesos/</loc>
+    <loc>https://sukbeta.github.io/parted-partition/</loc>
     <lastmod>2018-12-03T07:30:14.466Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/marathon-DockerRegistry-user/</loc>
@@ -175,10 +175,10 @@
     <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
     <lastmod>2018-12-03T07:30:14.464Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
+    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
     <lastmod>2018-12-03T07:30:14.463Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
+    <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
     <lastmod>2018-12-03T07:30:14.463Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/marathon-constraints-configure/</loc>
