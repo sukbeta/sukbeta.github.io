@@ -107,19 +107,19 @@
 
 
 
-<meta name="description" content="RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。 机器列表   IP 主机名 备注     192.168.5.100 bigdata00.shining.com k8s、etcd、rancher server   192.168.5.101 bigdata01.shining.com">
+<meta name="description" content="RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。 版本：    docker: 19.03.5   rancher server： 2.4.5   kubrctl: 1.18.5   rke: 1.0.10   helm：2.16.6">
 <meta name="keywords" content="docker,rancher">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RKE 安装 rancher server HA">
 <meta property="og:url" content="https://sukbeta.github.io/rke-rancher-ha/index.html">
 <meta property="og:site_name" content="舒克贝塔">
-<meta property="og:description" content="RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。 机器列表   IP 主机名 备注     192.168.5.100 bigdata00.shining.com k8s、etcd、rancher server   192.168.5.101 bigdata01.shining.com">
+<meta property="og:description" content="RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。 版本：    docker: 19.03.5   rancher server： 2.4.5   kubrctl: 1.18.5   rke: 1.0.10   helm：2.16.6">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg">
-<meta property="og:updated_time" content="2020-07-14T01:53:49.282Z">
+<meta property="og:updated_time" content="2020-07-14T01:56:11.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RKE 安装 rancher server HA">
-<meta name="twitter:description" content="RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。 机器列表   IP 主机名 备注     192.168.5.100 bigdata00.shining.com k8s、etcd、rancher server   192.168.5.101 bigdata01.shining.com">
+<meta name="twitter:description" content="RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。 版本：    docker: 19.03.5   rancher server： 2.4.5   kubrctl: 1.18.5   rke: 1.0.10   helm：2.16.6">
 <meta name="twitter:image" content="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg">
 
 
@@ -478,6 +478,15 @@
 
       
         <p>RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。</p>
+<p>版本：  </p>
+<ul>
+<li>docker: 19.03.5  </li>
+<li>rancher server： 2.4.5  </li>
+<li>kubrctl: 1.18.5  </li>
+<li>rke: 1.0.10  </li>
+<li>helm：2.16.6  </li>
+</ul>
+<a id="more"></a>
 <h3 id="机器列表"><a href="#机器列表" class="headerlink" title="机器列表"></a>机器列表</h3><table>
 <thead>
 <tr>
@@ -511,14 +520,6 @@
 </table>
 <p>centos7 永久修改主机名，使用命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname xxx</span><br></pre></td></tr></table></figure>
-<p>版本：  </p>
-<ul>
-<li>docker: 19.03.5  </li>
-<li>rancher server： 2.4.5  </li>
-<li>kubrctl: 1.18.5  </li>
-<li>rke: 1.0.10  </li>
-<li>helm：2.16.6  </li>
-</ul>
 <h3 id="安装-RKE"><a href="#安装-RKE" class="headerlink" title="安装 RKE"></a>安装 RKE</h3><p>Rancher Kubernetes Engine(RKE)是一款轻量级Kubernetes安装程序，支持在裸机和虚拟化服务器上安装Kubernetes。 RKE解决了Kubernettes社区中的一个常见问题，比如:安装复杂性。RKE支持多种平台运行，比如MacOS,linux,windows。  </p>
 <p>50.100 机器上安装  </p>
 <p>1、下载二进制文件</p>

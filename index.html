@@ -472,51 +472,15 @@
 
       
         
-          
-          RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。
-机器列表
-
-
-IP
-主机名
-备注
-
-
-
-
-192.168.5.100
-bigdata00.shining.com
-k8s、etcd、rancher server
-
-
-192.168.5.101
-bigdata01.shining.com
-k8s、etcd、rancher server
-
-
-192.168.5.103
-bigdata03.shining.com
-k8s、etcd、rancher server
-
-
-192.168.5.237
-rancher.shining.com
-nginx
-
-
-
-centos7 永久修改主机名，使用命令：
-1hostnamectl set-hostname xxx
-版本：  
-
-docker: 19.03.5  
-rancher server： 2.4.5  
-kubrctl: 1.18.5  
-rke: 1.0.10  
-helm：2.16.6  
-
-安装 RKERancher Kubern
-          ...
+          <p>RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。</p>
+<p>版本：  </p>
+<ul>
+<li>docker: 19.03.5  </li>
+<li>rancher server： 2.4.5  </li>
+<li>kubrctl: 1.18.5  </li>
+<li>rke: 1.0.10  </li>
+<li>helm：2.16.6  </li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/rke-rancher-ha/#more" rel="contents">
