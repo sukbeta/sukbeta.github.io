@@ -354,6 +354,222 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/rke-rancher-ha/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/rke-rancher-ha/" itemprop="url">RKE 安装 rancher server HA</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-14T09:40:31+08:00">
+                2020-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/rancher/" itemprop="url" rel="index">
+                    <span itemprop="name">rancher</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/rke-rancher-ha/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/rke-rancher-ha/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" rel="gallery_ckcla8hcd005amlpz0grkkxkn"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          
+          RKE 安装 rancher HA server 一般要有4台机器， 一台是lvs、nginx代理机器，3台为K8S机器，做etc、rancher server。
+机器列表
+
+
+IP
+主机名
+备注
+
+
+
+
+192.168.5.100
+bigdata00.shining.com
+k8s、etcd、rancher server
+
+
+192.168.5.101
+bigdata01.shining.com
+k8s、etcd、rancher server
+
+
+192.168.5.103
+bigdata03.shining.com
+k8s、etcd、rancher server
+
+
+192.168.5.237
+rancher.shining.com
+nginx
+
+
+
+centos7 永久修改主机名，使用命令：
+1hostnamectl set-hostname xxx
+版本：  
+
+docker: 19.03.5  
+rancher server： 2.4.5  
+kubrctl: 1.18.5  
+rke: 1.0.10  
+helm：2.16.6  
+
+安装 RKERancher Kubern
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/rke-rancher-ha/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/docker-share-troubleshooting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -458,7 +674,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" rel="gallery_ckcefbpj1000fjapzqm00zjnt"
+                 href="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" rel="gallery_ckcla8haf000pmlpz2gllwx9e"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -637,7 +853,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_ckcefbpj2000gjapzenog1dzb"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_ckcla8hac000imlpzu8bsusut"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" itemprop="contentUrl"/>
               </a>
@@ -814,7 +1030,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" rel="gallery_ckcefbplf005rjapzs9smh9c9"
+                 href="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" rel="gallery_ckcla8hca0054mlpzf87r2gum"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" itemprop="contentUrl"/>
               </a>
@@ -991,7 +1207,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" rel="gallery_ckcefbpj5000ljapzzd0r6s4u"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" rel="gallery_ckcla8hae000omlpzfha6unqh"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" itemprop="contentUrl"/>
               </a>
@@ -1166,7 +1382,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" rel="gallery_ckcefbplj0063japzgnmt31hs"
+                 href="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" rel="gallery_ckcla8hcj005pmlpzzoqbeh5c"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" itemprop="contentUrl"/>
               </a>
@@ -1343,7 +1559,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" rel="gallery_ckcefbpky004mjapz84lismtg"
+                 href="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" rel="gallery_ckcla8hc1004mmlpziuvbbkvw"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" itemprop="contentUrl"/>
               </a>
@@ -1517,7 +1733,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/07/19/wallhaven-g82533efbc5c04b31233c5.md.jpg" rel="gallery_ckcefbpkr0049japz11fhpj2p"
+                 href="https://file.moetu.org/images/2019/07/19/wallhaven-g82533efbc5c04b31233c5.md.jpg" rel="gallery_ckcla8hbs0042mlpzaa08x96c"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/07/19/wallhaven-g82533efbc5c04b31233c5.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1693,7 +1909,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" rel="gallery_ckcefbpk4002xjapzav92phd2"
+                 href="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" rel="gallery_ckcla8hbb0030mlpzwx2gpkkv"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" itemprop="contentUrl"/>
               </a>
@@ -1868,7 +2084,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" rel="gallery_ckcefbpk60031japzqa6aee6v"
+                 href="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" rel="gallery_ckcla8hbc0033mlpzox0is2mk"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" itemprop="contentUrl"/>
               </a>
@@ -1889,180 +2105,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/lb-https-certs-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/lb-confiure-many-marathon/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/lb-confiure-many-marathon/" itemprop="url">marathon-lb配置多个matahon地址</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T18:19:34+08:00">
-                2019-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/marathon/" itemprop="url" rel="index">
-                    <span itemprop="name">marathon</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/lb-confiure-many-marathon/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/lb-confiure-many-marathon/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" rel="gallery_ckcefbpk2002ujapza7l0p9ho"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>marathon 在集群中，marathon可以部署多个节点。</p>
-<p>-m 参数是指定marathon地址的，后面跟上marathon地址就可以了， 当你有多个marathon地址的时候，用“空格”隔开就可以了。</p>
-<p>marathon json文件中是这样写的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/lb-confiure-many-marathon/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2150,7 +2192,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2161,7 +2203,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2172,7 +2214,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
