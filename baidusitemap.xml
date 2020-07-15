@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://sukbeta.github.io/web/</loc>
+    <lastmod>2020-07-15T05:36:26.458Z</lastmod>
+  </url>  <url>
     <loc>https://sukbeta.github.io/rke-rancher-ha/</loc>
     <lastmod>2020-07-14T01:56:11.277Z</lastmod>
-  </url>  <url>
-    <loc>https://sukbeta.github.io/web/</loc>
-    <lastmod>2020-07-14T01:00:25.578Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/docker-share-troubleshooting/</loc>
     <lastmod>2020-05-28T08:34:04.565Z</lastmod>
