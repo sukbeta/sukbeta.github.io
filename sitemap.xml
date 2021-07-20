@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sukbeta.github.io/nginx-qat/</loc>
+    
+    <lastmod>2021-07-20T10:59:49.422Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sukbeta.github.io/haproxy-qat/</loc>
+    
+    <lastmod>2021-07-20T10:22:29.009Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://sukbeta.github.io/intel-qat/</loc>
     
     <lastmod>2021-07-14T10:29:00.133Z</lastmod>
@@ -394,14 +408,14 @@
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/awk-echo-SingleQuoteMark-DoubleQuotationMarks/</loc>
+    <loc>https://sukbeta.github.io/Unix-Linux-ssh-add-Command-Examples-to-Add-SSH-Key-to-Agent/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/Unix-Linux-ssh-add-Command-Examples-to-Add-SSH-Key-to-Agent/</loc>
+    <loc>https://sukbeta.github.io/awk-echo-SingleQuoteMark-DoubleQuotationMarks/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
@@ -415,14 +429,14 @@
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
+    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
+    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
