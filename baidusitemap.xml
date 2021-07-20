@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://sukbeta.github.io/hadoop-set-replication/</loc>
+    <lastmod>2021-07-20T11:17:18.600Z</lastmod>
+  </url>  <url>
+    <loc>https://sukbeta.github.io/curl-shell-args/</loc>
+    <lastmod>2021-07-20T11:16:07.143Z</lastmod>
+  </url>  <url>
+    <loc>https://sukbeta.github.io/hive-external-table/</loc>
+    <lastmod>2021-07-20T11:15:12.502Z</lastmod>
+  </url>  <url>
+    <loc>https://sukbeta.github.io/hadoop-log-segmentation/</loc>
+    <lastmod>2021-07-20T11:14:15.888Z</lastmod>
+  </url>  <url>
     <loc>https://sukbeta.github.io/nginx-qat/</loc>
     <lastmod>2021-07-20T11:01:47.416Z</lastmod>
   </url>  <url>
@@ -82,9 +94,6 @@
     <loc>https://sukbeta.github.io/marathon-delete-app/</loc>
     <lastmod>2019-06-05T08:07:15.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/curl-shell-args/</loc>
-    <lastmod>2019-06-05T07:59:31.000Z</lastmod>
-  </url>  <url>
     <loc>https://sukbeta.github.io/hive-merge-small-files/</loc>
     <lastmod>2019-06-05T04:34:25.000Z</lastmod>
   </url>  <url>
@@ -100,12 +109,6 @@
     <loc>https://sukbeta.github.io/docker-logs-explantion/</loc>
     <lastmod>2019-05-30T08:40:58.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/hadoop-set-replication/</loc>
-    <lastmod>2019-05-30T08:40:40.000Z</lastmod>
-  </url>  <url>
-    <loc>https://sukbeta.github.io/hive-external-table/</loc>
-    <lastmod>2019-05-30T08:39:55.000Z</lastmod>
-  </url>  <url>
     <loc>https://sukbeta.github.io/marathon-lb-configure-nginx/</loc>
     <lastmod>2019-05-30T08:38:59.000Z</lastmod>
   </url>  <url>
@@ -114,9 +117,6 @@
   </url>  <url>
     <loc>https://sukbeta.github.io/hadoop-set-quota/</loc>
     <lastmod>2019-05-30T08:32:17.000Z</lastmod>
-  </url>  <url>
-    <loc>https://sukbeta.github.io/hadoop-log-segmentation/</loc>
-    <lastmod>2019-05-30T08:31:40.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/logstash-out-file-to-HDFS/</loc>
     <lastmod>2019-05-30T08:30:45.000Z</lastmod>

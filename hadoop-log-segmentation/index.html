@@ -117,10 +117,12 @@
 <meta property="og:site_name" content="舒克贝塔">
 <meta property="og:description" content="Hadoop日志按天分割和开启审计日志日志按天分割hadoop 各个组件默认日志是大小分割的，到一定大小就分割出 .1  .2  .3  .4这样的文件，这样我们在查找问题的时候不是好定位你要的那天日志在哪个文件中。要是一天一个文件，按照日志的话就很好定位了。 在这里介绍一下hadoop按天切分日志的方法。 方法一 修改变量hbase123hbase-env.sh添加：export HBASE_R">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-30T08:31:40.000Z">
+<meta property="og:image" content="https://file.moetu.org/images/2020/07/14/5e12ff540f05e2f5920924f60d9f6.jpg">
+<meta property="og:updated_time" content="2021-07-20T11:14:15.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop日志按天分割和开启审计日志">
 <meta name="twitter:description" content="Hadoop日志按天分割和开启审计日志日志按天分割hadoop 各个组件默认日志是大小分割的，到一定大小就分割出 .1  .2  .3  .4这样的文件，这样我们在查找问题的时候不是好定位你要的那天日志在哪个文件中。要是一天一个文件，按照日志的话就很好定位了。 在这里介绍一下hadoop按天切分日志的方法。 方法一 修改变量hbase123hbase-env.sh添加：export HBASE_R">
+<meta name="twitter:image" content="https://file.moetu.org/images/2020/07/14/5e12ff540f05e2f5920924f60d9f6.jpg">
 
 
 
@@ -459,6 +461,22 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2020/07/14/5e12ff540f05e2f5920924f60d9f6.jpg" rel="gallery_ckrbyps7f001auk1p9n9kdm8v"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2020/07/14/5e12ff540f05e2f5920924f60d9f6.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
         <h1 id="Hadoop日志按天分割和开启审计日志"><a href="#Hadoop日志按天分割和开启审计日志" class="headerlink" title="Hadoop日志按天分割和开启审计日志"></a>Hadoop日志按天分割和开启审计日志</h1><h2 id="日志按天分割"><a href="#日志按天分割" class="headerlink" title="日志按天分割"></a>日志按天分割</h2><p>hadoop 各个组件默认日志是大小分割的，到一定大小就分割出 .1  .2  .3  .4这样的文件，这样我们在查找问题的时候不是好定位你要的那天日志在哪个文件中。要是一天一个文件，按照日志的话就很好定位了。</p>
@@ -475,6 +493,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hbase.security.log.file=SecurityAuth.audit</span><br><span class="line">hbase.security.log.maxfilesize=256MB</span><br><span class="line">hbase.security.log.maxbackupindex=20</span><br><span class="line">log4j.category.SecurityLogger=$&#123;hbase.security.logger&#125;</span><br><span class="line">log4j.appender.DRFAS=org.apache.log4j.DailyRollingFileAppender</span><br><span class="line">log4j.appender.DRFAS.File=$&#123;hbase.log.dir&#125;/$&#123;hbase.security.log.file&#125;</span><br><span class="line">log4j.appender.DRFAS.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.DRFAS.layout.ConversionPattern=%d&#123;ISO8601&#125; %p %c: %m%n</span><br><span class="line">log4j.appender.DRFAS.DatePattern=.yyyy-MM-dd</span><br><span class="line">log4j.additivity.SecurityLogger=true</span><br><span class="line">log4j.logger.SecurityLogger.org.apache.hadoop.hbase.security.access.AccessController=TRACE</span><br></pre></td></tr></table></figure>
 <p>同时需要配置 hbase-site.xml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.rpc.engine&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.hbase.ipc.SecureRpcEngine&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.coprocessor.master.classes&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.hbase.security.access.AccessController&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.coprocessor.region.classes&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.hbase.security.token.TokenProvider,org.apache.hadoop.hbase.security.access.AccessController&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line"> &lt;name&gt;hbase.superuser&lt;/name&gt;</span><br><span class="line"> &lt;value&gt;hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">      &lt;name&gt;hbase.security.authorization&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;false&lt;/value&gt;  &lt;!-- 如果值为true，默认每个用户只能访问当前的表。而之前创建的member表的属主是HBase，其他用户对其没有访问权限，需要超级用户为其赋权 --&gt;</span><br><span class="line">  &lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
