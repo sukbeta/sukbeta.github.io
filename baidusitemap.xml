@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sukbeta.github.io/nginx-qat/</loc>
-    <lastmod>2021-07-20T10:59:49.422Z</lastmod>
+    <lastmod>2021-07-20T11:01:47.416Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/haproxy-qat/</loc>
     <lastmod>2021-07-20T10:22:29.009Z</lastmod>
@@ -178,10 +178,10 @@
     <loc>https://sukbeta.github.io/docker-ulimit-configure/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
+    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
+    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/logstash-configure-file/</loc>
