@@ -117,10 +117,12 @@
 <meta property="og:site_name" content="舒克贝塔">
 <meta property="og:description" content="kafka 在 0.9 版本之后，kafka的消费者组和offset信息就不存zookeeper了。 0.9 之前版本查看所有消费组：12345678./kafka-consumer-groups.sh --zookeeper 127.0.0.1:2181 --listerro-info-groupconsole-consumer-64036console-consumer-98298logsta">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T08:06:08.000Z">
+<meta property="og:image" content="https://file.moetu.org/images/2019/07/19/uLDmm65P5ZY29a4e6992f548190.md.jpg">
+<meta property="og:updated_time" content="2021-07-20T11:23:44.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka查看消费组消费详情">
 <meta name="twitter:description" content="kafka 在 0.9 版本之后，kafka的消费者组和offset信息就不存zookeeper了。 0.9 之前版本查看所有消费组：12345678./kafka-consumer-groups.sh --zookeeper 127.0.0.1:2181 --listerro-info-groupconsole-consumer-64036console-consumer-98298logsta">
+<meta name="twitter:image" content="https://file.moetu.org/images/2019/07/19/uLDmm65P5ZY29a4e6992f548190.md.jpg">
 
 
 
@@ -459,13 +461,31 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2019/07/19/uLDmm65P5ZY29a4e6992f548190.md.jpg" rel="gallery_ckrbz2yhi002u2i1pjv2auzl8"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2019/07/19/uLDmm65P5ZY29a4e6992f548190.md.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
         <p>kafka 在 0.9 版本之后，kafka的消费者组和offset信息就不存zookeeper了。</p>
 <h4 id="0-9-之前版本查看所有消费组："><a href="#0-9-之前版本查看所有消费组：" class="headerlink" title="0.9 之前版本查看所有消费组："></a>0.9 之前版本查看所有消费组：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./kafka-consumer-groups.sh --zookeeper 127.0.0.1:2181 --list</span><br><span class="line"></span><br><span class="line">erro-info-group</span><br><span class="line">console-consumer-64036</span><br><span class="line">console-consumer-98298</span><br><span class="line">logstash-new</span><br><span class="line">console-consumer-89310</span><br><span class="line">console-consumer-48800</span><br></pre></td></tr></table></figure>
-<h4 id="新版本-0-9-版本之后查看所有消费组"><a href="#新版本-0-9-版本之后查看所有消费组" class="headerlink" title="新版本 0.9 版本之后查看所有消费组"></a>新版本 0.9 版本之后查看所有消费组</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kafka-consumer-groups.sh --new-consumer --bootstrap-server localhost:9092 --list </span><br><span class="line"></span><br><span class="line">test-info</span><br><span class="line">nginxlog</span><br></pre></td></tr></table></figure>
+<h4 id="新版本-0-9-版本之后查看所有消费组"><a href="#新版本-0-9-版本之后查看所有消费组" class="headerlink" title="新版本 0.9 版本之后查看所有消费组"></a>新版本 0.9 版本之后查看所有消费组</h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kafka-consumer-groups.sh --new-consumer --bootstrap-server localhost:9092 --list </span><br><span class="line"></span><br><span class="line">test-info</span><br><span class="line">nginxlog</span><br></pre></td></tr></table></figure>
 <h4 id="显示某个消费组的消费详情（仅支持offset存储在zookeeper上的）"><a href="#显示某个消费组的消费详情（仅支持offset存储在zookeeper上的）" class="headerlink" title="显示某个消费组的消费详情（仅支持offset存储在zookeeper上的）"></a>显示某个消费组的消费详情（仅支持offset存储在zookeeper上的）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --zookeeper localhost:2181 --group logstash-new</span><br></pre></td></tr></table></figure>
 <h4 id="显示某个消费组的消费详情（支持0-9版本-）"><a href="#显示某个消费组的消费详情（支持0-9版本-）" class="headerlink" title="显示某个消费组的消费详情（支持0.9版本+）"></a>显示某个消费组的消费详情（支持0.9版本+）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server localhost:9092 --describe --group nginxlog</span><br></pre></td></tr></table></figure>
+
       
     </div>
     

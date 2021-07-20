@@ -117,10 +117,12 @@
 <meta property="og:site_name" content="舒克贝塔">
 <meta property="og:description" content="hadoop上命令行查看lzo、gz、bz文件HDFS上的文件可能是压缩的，所以用cat不能直接查看。hadoop上默认支持lzo、gz、bz2、snappy压缩格式。 我们用命令行查看HDFS上压缩文件，也是可以的。 lzo文件 查看 HDFS 上 lzo 文件的命令  12345hadoop fs -cat /Data/Logs/2018-08-22/2018-08-22_log.lzo |">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-30T08:32:33.000Z">
+<meta property="og:image" content="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg">
+<meta property="og:updated_time" content="2021-07-20T11:21:09.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hadoop上命令行查看lzo、gz、bz文件">
 <meta name="twitter:description" content="hadoop上命令行查看lzo、gz、bz文件HDFS上的文件可能是压缩的，所以用cat不能直接查看。hadoop上默认支持lzo、gz、bz2、snappy压缩格式。 我们用命令行查看HDFS上压缩文件，也是可以的。 lzo文件 查看 HDFS 上 lzo 文件的命令  12345hadoop fs -cat /Data/Logs/2018-08-22/2018-08-22_log.lzo |">
+<meta name="twitter:image" content="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg">
 
 
 
@@ -459,6 +461,22 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg" rel="gallery_ckrbz2ygs001b2i1pblpcwulv"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
         <h2 id="hadoop上命令行查看lzo、gz、bz文件"><a href="#hadoop上命令行查看lzo、gz、bz文件" class="headerlink" title="hadoop上命令行查看lzo、gz、bz文件"></a>hadoop上命令行查看lzo、gz、bz文件</h2><p>HDFS上的文件可能是压缩的，所以用cat不能直接查看。hadoop上默认支持lzo、gz、bz2、snappy压缩格式。</p>
@@ -478,6 +496,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /temp/b.bz2 | bzip2 -d</span><br></pre></td></tr></table></figure>
 <h4 id="text-命令"><a href="#text-命令" class="headerlink" title="text 命令"></a>text 命令</h4><p>Hadoop text 命令可以查看HDFS上的文本、压缩文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -text /temp/b.bz2</span><br><span class="line"></span><br><span class="line">hadoop fs -text /temp/test_hive.txt.gz</span><br><span class="line"></span><br><span class="line">hadoop fs -text /temp/l.lzo</span><br><span class="line"></span><br><span class="line">hadoop fs -text /tmp/out1/part-r-00000</span><br></pre></td></tr></table></figure>
+
       
     </div>
     

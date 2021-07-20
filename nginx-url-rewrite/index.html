@@ -117,10 +117,12 @@
 <meta property="og:site_name" content="舒克贝塔">
 <meta property="og:description" content="nginx url跳转、rewrite实例nginx 的 rewrite 语法语法: rewrite regex replacement flag默认: none作用域: server, location, if此指令根据表达式来更改URI，或修改字符串。指令根据配置文件中的顺序来执行。﻿注意：重写表达式只对相对路径有效。如果想配对主机名，应该使用if语句。rewrite只是会改写路径部分的东东，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-14T09:49:47.000Z">
+<meta property="og:image" content="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg">
+<meta property="og:updated_time" content="2021-07-20T11:26:51.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx url跳转、rewrite实例">
 <meta name="twitter:description" content="nginx url跳转、rewrite实例nginx 的 rewrite 语法语法: rewrite regex replacement flag默认: none作用域: server, location, if此指令根据表达式来更改URI，或修改字符串。指令根据配置文件中的顺序来执行。﻿注意：重写表达式只对相对路径有效。如果想配对主机名，应该使用if语句。rewrite只是会改写路径部分的东东，">
+<meta name="twitter:image" content="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg">
 
 
 
@@ -459,9 +461,26 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" rel="gallery_ckrbz2yj000562i1paw26m49o"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
         <h2 id="nginx-url跳转、rewrite实例"><a href="#nginx-url跳转、rewrite实例" class="headerlink" title="nginx url跳转、rewrite实例"></a>nginx url跳转、rewrite实例</h2><p>nginx 的 rewrite 语法<br>语法: rewrite regex replacement flag<br>默认: none<br>作用域: server, location, if<br>此指令根据表达式来更改URI，或修改字符串。<br>指令根据配置文件中的顺序来执行。<br>﻿注意：<br>重写表达式只对相对路径有效。如果想配对主机名，应该使用if语句。<br>rewrite只是会改写路径部分的东东，不会改动用户的输入参数，因此这里的if规则里面，你无需关心用户在浏览器里输入的参数，rewrite后会自动添加的，因此，只是加上了一个？号和后面我们想要的一个小小的参数 ***https=1就可以了。<br>nginx的rewrite规则参考：</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">~ 为区分大小写匹配</span><br><span class="line">~* 为不区分大小写匹配</span><br><span class="line">!~和!~*分别为区分大小写不匹配及不区分大小写不匹</span><br><span class="line">-f和!-f用来判断是否存在文件</span><br><span class="line">-d和!-d用来判断是否存在目录</span><br><span class="line">-e和!-e用来判断是否存在文件或目录</span><br><span class="line">-x和!-x用来判断文件是否可执行</span><br><span class="line">last 相当于Apache里的[L]标记，表示完成rewrite，呵呵这应该是最常用的</span><br><span class="line">break 终止匹配, 不再匹配后面的规则</span><br><span class="line">redirect 返回302临时重定向 地址栏会显示跳转后的地址</span><br><span class="line">permanent 返回301永久重定向 地址栏会显示跳转后的地址</span><br><span class="line">$args</span><br><span class="line">$content_length</span><br><span class="line">$content_type</span><br><span class="line">$document_root</span><br><span class="line">$document_uri</span><br><span class="line">$host</span><br><span class="line">$http_user_agent</span><br><span class="line">$http_cookie</span><br><span class="line">$limit_rate</span><br><span class="line">$request_body_file</span><br><span class="line">$request_method</span><br><span class="line">$remote_addr</span><br><span class="line">$remote_port</span><br><span class="line">$remote_user</span><br><span class="line">$request_filename</span><br><span class="line">$request_uri</span><br><span class="line">$query_string</span><br><span class="line">$scheme</span><br><span class="line">$server_protocol</span><br><span class="line">$server_addr</span><br><span class="line">$server_name</span><br><span class="line">$server_port</span><br><span class="line">$uri</span><br></pre></td></tr></table></figure>
 <p>多目录转成参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (!-d $request_filename) &#123;</span><br><span class="line">	rewrite ^/([a-z-A-Z]+)/([a-z-A-Z]+)/?(.*)$ /index.php?namespace=user&amp;amp;controller=$1&amp;amp;action=$2&amp;amp;$3 last;</span><br><span class="line">	rewrite ^/([a-z-A-Z]+)/?$ /index.php?namespace=user&amp;amp;controller=$1 last;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
