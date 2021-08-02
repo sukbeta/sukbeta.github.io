@@ -118,7 +118,7 @@
 <meta property="og:description" content="nginx 配置 Intel QAT 加速卡Intel QAT 加速卡可以对HTTPS的请求进行异步请求， 加快证书处理， 降低系统性能消耗。nginx 作为代理， 可以代理HTTPS请求， 需要重新编译，支持QAT加速卡，这样才能将请求给QAT加速卡。 Intel QAT 加速卡安装在上一遍文章已经提到， 这里就不在说了， 可以查看之前文章。intel qat 加速卡安装配置 ： https:/">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg">
-<meta property="og:updated_time" content="2021-07-20T11:01:47.416Z">
+<meta property="og:updated_time" content="2021-08-02T01:31:32.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx 配置 Intel QAT 加速卡">
 <meta name="twitter:description" content="nginx 配置 Intel QAT 加速卡Intel QAT 加速卡可以对HTTPS的请求进行异步请求， 加快证书处理， 降低系统性能消耗。nginx 作为代理， 可以代理HTTPS请求， 需要重新编译，支持QAT加速卡，这样才能将请求给QAT加速卡。 Intel QAT 加速卡安装在上一遍文章已经提到， 这里就不在说了， 可以查看之前文章。intel qat 加速卡安装配置 ： https:/">
@@ -466,7 +466,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" rel="gallery_ckrbz2yiw00542i1p35b8j0w7"
+                 href="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" rel="gallery_ckrtz2nqy0074c01phmgwppdn"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" itemprop="contentUrl"/>
               </a>
@@ -480,6 +480,7 @@
 
       
         <h4 id="nginx-配置-Intel-QAT-加速卡"><a href="#nginx-配置-Intel-QAT-加速卡" class="headerlink" title="nginx 配置 Intel QAT 加速卡"></a>nginx 配置 Intel QAT 加速卡</h4><p>Intel QAT 加速卡可以对HTTPS的请求进行异步请求， 加快证书处理， 降低系统性能消耗。<br>nginx 作为代理， 可以代理HTTPS请求， 需要重新编译，支持QAT加速卡，这样才能将请求给QAT加速卡。<br> Intel QAT 加速卡安装在上一遍文章已经提到， 这里就不在说了， 可以查看之前文章。<br>intel qat 加速卡安装配置 ： <a href="https://sukbeta.github.io/intel-qat/">https://sukbeta.github.io/intel-qat/</a>  </p>
+<h5 id="相关URL"><a href="#相关URL" class="headerlink" title="相关URL"></a>相关URL</h5><p>Nginx QAT Instasll： <a href="https://01.org/sites/default/files/downloads//337020-003-qatwcontaineranddocker.pdf" target="_blank" rel="noopener">https://01.org/sites/default/files/downloads//337020-003-qatwcontaineranddocker.pdf</a></p>
 <h5 id="下载所需要的安装包"><a href="#下载所需要的安装包" class="headerlink" title="下载所需要的安装包"></a>下载所需要的安装包</h5><p>nginx package</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br><span class="line">wget http://nginx.org/download/nginx-1.18.0.tar.gz</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -815,7 +816,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx-配置-Intel-QAT-加速卡"><span class="nav-number">1.</span> <span class="nav-text">nginx 配置 Intel QAT 加速卡</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下载所需要的安装包"><span class="nav-number">1.1.</span> <span class="nav-text">下载所需要的安装包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译-QATzip"><span class="nav-number">1.2.</span> <span class="nav-text">编译 QATzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx-编译"><span class="nav-number">1.3.</span> <span class="nav-text">nginx 编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx-配置文件"><span class="nav-number">1.4.</span> <span class="nav-text">nginx 配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证QAT卡是否工作"><span class="nav-number">1.5.</span> <span class="nav-text">验证QAT卡是否工作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx-配置-Intel-QAT-加速卡"><span class="nav-number">1.</span> <span class="nav-text">nginx 配置 Intel QAT 加速卡</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#相关URL"><span class="nav-number">1.1.</span> <span class="nav-text">相关URL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下载所需要的安装包"><span class="nav-number">1.2.</span> <span class="nav-text">下载所需要的安装包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译-QATzip"><span class="nav-number">1.3.</span> <span class="nav-text">编译 QATzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx-编译"><span class="nav-number">1.4.</span> <span class="nav-text">nginx 编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx-配置文件"><span class="nav-number">1.5.</span> <span class="nav-text">nginx 配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证QAT卡是否工作"><span class="nav-number">1.6.</span> <span class="nav-text">验证QAT卡是否工作</span></a></li></ol></li></ol></div>
             
 
           </div>

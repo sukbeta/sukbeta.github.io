@@ -118,7 +118,7 @@
 <meta property="og:description" content="Haproxy 配置 Intel QAT 加速卡Intel QAT 加速卡可以对HTTPS的请求进行异步请求， 加快证书处理， 降低系统性能消耗。Haproxy 作为代理， 可以代理HTTPS请求， 需要重新编译，支持QAT加速卡，这样才能将请求给QAT加速卡。 Intel QAT 加速卡安装在上一遍文章已经提到， 这里就不在说了， 可以查看之前文章。intel qat 加速卡安装配置 ： htt">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg">
-<meta property="og:updated_time" content="2021-07-20T10:22:29.009Z">
+<meta property="og:updated_time" content="2021-08-02T01:32:57.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Haproxy 配置 Intel QAT 加速卡">
 <meta name="twitter:description" content="Haproxy 配置 Intel QAT 加速卡Intel QAT 加速卡可以对HTTPS的请求进行异步请求， 加快证书处理， 降低系统性能消耗。Haproxy 作为代理， 可以代理HTTPS请求， 需要重新编译，支持QAT加速卡，这样才能将请求给QAT加速卡。 Intel QAT 加速卡安装在上一遍文章已经提到， 这里就不在说了， 可以查看之前文章。intel qat 加速卡安装配置 ： htt">
@@ -466,7 +466,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" rel="gallery_ckrbz2ygy001m2i1ppgjwiove"
+                 href="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" rel="gallery_ckrtz2nll001hc01pli41wi1p"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -480,6 +480,7 @@
 
       
         <h4 id="Haproxy-配置-Intel-QAT-加速卡"><a href="#Haproxy-配置-Intel-QAT-加速卡" class="headerlink" title="Haproxy 配置 Intel QAT 加速卡"></a>Haproxy 配置 Intel QAT 加速卡</h4><p>Intel QAT 加速卡可以对HTTPS的请求进行异步请求， 加快证书处理， 降低系统性能消耗。<br>Haproxy 作为代理， 可以代理HTTPS请求， 需要重新编译，支持QAT加速卡，这样才能将请求给QAT加速卡。<br> Intel QAT 加速卡安装在上一遍文章已经提到， 这里就不在说了， 可以查看之前文章。<br>intel qat 加速卡安装配置 ： <a href="https://sukbeta.github.io/intel-qat/">https://sukbeta.github.io/intel-qat/</a>  </p>
+<h5 id="相关URL"><a href="#相关URL" class="headerlink" title="相关URL"></a>相关URL</h5><p>haproxy QAT Install： <a href="https://01.org/sites/default/files/downloads/621658-1.1-qat-debugging-guide.pdf" target="_blank" rel="noopener">https://01.org/sites/default/files/downloads/621658-1.1-qat-debugging-guide.pdf </a><br> haproxy intel 测试配置:  <a href="https://software.intel.com/content/www/cn/zh/develop/articles/accelerating-ssl-load-balancers-with-intel-xeon-v3-processors.html" target="_blank" rel="noopener">https://software.intel.com/content/www/cn/zh/develop/articles/accelerating-ssl-load-balancers-with-intel-xeon-v3-processors.html</a></p>
 <h5 id="Hadproxy-下载"><a href="#Hadproxy-下载" class="headerlink" title="Hadproxy 下载"></a>Hadproxy 下载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br><span class="line">wget https://www.haproxy.org/download/1.9/src/haproxy-1.9.16.tar.gz</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h5 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd haproxy-1.9.16</span><br><span class="line">make TARGET=linux2628 ARCH=x86_64 USE_PCRE=1 USE_OPENSSL=1 USE_ZLIB=1 USE_CRYPT_H=1 USE_LIBCRYPT=1 SSL_INC=/usr/local/ssl/include SSL_LIB=/usr/local/ssl/lib ADDLIB=-ldl</span><br><span class="line">make install PREFIX=/usr/local/haproxy</span><br></pre></td></tr></table></figure>
@@ -809,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Haproxy-配置-Intel-QAT-加速卡"><span class="nav-number">1.</span> <span class="nav-text">Haproxy 配置 Intel QAT 加速卡</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Hadproxy-下载"><span class="nav-number">1.1.</span> <span class="nav-text">Hadproxy 下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译"><span class="nav-number">1.2.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hadproxy-配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">Hadproxy 配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动-Haproxy"><span class="nav-number">1.4.</span> <span class="nav-text">启动 Haproxy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证QAT卡是否工作"><span class="nav-number">1.5.</span> <span class="nav-text">验证QAT卡是否工作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Haproxy-配置-Intel-QAT-加速卡"><span class="nav-number">1.</span> <span class="nav-text">Haproxy 配置 Intel QAT 加速卡</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#相关URL"><span class="nav-number">1.1.</span> <span class="nav-text">相关URL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hadproxy-下载"><span class="nav-number">1.2.</span> <span class="nav-text">Hadproxy 下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译"><span class="nav-number">1.3.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hadproxy-配置文件"><span class="nav-number">1.4.</span> <span class="nav-text">Hadproxy 配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动-Haproxy"><span class="nav-number">1.5.</span> <span class="nav-text">启动 Haproxy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证QAT卡是否工作"><span class="nav-number">1.6.</span> <span class="nav-text">验证QAT卡是否工作</span></a></li></ol></li></ol></div>
             
 
           </div>

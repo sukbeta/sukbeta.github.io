@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sukbeta.github.io/haproxy-qat/</loc>
+    
+    <lastmod>2021-08-02T01:32:57.393Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sukbeta.github.io/nginx-qat/</loc>
+    
+    <lastmod>2021-08-02T01:31:32.292Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://sukbeta.github.io/nginx-url-rewrite/</loc>
     
     <lastmod>2021-07-20T11:26:51.016Z</lastmod>
@@ -75,20 +89,6 @@
     <loc>https://sukbeta.github.io/hadoop-log-segmentation/</loc>
     
     <lastmod>2021-07-20T11:14:15.888Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://sukbeta.github.io/nginx-qat/</loc>
-    
-    <lastmod>2021-07-20T11:01:47.416Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://sukbeta.github.io/haproxy-qat/</loc>
-    
-    <lastmod>2021-07-20T10:22:29.009Z</lastmod>
     
   </url>
   
@@ -464,13 +464,6 @@
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
-    
-    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
@@ -479,6 +472,13 @@
   
   <url>
     <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
+    
+    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
