@@ -356,6 +356,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/qat-on-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/qat-on-docker/" itemprop="url">nginx qat on docker</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-02T12:00:36+08:00">
+                2021-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/qat/" itemprop="url" rel="index">
+                    <span itemprop="name">qat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/qat-on-docker/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/qat-on-docker/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2021/07/13/9bbc284bgy1g3y797y517j21c00u0kjl966aab258dfe83a9.md.jpg" rel="gallery_ckrvdp8ai0058jg1peqws8fkv"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2021/07/13/9bbc284bgy1g3y797y517j21c00u0kjl966aab258dfe83a9.md.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <p>Intel QAT 加速卡可以对HTTPS的请求进行异步请求， 加快证书处理， 降低系统性能消耗。<br>nginx 作为代理， 可以代理HTTPS请求， 需要重新编译，支持QAT加速卡，这样才能将请求给QAT加速卡。<br>Intel QAT 加速卡安装在上一遍文章已经提到， 这里就不在说了， 可以查看之前文章。<br>这回我们说说如何把QAT卡封装到docker容器中。<br>我测试过了， 就算在docker容器中安装驱动， 也需要在宿主机上安装驱动。是值代理服务可以不用在宿主机上安装。  </p>
+<p>intel qat 加速卡安装配置 ： <a href="https://sukbeta.github.io/intel-qat/">https://sukbeta.github.io/intel-qat/</a><br>宿主机上nginx配置qat：<a href="https://sukbeta.github.io/nginx-qat/">https://sukbeta.github.io/nginx-qat/</a></p>
+<h5 id="相关URL"><a href="#相关URL" class="headerlink" title="相关URL"></a>相关URL</h5>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/qat-on-docker/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/nginx-qat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +634,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" rel="gallery_ckrtz2nqy0074c01phmgwppdn"
+                 href="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" rel="gallery_ckrvdp8ad004wjg1pyti0v5wa"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" itemprop="contentUrl"/>
               </a>
@@ -635,7 +809,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" rel="gallery_ckrtz2nll001hc01pli41wi1p"
+                 href="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" rel="gallery_ckrvdp88t001mjg1pvj4k4h4i"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -809,7 +983,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/5e9424ac63eba253dc5b6fb3ae4db.jpg" rel="gallery_ckrtz2nlz002kc01pgfxza8b6"
+                 href="https://file.moetu.org/images/2021/07/13/5e9424ac63eba253dc5b6fb3ae4db.jpg" rel="gallery_ckrvdp894002ejg1ph69pxy8d"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2021/07/13/5e9424ac63eba253dc5b6fb3ae4db.jpg" itemprop="contentUrl"/>
               </a>
@@ -982,7 +1156,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" rel="gallery_ckrtz2nre0084c01ps9hwfnaj"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" rel="gallery_ckrvdp8ao005mjg1prjxtwkz9"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" itemprop="contentUrl"/>
               </a>
@@ -1162,7 +1336,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" rel="gallery_ckrtz2nla000sc01pip0v44tf"
+                 href="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" rel="gallery_ckrvdp88d000njg1ptsprz656"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1341,7 +1515,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_ckrtz2nl7000jc01pe3xwvt1u"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_ckrvdp88c000jjg1p0m6cshos"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" itemprop="contentUrl"/>
               </a>
@@ -1518,7 +1692,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" rel="gallery_ckrtz2nra007tc01pslysjng5"
+                 href="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" rel="gallery_ckrvdp8al005fjg1p9qbspyjx"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" itemprop="contentUrl"/>
               </a>
@@ -1695,7 +1869,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" rel="gallery_ckrtz2nl8000nc01pd97h5ozw"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" rel="gallery_ckrvdp88j000xjg1pppwxd5hw"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" itemprop="contentUrl"/>
               </a>
@@ -1870,7 +2044,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" rel="gallery_ckrtz2nrl008oc01pe6go2n4n"
+                 href="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" rel="gallery_ckrvdp8ax0068jg1pvw26z5vb"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" itemprop="contentUrl"/>
               </a>
@@ -1930,185 +2104,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/nginx-deny-ip/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/nginx-deny-ip/" itemprop="url">nginx通过x_forwarded_for实现黑白名单访问策略</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T19:01:51+08:00">
-                2019-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">nginx</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/nginx-deny-ip/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/nginx-deny-ip/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" rel="gallery_ckrtz2nqw006yc01p4aa0m4a6"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>nginx通过防护墙、F5设备过来之后，remote_addr 的地址是防护墙、F5的地址， 客户端真是的IP地址是在 x_forwarded_for中的， 这样这样 nginx 默认的 deny 和 allow 就不能用了。</p>
-<p>我们需要在每个域名中判断一个 x_forwarded_for 钟是否有我们要拒绝的IP地址，如果有就返回403，不在往后代理。</p>
-<p>我们定义一个map 拒绝的IP地址列表。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/nginx-deny-ip/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2154,7 +2154,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

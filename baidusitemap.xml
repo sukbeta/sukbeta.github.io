@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://sukbeta.github.io/qat-on-docker/</loc>
+    <lastmod>2021-08-03T01:26:01.771Z</lastmod>
+  </url>  <url>
     <loc>https://sukbeta.github.io/haproxy-qat/</loc>
     <lastmod>2021-08-02T01:32:57.393Z</lastmod>
   </url>  <url>
@@ -184,10 +187,10 @@
     <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/logstash-configure-file/</loc>
+    <loc>https://sukbeta.github.io/marathon-DockerRegistry-user/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/marathon-DockerRegistry-user/</loc>
+    <loc>https://sukbeta.github.io/logstash-configure-file/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/marathon-constraints-configure/</loc>
@@ -196,10 +199,10 @@
     <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
+    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
+    <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/nginx-installed-sticky/</loc>
