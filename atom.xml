@@ -407,9 +407,9 @@
       <category term="marathon" scheme="https://sukbeta.github.io/categories/marathon/"/>
     
     
-      <category term="marathon-lb" scheme="https://sukbeta.github.io/tags/marathon-lb/"/>
-    
       <category term="marathon" scheme="https://sukbeta.github.io/tags/marathon/"/>
+    
+      <category term="marathon-lb" scheme="https://sukbeta.github.io/tags/marathon-lb/"/>
     
   </entry>
   
