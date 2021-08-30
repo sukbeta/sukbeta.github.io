@@ -356,6 +356,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/marathon-EventLog-to-ES/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/marathon-EventLog-to-ES/" itemprop="url">marathon事件日志收集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T15:19:40+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/marathon/" itemprop="url" rel="index">
+                    <span itemprop="name">marathon</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/marathon-EventLog-to-ES/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/marathon-EventLog-to-ES/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          marathon 事件日志收集到ES中  marathon 有配置可以主动把 marathon 的事件日志发送到 http 接口上。这里的事件包括，发布容器的json内容，docker容器死掉、启动，运行、kill，健康检查等日志。也可以说 marathon 所有的动作日志这上都会有。所有我要把这个日志收集起来，并可以做监控，历史查询等等。  先说一下我的方案：  启动一个logstash实例，并配置http接口，把收集到的日志存到ES索引中。  marathon 配置 logstash 的 http 接口地址，把日志发送到这里即可。  后期可以在ES中查询你想要的事件日志，并报警，或用kibana出图等。  
+logstash 配置#####logstash 配置文件vim /etc/logstash.conf  
+1234567891011121314151617181920input &#123;    http &#123;         host =&gt; &quot;0.0.0.0&quot;         port =&gt; 7882         codec 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/marathon-EventLog-to-ES/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/Unix-Linux-ssh-add-Command-Examples-to-Add-SSH-Key-to-Agent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -620,7 +780,7 @@ Fix “Could not Open” Error (and Add Default RSA/DSA identities)By default, w
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/WGThqPB/Cc-ETP4g-FBTU.jpg" rel="gallery_cksirekms000bcd1pvuudhufa"
+                 href="https://i.ibb.co/WGThqPB/Cc-ETP4g-FBTU.jpg" rel="gallery_cksyczq1m0007721px0iyrahn"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/WGThqPB/Cc-ETP4g-FBTU.jpg" itemprop="contentUrl"/>
               </a>
@@ -1826,167 +1986,6 @@ marathon json 启动容器引用验证文件123&quot;uris&quot;: [   &quot;file:
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/marathon-lb-configure-nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/marathon-lb-configure-nginx/" itemprop="url">marathon-lb配置及nginx负载</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T18:32:40+08:00">
-                2018-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/marathon/" itemprop="url" rel="index">
-                    <span itemprop="name">marathon</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/marathon-lb-configure-nginx/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/marathon-lb-configure-nginx/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="marathon-lb配置"><a href="#marathon-lb配置" class="headerlink" title="marathon-lb配置"></a>marathon-lb配置</h1><h2 id="marathon-lb-get-images"><a href="#marathon-lb-get-images" class="headerlink" title="marathon-lb get images"></a>marathon-lb get images</h2><p>Marathon-lb既是一个服务发现工具，也是负载均衡工具，它集成了haproxy，自动获取各个app的信息，为每一组app生成haproxy配置，通过servicePort或者web虚拟主机提供服务。</p>
-<p>要使用marathonn-lb，每组app必须设置HAPROXY_GROUP标签。</p>
-<p>Marathon-lb运行时绑定在各组app定义的服务端口（servicePort，如果app不定义servicePort，marathon会随机分配端口号）上，可以通过marathon-lb所在节点的相关服务端口访问各组app。</p>
-<p>例如：marathon-lb部署在slave5，test-app 部署在slave1，test-app 的servicePort是10004，那么可以在slave5的 10004端口访问到test-app提供的服务。</p>
-<p>由于servicePort 非80、443端口（80、443端口已被marathon-lb中的 haproxy独占），对于web服务来说不太方便，可以使用 haproxy虚拟主机解决这个问题：</p>
-<p>在提供web服务的app配置里增加HAPROXY_{n}_VHOST（WEB虚拟主机）标签，marathon-lb会自动把这组app的WEB集群服务发布在marathon-lb所在节点的80和443端口上，用户设置DNS后通过虚拟主机名来访问。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/marathon-lb-configure-nginx/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2037,7 +2036,7 @@ marathon json 启动容器引用验证文件123&quot;uris&quot;: [   &quot;file:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2048,7 +2047,7 @@ marathon json 启动容器引用验证文件123&quot;uris&quot;: [   &quot;file:
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2059,7 +2058,7 @@ marathon json 启动容器引用验证文件123&quot;uris&quot;: [   &quot;file:
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

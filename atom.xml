@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sukbeta.github.io/"/>
-  <updated>2021-08-03T01:26:01.771Z</updated>
+  <updated>2021-08-30T08:09:58.719Z</updated>
   <id>https://sukbeta.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac iterm2 login shell</title>
+    <link href="https://sukbeta.github.io/mac-iterm-shell/"/>
+    <id>https://sukbeta.github.io/mac-iterm-shell/</id>
+    <published>2021-08-30T07:33:02.000Z</published>
+    <updated>2021-08-30T08:09:58.719Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mac OS自带的终端，用起来虽然有些不太方便，界面也不够友好,iTerm2是一款相对比较好用的终端工具.iTerm2常用操作包括主题选择、声明高亮、自动填充建议、隐藏用户名和主机名、分屏效果等.  </p><p>Mac 暗转 itrem2 的文章很多， 我就不写太多了。  </p><p>itrem2 官网下载： <a href="https://iterm2.com/downloads.html" target="_blank" rel="noopener">https://iterm2.com/downloads.html</a></p><p>可以用命令直接安装：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install iterm2</span><br></pre></td></tr></table></figure><p>创建登入脚本，密码设置好，通过传入参数，登入不同机器。</p><p>vim  allssh</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set timeout 2</span><br><span class="line">set password loginpasswd</span><br><span class="line">set port [lindex $argv 0]</span><br><span class="line">set user [lindex $argv 1]</span><br><span class="line">set host [lindex $argv 2]</span><br><span class="line">spawn ssh -p  $port -l $user $host</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;*continue connecting*&quot;</span><br><span class="line">&#123;send &quot;yes\r&quot;;exp_continue;&#125;</span><br><span class="line">        &quot;*password*&quot;</span><br><span class="line">        &#123;send &quot;$password\n&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure><p>保存脚本，执行的时候需要传入  端口、用户、主机地址</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./allssh 22 root 192.168.1.243</span><br></pre></td></tr></table></figure><p>在来一个例子：</p><p>密码也会传输。</p><p>vim  autossh</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line">set timeout 2</span><br><span class="line">set PORT 22</span><br><span class="line">set USER root</span><br><span class="line">set IP [lindex $argv 0]</span><br><span class="line">set PASS [lindex $argv 1]</span><br><span class="line">if ![string compare $PASS &quot;&quot;] &#123;   # //此处花括号前必须有一个空格，具体请参考TCL语言规范</span><br><span class="line">#    //如果host变量为空字符串</span><br><span class="line">    set PASS loginpasswd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spawn ssh -p $PORT -l $USER $IP</span><br><span class="line">expect &#123;</span><br><span class="line">&quot;*continue connecting*&quot;</span><br><span class="line">&#123;send &quot;yes\r&quot;;exp_continue;&#125;</span><br><span class="line">        &quot;*password*&quot;</span><br><span class="line">        &#123;send &quot;$PASS\n&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure><p>执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./autossh 192.168.1.243 </span><br><span class="line">或</span><br><span class="line">./autossh 192.168.1.243 newloginpasswd</span><br></pre></td></tr></table></figure><p>另外，iterm2 的快捷键还是很好用的。 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">登入可以在 Preferences -&gt; Profile -&gt; shortcut key  </span><br><span class="line">Command 里选择 Login Shell  </span><br><span class="line">Send text at start 填写你的脚本路径和命令： /home/autossh 192.168.1.243</span><br></pre></td></tr></table></figure><p>输入的快捷键也是很好用的。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">可以在 Preferences -&gt; keys -&gt; 选择加号 ”+ “</span><br><span class="line">Keyboard Shortcut  设置快捷键，键盘输入</span><br><span class="line">Action 选择 Send Text</span><br><span class="line">下面输入你要输入的内容,  &quot;\n&quot;  代表回车，如：</span><br><span class="line">loginpasswd\n</span><br><span class="line">代表输入我呢密码之后回车。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mac OS自带的终端，用起来虽然有些不太方便，界面也不够友好,iTerm2是一款相对比较好用的终端工具.iTerm2常用操作包括主题选择、声明高亮、自动填充建议、隐藏用户名和主机名、分屏效果等.  &lt;/p&gt;
+&lt;p&gt;Mac 暗转 itrem2 的文章很多， 我就不写太多了。  &lt;/p&gt;
+&lt;p&gt;itrem2 官网下载： &lt;a href=&quot;https://iterm2.com/downloads.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://iterm2.com/downloads.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以用命令直接安装：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;brew cask install iterm2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;创建登入脚本，密码设置好，通过传入参数，登入不同机器。&lt;/p&gt;
+&lt;p&gt;vim  allssh&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="mac" scheme="https://sukbeta.github.io/categories/mac/"/>
+    
+    
+      <category term="shell" scheme="https://sukbeta.github.io/tags/shell/"/>
+    
+      <category term="mac" scheme="https://sukbeta.github.io/tags/mac/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx qat on docker</title>
@@ -507,34 +537,6 @@
 &lt;p&gt;nginx 默认输出acces日志格式是message格式。现在都做日志统一分析ELK了，message格式就不是很适用了。 所以输出json格式对于后期分析就很友好了。&lt;/p&gt;
 &lt;p&gt;其他就不说了，直接上配置了&lt;/p&gt;
 &lt;p&gt;修改 nginx.conf 配置文件， 注释掉之前 log_format 重新写一个 json格式的log_format&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="nginx" scheme="https://sukbeta.github.io/categories/nginx/"/>
-    
-    
-      <category term="nginx" scheme="https://sukbeta.github.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>直接在nginx配置文件中配置切分日志</title>
-    <link href="https://sukbeta.github.io/nginx-access-split/"/>
-    <id>https://sukbeta.github.io/nginx-access-split/</id>
-    <published>2019-05-30T05:47:06.000Z</published>
-    <updated>2019-06-05T08:19:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近我们nginx上来容器，日志实时传走，但是本地还需要留一份另作他用，这样用原来logrotate或cronolog方式切分日志就很麻烦了， 我就开始再nginx配置文件中想办法。</p><p>发现可以利用 $time_iso8601 变量来切分日志， 它就是每条日志的时间戳，取它的年、月、日、小时做变量，生成带时间戳得日志文件。就可以每小时、每天输出到不同文件里了。</p><ul><li>请注意，不可能在error_log指令中嵌入变量，因为如果无法写入文件，则无法记录任何潜在错误。  这种方法只适用于access得日志</li></ul><h4 id="time-iso8601-时间格式"><a href="#time-iso8601-时间格式" class="headerlink" title="time_iso8601 时间格式"></a>time_iso8601 时间格式</h4><p>这是一个显示 $time_iso8601格式的示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2019-05-04T18:12:02+02:00</span><br></pre></td></tr></table></figure><a id="more"></a><h4 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h4><p>所有要做的就是使用“if”块来使用正则表达式分割所需的数据并设置时间变量。<br>要按日拆分日志，可以在服务器块中使用以下代码段：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if ($time_iso8601 ~ &quot;^(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)&quot;) &#123;</span><br><span class="line">set $year $1;</span><br><span class="line">set $month $2;</span><br><span class="line">set $day $3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">access_log /var/log/nginx/$year-$month-$day-access.log;</span><br></pre></td></tr></table></figure><p>或者，我们也可以使用Perl兼容语法进行命名正则表达式捕获：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ($time_iso8601 ~ &quot;^(?&lt;year&gt;\d&#123;4&#125;)-(?&lt;month&gt;\d&#123;2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)&quot;) &#123;&#125;</span><br><span class="line"></span><br><span class="line">access_log /var/log/nginx/$year-$month-$day-access.log;</span><br></pre></td></tr></table></figure><p>要创建小时，分钟和秒的变量，我们可以使用以下代码段：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if ($time_iso8601 ~ &quot;^(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)T(\d&#123;2&#125;):(\d&#123;2&#125;):(\d&#123;2&#125;)&quot;) &#123;</span><br><span class="line">set $year $1;</span><br><span class="line">set $month $2;</span><br><span class="line">set $day $3;</span><br><span class="line">set $hour $4;</span><br><span class="line">set $minutes $5;</span><br><span class="line">set $seconds $6;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul><li><p>当access_log文件路径包含变量时，缓冲写入不起作用，因此无法动态gzip日志。</p></li><li><p>if 模块无法再全局变量中使用，只能在 server {} 下 配置，</p></li></ul><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>所以我的用法是， 每个域名都按小时单独生成自己的文件。 再外面写好配置， 每个server里include日志得配置即可。</p><p>再nginx配置目录中生成一个配置文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim log_format.conf</span><br><span class="line"></span><br><span class="line">if ($time_iso8601 ~ &quot;^(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)T(\d&#123;2&#125;):(\d&#123;2&#125;):(\d&#123;2&#125;)&quot;) &#123;</span><br><span class="line">        set $year $1;</span><br><span class="line">        set $month $2;</span><br><span class="line">        set $day $3;</span><br><span class="line">        set $hour $4;</span><br><span class="line">&#125;</span><br><span class="line">access_log /home/nginx/logs/$&#123;server_name&#125;_$&#123;year&#125;-$&#123;month&#125;-$&#123;day&#125;-$&#123;hour&#125;_access.log main;</span><br></pre></td></tr></table></figure><p>每个Server中include这个配置文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">upstream test-shining.com &#123;</span><br><span class="line">        server 192.168.1.2:9250;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">##################   server name ################</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  test.shining.com;</span><br><span class="line">    include log_format.conf;</span><br><span class="line">    proxy_connect_timeout 30;  #nginx跟后端服务器连接超时时间(代理连接超时)</span><br><span class="line">    proxy_read_timeout 600;  #连接成功后，后端服务器响应时间(代理接收超时)</span><br><span class="line">    proxy_send_timeout 600;  #后端服务器数据回传时间(代理发送超时)</span><br><span class="line">    location / &#123;</span><br><span class="line">        include proxy_set_header.conf;</span><br><span class="line">        proxy_pass    http://test-shining.com.com/;</span><br><span class="line">        proxy_redirect off; </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近我们nginx上来容器，日志实时传走，但是本地还需要留一份另作他用，这样用原来logrotate或cronolog方式切分日志就很麻烦了， 我就开始再nginx配置文件中想办法。&lt;/p&gt;
-&lt;p&gt;发现可以利用 $time_iso8601 变量来切分日志， 它就是每条日志的时间戳，取它的年、月、日、小时做变量，生成带时间戳得日志文件。就可以每小时、每天输出到不同文件里了。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;请注意，不可能在error_log指令中嵌入变量，因为如果无法写入文件，则无法记录任何潜在错误。  这种方法只适用于access得日志&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;time-iso8601-时间格式&quot;&gt;&lt;a href=&quot;#time-iso8601-时间格式&quot; class=&quot;headerlink&quot; title=&quot;time_iso8601 时间格式&quot;&gt;&lt;/a&gt;time_iso8601 时间格式&lt;/h4&gt;&lt;p&gt;这是一个显示 $time_iso8601格式的示例：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;2019-05-04T18:12:02+02:00&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

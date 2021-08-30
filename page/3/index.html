@@ -356,6 +356,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/nginx-access-split/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/nginx-access-split/" itemprop="url">直接在nginx配置文件中配置切分日志</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-30T13:47:06+08:00">
+                2019-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/nginx-access-split/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/nginx-access-split/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" rel="gallery_cksyczq5c006c721pa9lye88z"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <p>最近我们nginx上来容器，日志实时传走，但是本地还需要留一份另作他用，这样用原来logrotate或cronolog方式切分日志就很麻烦了， 我就开始再nginx配置文件中想办法。</p>
+<p>发现可以利用 $time_iso8601 变量来切分日志， 它就是每条日志的时间戳，取它的年、月、日、小时做变量，生成带时间戳得日志文件。就可以每小时、每天输出到不同文件里了。</p>
+<ul>
+<li>请注意，不可能在error_log指令中嵌入变量，因为如果无法写入文件，则无法记录任何潜在错误。  这种方法只适用于access得日志</li>
+</ul>
+<h4 id="time-iso8601-时间格式"><a href="#time-iso8601-时间格式" class="headerlink" title="time_iso8601 时间格式"></a>time_iso8601 时间格式</h4><p>这是一个显示 $time_iso8601格式的示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2019-05-04T18:12:02+02:00</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/nginx-access-split/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/pycharm-activation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -947,7 +1125,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/5e12ff540f05e2f5920924f60d9f6.jpg" rel="gallery_cksirekna001ecd1pq8mhnpad"
+                 href="https://file.moetu.org/images/2020/07/14/5e12ff540f05e2f5920924f60d9f6.jpg" rel="gallery_cksyczq28001b721pdb71bavi"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/5e12ff540f05e2f5920924f60d9f6.jpg" itemprop="contentUrl"/>
               </a>
@@ -1121,7 +1299,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/5e12ff53358eede3babfadfd55961.jpg" rel="gallery_cksireknl0021cd1pbc8fh93r"
+                 href="https://file.moetu.org/images/2020/07/14/5e12ff53358eede3babfadfd55961.jpg" rel="gallery_cksyczq2i001z721pzpk2gzhr"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/5e12ff53358eede3babfadfd55961.jpg" itemprop="contentUrl"/>
               </a>
@@ -1295,7 +1473,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/5e12ff5124f3c010e236861606fad.jpg" rel="gallery_cksirekmv000fcd1pw9w6glri"
+                 href="https://file.moetu.org/images/2020/07/14/5e12ff5124f3c010e236861606fad.jpg" rel="gallery_cksyczq1q000b721phtevvhd3"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/5e12ff5124f3c010e236861606fad.jpg" itemprop="contentUrl"/>
               </a>
@@ -1475,7 +1653,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/9bbc284bly1g58lmpqknij20j60ckq3xbf3ad8632cd7e619.md.jpg" rel="gallery_cksirekne001mcd1py9j0d874"
+                 href="https://file.moetu.org/images/2020/07/14/9bbc284bly1g58lmpqknij20j60ckq3xbf3ad8632cd7e619.md.jpg" rel="gallery_cksyczq2c001j721p660gj5y7"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/9bbc284bly1g58lmpqknij20j60ckq3xbf3ad8632cd7e619.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1651,7 +1829,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/D76DklsG-5Uf3d6ea3f6d6472b2.md.jpg" rel="gallery_cksirekng001pcd1ptm7e718t"
+                 href="https://file.moetu.org/images/2020/07/14/D76DklsG-5Uf3d6ea3f6d6472b2.md.jpg" rel="gallery_cksyczq2a001e721plpvxur3l"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/D76DklsG-5Uf3d6ea3f6d6472b2.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1830,7 +2008,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/7a722219gy1g8e3exylx7j20u01hc40d19281deada40973d.md.jpg" rel="gallery_cksirekmy000lcd1pbwsjq70g"
+                 href="https://file.moetu.org/images/2021/07/13/7a722219gy1g8e3exylx7j20u01hc40d19281deada40973d.md.jpg" rel="gallery_cksyczq1r000c721pdbxzun1p"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2021/07/13/7a722219gy1g8e3exylx7j20u01hc40d19281deada40973d.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1851,186 +2029,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/docker-logs-explantion/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/hadoop-lzo-gz-bz2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hadoop-lzo-gz-bz2/" itemprop="url">hadoop上命令行查看lzo、gz、bz文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T15:21:01+08:00">
-                2019-03-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/hadoop-lzo-gz-bz2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/hadoop-lzo-gz-bz2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg" rel="gallery_cksireknc001hcd1pwsgpt61s"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h2 id="hadoop上命令行查看lzo、gz、bz文件"><a href="#hadoop上命令行查看lzo、gz、bz文件" class="headerlink" title="hadoop上命令行查看lzo、gz、bz文件"></a>hadoop上命令行查看lzo、gz、bz文件</h2><p>HDFS上的文件可能是压缩的，所以用cat不能直接查看。hadoop上默认支持lzo、gz、bz2、snappy压缩格式。</p>
-<p>我们用命令行查看HDFS上压缩文件，也是可以的。</p>
-<h4 id="lzo文件"><a href="#lzo文件" class="headerlink" title="lzo文件"></a>lzo文件</h4><ul>
-<li>查看 HDFS 上 lzo 文件的命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /Data/Logs/2018-08-22/2018-08-22_log.lzo | lzop -dc | head -1</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">hadoop fs -cat /Data/Logs/2018-08-22/2018-08-22_log.lzo | lzop -dc | head -1     lzop 会接受输入流然后解压输出流给head显示第一行</span><br></pre></td></tr></table></figure>
-<h4 id="gzip-文件"><a href="#gzip-文件" class="headerlink" title="gzip 文件"></a>gzip 文件</h4><ul>
-<li>查看 HDFS 上 gzip 文件的命令</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hadoop-lzo-gz-bz2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2118,7 +2116,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2129,7 +2127,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2140,7 +2138,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
