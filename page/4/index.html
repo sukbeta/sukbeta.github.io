@@ -356,6 +356,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/docker-logs-explantion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/docker-logs-explantion/" itemprop="url">查看docker容器日志</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T10:52:31+08:00">
+                2019-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/docker-logs-explantion/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/docker-logs-explantion/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2021/07/13/7a722219gy1g8e3exylx7j20u01hc40d19281deada40973d.md.jpg" rel="gallery_ckwvwo6ag001ui01ph96upkff"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2021/07/13/7a722219gy1g8e3exylx7j20u01hc40d19281deada40973d.md.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <h2 id="查看docker容器日志"><a href="#查看docker容器日志" class="headerlink" title="查看docker容器日志"></a>查看docker容器日志</h2><p>通过docker logs命令可以查看容器的日志。</p>
+<h4 id="docker-logs-日志说明"><a href="#docker-logs-日志说明" class="headerlink" title="docker logs 日志说明"></a>docker logs 日志说明</h4><p>当我们输入docker logs的时候会转化为Docker Client向Docker Daemon发起请求,Docker Daemon 在运行容器时会去创建一个协程(goroutine)，绑定了整个容器内所有进程的标准输出文件描述符。因此容器内应用的所有只要是标准输出日志，都会被 goroutine 接收，Docker Daemon会根据容器id和日志类型读取日志内容，最终会输出到用户终端上并且通过json格式存放在/var/lib/docker/containers目录下。</p>
+<p>docker logs是跟随容器而产生的，如果删除了某个容器，相应的日志文件也会随着被删除</p>
+<h4 id="命令说明"><a href="#命令说明" class="headerlink" title="命令说明"></a>命令说明</h4><p>命令格式</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/docker-logs-explantion/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/hadoop-lzo-gz-bz2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +635,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg" rel="gallery_cku88709d001o251pso0be18z"
+                 href="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg" rel="gallery_ckwvwo6a9001ei01p9f44onht"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2021/07/13/1354761867607cc291c55e399e132.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -640,7 +815,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/17587f43e60a320f76ddd39f.md.jpg" rel="gallery_cku8870bo0061251ps0scmntn"
+                 href="https://file.moetu.org/images/2021/07/13/17587f43e60a320f76ddd39f.md.jpg" rel="gallery_ckwvwo6cd0064i01pn2xb3lwl"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2021/07/13/17587f43e60a320f76ddd39f.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -690,7 +865,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://www.polebrief.com/edit" target="_blank" rel="noopener">写简历</a></td>
-<td style="text-align:center"></td>
+<td style="text-align:center"><a href="https://www.library.ac.cn/" title="f代理google" target="_blank" rel="noopener">google list</a></td>
 </tr>
 </tbody>
 </table>
@@ -1012,7 +1187,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/kpjIaSB0_aw2d87f198d648ad25.md.jpg" rel="gallery_cku887093000z251p43w7f1if"
+                 href="https://file.moetu.org/images/2020/04/19/kpjIaSB0_aw2d87f198d648ad25.md.jpg" rel="gallery_ckwvwo69z000ri01pp8xyphqr"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/kpjIaSB0_aw2d87f198d648ad25.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1190,7 +1365,7 @@ npm 安装 elasticdump先下载安装npm
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/07/19/uLDmm65P5ZY29a4e6992f548190.md.jpg" rel="gallery_cku88709x002y251pqqh7kcqa"
+                 href="https://file.moetu.org/images/2019/07/19/uLDmm65P5ZY29a4e6992f548190.md.jpg" rel="gallery_ckwvwo6b00030i01prm0m64gg"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/07/19/uLDmm65P5ZY29a4e6992f548190.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1688,7 +1863,7 @@ npm 安装 elasticdump先下载安装npm
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" rel="gallery_cku8870b20051251pmem041ys"
+                 href="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" rel="gallery_ckwvwo6c2005ei01pbmxhsn8w"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" itemprop="contentUrl"/>
               </a>
@@ -1860,7 +2035,7 @@ npm 安装 elasticdump先下载安装npm
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://w.wallhaven.cc/full/2e/wallhaven-2edpgg.jpg" rel="gallery_cku8870aw004q251pb6dw2flg"
+                 href="https://w.wallhaven.cc/full/2e/wallhaven-2edpgg.jpg" rel="gallery_ckwvwo6bw0055i01pjbi3o594"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://w.wallhaven.cc/full/2e/wallhaven-2edpgg.jpg" itemprop="contentUrl"/>
               </a>
@@ -1878,168 +2053,6 @@ npm 安装 elasticdump先下载安装npm
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/nginx-conf-explain/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/kafka-auto-loadblance-leader/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/kafka-auto-loadblance-leader/" itemprop="url">kafka对topic leader 进行自动负载均衡</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T16:02:36+08:00">
-                2019-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kafka/" itemprop="url" rel="index">
-                    <span itemprop="name">kafka</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/kafka-auto-loadblance-leader/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/kafka-auto-loadblance-leader/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          在创建一个topic时，kafka尽量将partition均分在所有的brokers上，并且将replicas也j均分在不同的broker上。
-每个partitiion的所有replicas叫做”assigned replicas”，”assigned replicas”中的第一个replicas叫”preferred replica”，刚创建的topic一般”preferred replica”是leader。leader replica负责所有的读写。
-但随着时间推移，broker可能会停机，会导致leader迁移，导致机群的负载不均衡。我们期望对topic的leader进行重新负载均衡，让partition选择”preferred replica”做为leader。
-查看topic详情
-123456789./kafka-topics.sh --zookeeper 127.0.0.1:2181 --describe  --topic logdata-esTopic:logdata-es        PartitionCount:6        ReplicationFactor
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/kafka-auto-loadblance-leader/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2127,7 +2140,7 @@ npm 安装 elasticdump先下载安装npm
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2149,7 +2162,7 @@ npm 安装 elasticdump先下载安装npm
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
