@@ -96,7 +96,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -109,16 +109,20 @@
 
 
 
-<meta name="description" content="一步一步往前走！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="舒克贝塔">
-<meta property="og:url" content="https://sukbeta.github.io/categories/qat/index.html">
+<meta name="description" content="有一些服务，需要将日志打到UDP端口， 其实也可以打到本机的rsyslog服务，但是我的服务已经上容器了， 还不想没个容器都封装rsyslog服务，也不像挂载， 就想着把rsyslog封装成为一个服务发布。谁都可以调用。 那么问题来了， rsyslog将日志怎么处理，怎么区分？  我这是比较固定的日志格式， 不用做过多处理， rsyslog 将收到的日志，直接抓发到kafka上。本地不留数据。 r">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="制作rsyslog服务将日志输入到kafka">
+<meta property="og:url" content="https://sukbeta.github.io/rsyslog-to-kafka/index.html">
 <meta property="og:site_name" content="舒克贝塔">
-<meta property="og:description" content="一步一步往前走！">
+<meta property="og:description" content="有一些服务，需要将日志打到UDP端口， 其实也可以打到本机的rsyslog服务，但是我的服务已经上容器了， 还不想没个容器都封装rsyslog服务，也不像挂载， 就想着把rsyslog封装成为一个服务发布。谁都可以调用。 那么问题来了， rsyslog将日志怎么处理，怎么区分？  我这是比较固定的日志格式， 不用做过多处理， rsyslog 将收到的日志，直接抓发到kafka上。本地不留数据。 r">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://file.moetu.org/images/2021/07/13/J5Cmq_p09h47c4e97e6af68f155.md.jpg">
+<meta property="og:updated_time" content="2021-12-09T01:24:33.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="舒克贝塔">
-<meta name="twitter:description" content="一步一步往前走！">
+<meta name="twitter:title" content="制作rsyslog服务将日志输入到kafka">
+<meta name="twitter:description" content="有一些服务，需要将日志打到UDP端口， 其实也可以打到本机的rsyslog服务，但是我的服务已经上容器了， 还不想没个容器都封装rsyslog服务，也不像挂载， 就想着把rsyslog封装成为一个服务发布。谁都可以调用。 那么问题来了， rsyslog将日志怎么处理，怎么区分？  我这是比较固定的日志格式， 不用做过多处理， rsyslog 将收到的日志，直接抓发到kafka上。本地不留数据。 r">
+<meta name="twitter:image" content="https://file.moetu.org/images/2021/07/13/J5Cmq_p09h47c4e97e6af68f155.md.jpg">
 
 
 
@@ -148,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="https://sukbeta.github.io/categories/qat/"/>
+  <link rel="canonical" href="https://sukbeta.github.io/rsyslog-to-kafka/"/>
 
 
 
 
 
-  <title>分类: qat | 舒克贝塔</title>
+  <title>制作rsyslog服务将日志输入到kafka | 舒克贝塔</title>
   
 
 
@@ -183,7 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -341,139 +345,282 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>qat<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/rsyslog-to-kafka/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/qat-on-docker/" itemprop="url">
-              
-                <span itemprop="name">nginx qat on docker</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">制作rsyslog服务将日志输入到kafka</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-08-02T12:00:36+08:00"
-              content="2021-08-02" >
-          08-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-07T17:49:18+08:00">
+                2021-12-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/rsyslog-to-kafka/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/rsyslog-to-kafka/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 游览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2021/07/13/J5Cmq_p09h47c4e97e6af68f155.md.jpg" rel="gallery_ckwy9u1f3007z4g1pwuftgm5m"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2021/07/13/J5Cmq_p09h47c4e97e6af68f155.md.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/nginx-qat/" itemprop="url">
-              
-                <span itemprop="name">nginx 配置 Intel QAT 加速卡</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-07-20T18:25:22+08:00"
-              content="2021-07-20" >
-          07-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+          
+          </div>
+        </div>
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/haproxy-qat/" itemprop="url">
-              
-                <span itemprop="name">Haproxy 配置 Intel QAT 加速卡</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-07-20T17:46:11+08:00"
-              content="2021-07-20" >
-          07-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/intel-qat/" itemprop="url">
-              
-                <span itemprop="name">intel qat 加速卡安装配置</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-07-13T17:03:44+08:00"
-              content="2021-07-13" >
-          07-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>有一些服务，需要将日志打到UDP端口， 其实也可以打到本机的rsyslog服务，但是我的服务已经上容器了， 还不想没个容器都封装rsyslog服务，也不像挂载， 就想着把rsyslog封装成为一个服务发布。谁都可以调用。</p>
+<p>那么问题来了， rsyslog将日志怎么处理，怎么区分？</p>
+<ul>
+<li>我这是比较固定的日志格式， 不用做过多处理，</li>
+<li>rsyslog 将收到的日志，直接抓发到kafka上。本地不留数据。</li>
+<li>rsyslog启多个端口，通过端口来区别放到哪个kafka topic上。</li>
+<li>也可以通过local级别来区分，我这里没做。</li>
+</ul>
+<a id="more"></a>
+<p>简单的是有 Dcokerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM centos:7</span><br><span class="line">MAINTAINER Shining-YS</span><br><span class="line">RUN yum install -y rsyslog rsyslog-kafka lz4 libfastjson libestr</span><br><span class="line"></span><br><span class="line">COPY rsyslog.conf /etc/rsyslog.conf</span><br><span class="line">COPY tokafka.conf /etc/rsyslog.d/tokafka.conf</span><br><span class="line">COPY rsyslog  /etc/sysconfig/rsyslog</span><br><span class="line"></span><br><span class="line">EXPOSE 514</span><br><span class="line"></span><br><span class="line">#CMD [&quot;/usr/sbin/rsyslogd&quot;,&quot;-dn&quot;]</span><br><span class="line">CMD [&quot;/usr/sbin/rsyslogd&quot;,&quot;-n&quot;]</span><br></pre></td></tr></table></figure>
+<p>这其中包括及个文件， 我就直接列出来了</p>
+<p>rsyslog.conf   主要是开启514端口，TCP和UDP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"># rsyslog configuration file</span><br><span class="line"></span><br><span class="line"># For more information see /usr/share/doc/rsyslog-*/rsyslog_conf.html</span><br><span class="line"># If you experience problems, see http://www.rsyslog.com/doc/troubleshoot.html</span><br><span class="line"></span><br><span class="line">#### MODULES ####</span><br><span class="line"></span><br><span class="line"># The imjournal module bellow is now used as a message source instead of imuxsock.</span><br><span class="line">$ModLoad imuxsock # provides support for local system logging (e.g. via logger command)</span><br><span class="line">$ModLoad imjournal # provides access to the systemd journal</span><br><span class="line">#$ModLoad imklog # reads kernel messages (the same are read from journald)</span><br><span class="line">#$ModLoad immark  # provides --MARK-- message capability</span><br><span class="line"></span><br><span class="line"># Provides UDP syslog reception</span><br><span class="line">$ModLoad imudp</span><br><span class="line">$UDPServerRun 514</span><br><span class="line"></span><br><span class="line"># Provides TCP syslog reception</span><br><span class="line">$ModLoad imtcp</span><br><span class="line">$InputTCPServerRun 514</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### GLOBAL DIRECTIVES ####</span><br><span class="line"></span><br><span class="line"># Where to place auxiliary files</span><br><span class="line">$WorkDirectory /var/lib/rsyslog</span><br><span class="line"></span><br><span class="line"># Use default timestamp format</span><br><span class="line">$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat</span><br><span class="line"></span><br><span class="line"># File syncing capability is disabled by default. This feature is usually not required,</span><br><span class="line"># not useful and an extreme performance hit</span><br><span class="line">#$ActionFileEnableSync on</span><br><span class="line"></span><br><span class="line"># Include all config files in /etc/rsyslog.d/</span><br><span class="line">$IncludeConfig /etc/rsyslog.d/*.conf</span><br><span class="line"></span><br><span class="line"># Turn off message reception via local log socket;</span><br><span class="line"># local messages are retrieved through imjournal now.</span><br><span class="line">$OmitLocalLogging on</span><br><span class="line"></span><br><span class="line"># File to store the position in the journal</span><br><span class="line">$IMJournalStateFile imjournal.state</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### RULES ####</span><br><span class="line"></span><br><span class="line"># Log all kernel messages to the console.</span><br><span class="line"># Logging much else clutters up the screen.</span><br><span class="line">#kern.*                                                 /dev/console</span><br><span class="line"></span><br><span class="line"># Log anything (except mail) of level info or higher.</span><br><span class="line"># Don&apos;t log private authentication messages!</span><br><span class="line">*.info;mail.none;authpriv.none;cron.none                /var/log/messages</span><br><span class="line"></span><br><span class="line"># The authpriv file has restricted access.</span><br><span class="line">authpriv.*                                              /var/log/secure</span><br><span class="line"></span><br><span class="line"># Log all the mail messages in one place.</span><br><span class="line">mail.*                                                  -/var/log/maillog</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Log cron stuff</span><br><span class="line">cron.*                                                  /var/log/cron</span><br><span class="line"></span><br><span class="line"># Everybody gets emergency messages</span><br><span class="line">*.emerg                                                 :omusrmsg:*</span><br><span class="line"></span><br><span class="line"># Save news errors of level crit and higher in a special file.</span><br><span class="line">uucp,news.crit                                          /var/log/spooler</span><br><span class="line"></span><br><span class="line"># Save boot messages also to boot.log</span><br><span class="line">local7.*                                                /var/log/boot.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ### begin forwarding rule ###</span><br><span class="line"># The statement between the begin ... end define a SINGLE forwarding</span><br><span class="line"># rule. They belong together, do NOT split them. If you create multiple</span><br><span class="line"># forwarding rules, duplicate the whole block!</span><br><span class="line"># Remote Logging (we use TCP for reliable delivery)</span><br><span class="line">#</span><br><span class="line"># An on-disk queue is created for this action. If the remote host is</span><br><span class="line"># down, messages are spooled to disk and sent when it is up again.</span><br><span class="line">#$ActionQueueFileName fwdRule1 # unique name prefix for spool files</span><br><span class="line">#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)</span><br><span class="line">#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown</span><br><span class="line">#$ActionQueueType LinkedList   # run asynchronously</span><br><span class="line">#$ActionResumeRetryCount -1    # infinite retries if host is down</span><br><span class="line"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</span><br><span class="line">#*.* @@remote-host:514</span><br><span class="line"># ### end of the forwarding rule ###</span><br></pre></td></tr></table></figure>
+<p>rsyslog 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Options for rsyslogd</span><br><span class="line"># Syslogd options are deprecated since rsyslog v3.</span><br><span class="line"># If you want to use them, switch to compatibility mode 2 by &quot;-c 2&quot;</span><br><span class="line"># See rsyslogd(8) for more details</span><br><span class="line">SYSLOGD_OPTIONS=&quot;-r -m 0&quot;</span><br></pre></td></tr></table></figure>
+<p>tokafka.conf  通过端口将日志写入到kakfa不同topic</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">module(load=&quot;omkafka&quot;)</span><br><span class="line">module(load=&quot;imudp&quot;)</span><br><span class="line">module(load=&quot;imtcp&quot;)</span><br><span class="line">input(type=&quot;imudp&quot; port=&quot;514&quot; ruleset=&quot;tokafka&quot;)</span><br><span class="line">input(type=&quot;imtcp&quot; port=&quot;514&quot; ruleset=&quot;tokafka&quot;)</span><br><span class="line"></span><br><span class="line">ruleset(name=&quot;tokafka&quot;) &#123;</span><br><span class="line">      #输出到kafka</span><br><span class="line">      action(type=&quot;omkafka&quot; topic=&quot;shining_test1&quot; broker=&quot;kafka1:9092,kafka2:9092,hkafka3:9092&quot;)</span><br><span class="line">      #输出到文件</span><br><span class="line">      #action(type=&quot;omfile&quot; file=&quot;/tmp/shining_test1.log&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ruleset(name=&quot;shining_test2&quot;) &#123;</span><br><span class="line">      action(type=&quot;omkafka&quot; topic=&quot;shining_test2&quot; broker=&quot;kafka1:9092,kafka2:9092,hkafka3:9092&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ruleset(name=&quot;shining_test3&quot;) &#123;</span><br><span class="line">      action(type=&quot;omkafka&quot; topic=&quot;shining_test2&quot; broker=&quot;kafka1:9092,kafka2:9092,hkafka3:9092&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ruleset(name=&quot;shining_test4&quot;) &#123;</span><br><span class="line">      action(type=&quot;omkafka&quot; topic=&quot;shining_test3&quot; broker=&quot;kafka1:9092,kafka2:9092,hkafka3:9092&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">input(type=&quot;imudp&quot; port=&quot;7510&quot; ruleset=&quot;shining_test4&quot;)</span><br><span class="line">input(type=&quot;imtcp&quot; port=&quot;7510&quot; ruleset=&quot;shining_test4&quot;)</span><br><span class="line">input(type=&quot;imudp&quot; port=&quot;7511&quot; ruleset=&quot;shining_test2&quot;)</span><br><span class="line">input(type=&quot;imtcp&quot; port=&quot;7511&quot; ruleset=&quot;shining_test2&quot;)</span><br><span class="line">input(type=&quot;imudp&quot; port=&quot;7512&quot; ruleset=&quot;shining_test3&quot;)</span><br><span class="line">input(type=&quot;imtcp&quot; port=&quot;7512&quot; ruleset=&quot;shining_test3&quot;)</span><br></pre></td></tr></table></figure>
+<p>docker 镜像编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t rsyslog-to-kafka:latest .</span><br></pre></td></tr></table></figure>
+<p>启动容器，还需要映射UDP端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name rsyslog-to -kafka -p 514:514 -p 514:514/udp  -p 7510: 7510 -p 7510: 7510/udp -p 7511: 7511 -p 7511: 7511/udp -p 7512: 7512 -p 7512: 7512/udp rsyslog-to-kafka:latest</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="北极企鹅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="北极企鹅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/marathon-api-update/" rel="next" title="marathon通过api更新update app id">
+                <i class="fa fa-chevron-left"></i> marathon通过api更新update app id
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+	<!-- google adsense -->
+	<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+
+	<div align="center">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sukbeta-1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:570px;height:250px"
+     data-ad-client="ca-pub-7874588734245173"
+     data-ad-slot="5382403634"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+	<!-- google adsense -->
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
 
 
           </div>
@@ -481,6 +628,31 @@
 
 
           
+
+<!-- google adsenen -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- head -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8243248314488866"
+     data-ad-slot="1571553111"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- google adsenen -->
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -781,6 +953,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -828,6 +1004,30 @@
     
 
     
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
@@ -868,6 +1068,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 

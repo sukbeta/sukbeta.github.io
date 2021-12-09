@@ -356,6 +356,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/rsyslog-to-kafka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/rsyslog-to-kafka/" itemprop="url">制作rsyslog服务将日志输入到kafka</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-07T17:49:18+08:00">
+                2021-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/rsyslog-to-kafka/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/rsyslog-to-kafka/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2021/07/13/J5Cmq_p09h47c4e97e6af68f155.md.jpg" rel="gallery_ckwy9u1f3007z4g1pwuftgm5m"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2021/07/13/J5Cmq_p09h47c4e97e6af68f155.md.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <p>有一些服务，需要将日志打到UDP端口， 其实也可以打到本机的rsyslog服务，但是我的服务已经上容器了， 还不想没个容器都封装rsyslog服务，也不像挂载， 就想着把rsyslog封装成为一个服务发布。谁都可以调用。</p>
+<p>那么问题来了， rsyslog将日志怎么处理，怎么区分？</p>
+<ul>
+<li>我这是比较固定的日志格式， 不用做过多处理，</li>
+<li>rsyslog 将收到的日志，直接抓发到kafka上。本地不留数据。</li>
+<li>rsyslog启多个端口，通过端口来区别放到哪个kafka topic上。</li>
+<li>也可以通过local级别来区分，我这里没做。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/rsyslog-to-kafka/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/marathon-api-update/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +639,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://cdn5.maocdn.cn/img/2021/10/01/v2-ef5db9406c811dd2878e7ab3036ab789_1440w.jpg" rel="gallery_ckwvwyryw003ulw1p5qetsiwd"
+                 href="https://cdn5.maocdn.cn/img/2021/10/01/v2-ef5db9406c811dd2878e7ab3036ab789_1440w.jpg" rel="gallery_ckwy9u1ek006t4g1pof6snooc"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://cdn5.maocdn.cn/img/2021/10/01/v2-ef5db9406c811dd2878e7ab3036ab789_1440w.jpg" itemprop="contentUrl"/>
               </a>
@@ -637,7 +816,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/Fj_39H4NeOo932ec1f33001d3c5.md.jpg" rel="gallery_ckwvwyryz0040lw1ptch95zn0"
+                 href="https://file.moetu.org/images/2021/07/13/Fj_39H4NeOo932ec1f33001d3c5.md.jpg" rel="gallery_ckwy9u1a6003t4g1psdor6dhs"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2021/07/13/Fj_39H4NeOo932ec1f33001d3c5.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -815,7 +994,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/9bbc284bgy1g3y797y517j21c00u0kjl966aab258dfe83a9.md.jpg" rel="gallery_ckwvwyrzs005nlw1pq4na8668"
+                 href="https://file.moetu.org/images/2021/07/13/9bbc284bgy1g3y797y517j21c00u0kjl966aab258dfe83a9.md.jpg" rel="gallery_ckwy9u1fd008n4g1pmw5lpyvm"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2021/07/13/9bbc284bgy1g3y797y517j21c00u0kjl966aab258dfe83a9.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -989,7 +1168,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" rel="gallery_ckwvwyrzl005alw1pn56zpae5"
+                 href="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" rel="gallery_ckwy9u1eu007h4g1pnmi4z6tm"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/07/14/bf5a83fdgy1fxw5q2myu8j20c80hxaiq8d31ed94354ac889.jpg" itemprop="contentUrl"/>
               </a>
@@ -1164,7 +1343,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" rel="gallery_ckwvwyry0001nlw1p4ef3hysa"
+                 href="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" rel="gallery_ckwy9u1e8006b4g1ptvzy14ev"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/06/13/4bmtMXGuVqoa7cf01aeb1b55916.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1338,7 +1517,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2021/07/13/5e9424ac63eba253dc5b6fb3ae4db.jpg" rel="gallery_ckwvwyryk0031lw1pnxneafb9"
+                 href="https://file.moetu.org/images/2021/07/13/5e9424ac63eba253dc5b6fb3ae4db.jpg" rel="gallery_ckwy9u19v00334g1pnsi03xih"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2021/07/13/5e9424ac63eba253dc5b6fb3ae4db.jpg" itemprop="contentUrl"/>
               </a>
@@ -1511,7 +1690,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" rel="gallery_ckwvwys04006llw1pc9ua6lwh"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" rel="gallery_ckwy9u1f600874g1p4pwizgmi"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff4e4d3a1ca6c521d45a65162.jpg" itemprop="contentUrl"/>
               </a>
@@ -1691,7 +1870,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" rel="gallery_ckwvwyrxm000rlw1ptq2y3rza"
+                 href="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" rel="gallery_ckwy9u18w000q4g1pr6bk6dt7"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1870,7 +2049,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_ckwvwyrxk000llw1pbrmb7vis"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_ckwy9u18r000i4g1ps2oclx33"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" itemprop="contentUrl"/>
               </a>
@@ -1893,183 +2072,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/docker-proxy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/region-data-migration/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/region-data-migration/" itemprop="url">hbase在线平滑迁移region数据</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-19T17:09:12+08:00">
-                2020-04-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/region-data-migration/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/region-data-migration/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" rel="gallery_ckwvwyrzv005xlw1p20xdh04k"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>hbase regionserver 下线，做数据迁移。 这个方法可以在线上平滑迁移。   </p>
-<p>hbase 版本： 1.2.4</p>
-<p>####n首先 关闭 hbase 的 balance </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hbase(main)&gt; balance_switch false</span><br></pre></td></tr></table></figure>
-<h4 id="将新的regionserver节点上线"><a href="#将新的regionserver节点上线" class="headerlink" title="将新的regionserver节点上线"></a>将新的regionserver节点上线</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hbase-daemon.sh start regionserver</span><br></pre></td></tr></table></figure>
-<h4 id="之后就可以迁移数据了。"><a href="#之后就可以迁移数据了。" class="headerlink" title="之后就可以迁移数据了。"></a>之后就可以迁移数据了。</h4><p>到新的region server上执行 下面命令。<br>使用hbase自带的rb脚本，在hbase bin目录下面<br>unload：转移rs上的region；load：将所有region转移到此rs<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/region-data-migration/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2157,7 +2159,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
