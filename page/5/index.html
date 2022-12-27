@@ -356,6 +356,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/pycham-pip-no-attr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/pycham-pip-no-attr/" itemprop="url">pycharm安装package出现报错：module 'pip' has no attribute 'main'</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-15T17:36:43+08:00">
+                2019-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/pycham-pip-no-attr/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/pycham-pip-no-attr/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          python 3.5pip 18.1 更新之后，pycharm安装package出现报错：module ‘pip’ has no attribute ‘main’
+找到安装目录下 helpers/packaging_tool.py文件。 pycham报错信息里会有显示 packaging_tool.py 文件的配置。
+
+找到下面代码： 第一部分
+
+123456def do_install(pkgs):    try:        import pip    except ImportError:        error_no_pip()    return pip.main([&apos;install&apos;] + pkgs)
+替换为：
+12345678910def do_install(pkgs):    try:        # import pip        try:            from pip._internal import main        except Exception:            from pip import main 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/pycham-pip-no-attr/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/nginx-url-rewrite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +625,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" rel="gallery_cl9106nzn0053o31puljzscwv"
+                 href="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" rel="gallery_clc5onc5w0057th1pmz9tuoc4"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpl5cmj20ds078wet489aed8009c9d3f6.jpg" itemprop="contentUrl"/>
               </a>
@@ -632,7 +797,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://w.wallhaven.cc/full/2e/wallhaven-2edpgg.jpg" rel="gallery_cl9106nzi004uo31p1ykp9rlc"
+                 href="https://w.wallhaven.cc/full/2e/wallhaven-2edpgg.jpg" rel="gallery_clc5onc5r004xth1p2i1l8meb"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://w.wallhaven.cc/full/2e/wallhaven-2edpgg.jpg" itemprop="contentUrl"/>
               </a>
@@ -1134,7 +1299,7 @@ hive 中文注释为乱码，
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://w.wallhaven.cc/full/ox/wallhaven-oxlxvp.jpg" rel="gallery_cl9106nye0022o31prw8giob5"
+                 href="https://w.wallhaven.cc/full/ox/wallhaven-oxlxvp.jpg" rel="gallery_clc5onc490026th1p95tdic9c"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://w.wallhaven.cc/full/ox/wallhaven-oxlxvp.jpg" itemprop="contentUrl"/>
               </a>
@@ -1845,171 +2010,6 @@ vim /home/hadoop/apache-hadoop/hive/hive-metestore/conf/hive-site.xml
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/kafka-set-topic-retention/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/kafka-set-topic-retention/" itemprop="url">kafka设置某个topic的数据过期时间</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T12:30:00+08:00">
-                2018-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kafka/" itemprop="url" rel="index">
-                    <span itemprop="name">kafka</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/kafka-set-topic-retention/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/kafka-set-topic-retention/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          kafka 单独设置某个topic的数据过期时间kafka 默认存放7天的临时数据，如果遇到磁盘空间小，存放数据量大，可以设置缩短这个时间。
-全局设置修改  server.properties
-12log.retention.hours=72log.cleanup.policy=delete
-单独对某一个topic设置过期时间如果你这样设置完，可以磁盘空间还是不够，或只有某一个topic数据量过大。
-想单独对这个topic的过期时间设置短点，
-可以这样设置：1./kafka-configs.sh --zookeeper localhost:2181 --alter --entity-name wordcounttopic --entity-type topics --add-config retention.ms=86400000
-retention.ms=86400000  为一天，单位是毫秒。
-查看设置：123[hadoop@kafka00 kafka]$   ./kafka-configs.sh --zookeeper localhost:2181 --describe --en
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/kafka-set-topic-retention/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2060,7 +2060,7 @@ retention.ms=86400000  为一天，单位是毫秒。
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2071,7 +2071,7 @@ retention.ms=86400000  为一天，单位是毫秒。
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

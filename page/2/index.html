@@ -356,6 +356,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/docker-share-troubleshooting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/docker-share-troubleshooting/" itemprop="url">docker容器里排错小方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T10:52:53+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/docker-share-troubleshooting/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/docker-share-troubleshooting/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" rel="gallery_clc5onc3s0011th1pxddjfdjs"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://file.moetu.org/images/2020/04/19/sRy2kBQCNts8f41f922244be6d5.md.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <p>docker 容器在封装的时候一般只会安装程序需要的软件包。一些工具类的软件包不会安装的，这样容器会很大。也不常用，无意义。</p>
+<p>但是这样如果容器有问题，或想查看一些信息，如网络信息、文件内容、抓包等。这样就没办法做到了。</p>
+<p>下面说一种方法，容器共享进程、网络资源，可以用用 –pid、–ipc、–net 等参数</p>
+<p>这样就可以查看容器的进程信息、网络、文件等事情了。</p>
+<p>首先，运行一个容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 7080:80 nginx:latest</span><br></pre></td></tr></table></figure>
+<p>运行一个nginx容器，</p>
+<p>直接用 docker exec 进到容器里的时候， 是不能用iptables、ps、vim等命令的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/docker-share-troubleshooting/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/docker-proxy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +639,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_cl9106nxq000ko31pcrpabj8g"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" rel="gallery_clc5onc3n000pth1p3lwqg806"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff518212c8f0da38ef7cffa83.jpg" itemprop="contentUrl"/>
               </a>
@@ -637,7 +816,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" rel="gallery_cl9106nzs005fo31pblxfkxq3"
+                 href="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" rel="gallery_clc5onc63005oth1pdait5km5"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/QQ20200316-00c42d9a583d3dd22.jpg" itemprop="contentUrl"/>
               </a>
@@ -814,7 +993,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" rel="gallery_cl9106nxs000oo31pdvz4wy9i"
+                 href="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" rel="gallery_clc5onc3o000sth1pvd9rwoh0"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2020/04/19/5e12ff524e478d597d6d18f4eff92.jpg" itemprop="contentUrl"/>
               </a>
@@ -989,7 +1168,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" rel="gallery_cl9106o07006eo31p1te3fbwt"
+                 href="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" rel="gallery_clc5onc6d006eth1pa57hv2cz"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/MG1SG3Z/qq-Wqrn-d-OJQ.jpg" itemprop="contentUrl"/>
               </a>
@@ -1166,7 +1345,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" rel="gallery_cl9106nzj004xo31p9urfcu16"
+                 href="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" rel="gallery_clc5onc5t0051th1pfuw11h98"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/3NQtxBt/9bbc284bly1g4wuwpcisej20ds06k74k.jpg" itemprop="contentUrl"/>
               </a>
@@ -1340,7 +1519,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/07/19/wallhaven-g82533efbc5c04b31233c5.md.jpg" rel="gallery_cl9106nzd004io31p9pg3ndwg"
+                 href="https://file.moetu.org/images/2019/07/19/wallhaven-g82533efbc5c04b31233c5.md.jpg" rel="gallery_clc5onc5i004hth1pvrpvzdqk"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://file.moetu.org/images/2019/07/19/wallhaven-g82533efbc5c04b31233c5.md.jpg" itemprop="contentUrl"/>
               </a>
@@ -1516,7 +1695,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" rel="gallery_cl9106nyt0038o31pdy6wimtl"
+                 href="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" rel="gallery_clc5onc4n0031th1p2wh5h85q"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" itemprop="contentUrl"/>
               </a>
@@ -1691,7 +1870,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" rel="gallery_cl9106nyv003bo31p2zbhx5qo"
+                 href="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" rel="gallery_clc5onc4o0035th1px74lxih7"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" itemprop="contentUrl"/>
               </a>
@@ -1866,7 +2045,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" rel="gallery_cl9106nys0034o31pi0o15ps5"
+                 href="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" rel="gallery_clc5onc4q0037th1pfo0lxxx4"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" itemprop="contentUrl"/>
               </a>
@@ -1886,178 +2065,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/lb-confiure-many-marathon/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/zookeeper-delete-yarn-rmstore/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/zookeeper-delete-yarn-rmstore/" itemprop="url">zookeeper delete yarn rmstore</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T15:46:28+08:00">
-                2019-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/zookeeper-delete-yarn-rmstore/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/zookeeper-delete-yarn-rmstore/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://file.moetu.org/images/2019/06/13/9bbc284bgy1g3y78rwghlj20rs0ijtbi4468324b1624aa1c.jpg" rel="gallery_cl9106o0b006po31pnwmr2100"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://file.moetu.org/images/2019/06/13/9bbc284bgy1g3y78rwghlj20rs0ijtbi4468324b1624aa1c.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>hadoop 版本为：apache 2.7.2<br>这几天在搭建的时候遇到yarn无法启动。报错信息：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/zookeeper-delete-yarn-rmstore/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2145,7 +2152,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2156,7 +2163,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
