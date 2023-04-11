@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sukbeta.github.io/web/</loc>
-    <lastmod>2023-04-11T01:29:24.050Z</lastmod>
+    <lastmod>2023-04-11T03:48:15.633Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/alluxio-install/</loc>
     <lastmod>2022-12-27T03:50:30.055Z</lastmod>
@@ -196,10 +196,10 @@
     <loc>https://sukbeta.github.io/docker-ulimit-configure/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
+    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
+    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/logstash-configure-file/</loc>
