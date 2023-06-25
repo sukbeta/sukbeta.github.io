@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sukbeta.github.io/"/>
-  <updated>2022-12-27T03:50:30.055Z</updated>
+  <updated>2023-06-25T09:48:33.446Z</updated>
   <id>https://sukbeta.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github-hosts</title>
+    <link href="https://sukbeta.github.io/github-hosts/"/>
+    <id>https://sukbeta.github.io/github-hosts/</id>
+    <published>2023-06-25T09:28:23.000Z</published>
+    <updated>2023-06-25T09:48:33.446Z</updated>
+    
+    <content type="html"><![CDATA[<p>  访问github的话，可以不用梯子，用配置hosts的方式来访问，hosts是变化的，可以用过gitlab地址来获取。</p><p>获取地址：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts</span><br></pre></td></tr></table></figure><p>内容如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># New！欢迎使用基于DNS的新方案</span><br><span class="line"># https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts</span><br><span class="line"># 地址可能会变动，请务必关注GitHub、Gitlab获取最新消息</span><br><span class="line"># 也可以关注公众号：湖中剑，保证不迷路</span><br><span class="line"># GitHub Host Start</span><br><span class="line"></span><br><span class="line">185.199.109.154              github.githubassets.com</span><br><span class="line">140.82.113.22                central.github.com</span><br><span class="line">185.199.110.133              desktop.githubusercontent.com</span><br><span class="line">185.199.111.153              assets-cdn.github.com</span><br><span class="line">185.199.108.133              camo.githubusercontent.com</span><br><span class="line">185.199.109.133              github.map.fastly.net</span><br><span class="line">151.101.193.194              github.global.ssl.fastly.net</span><br><span class="line">140.82.114.3                 gist.github.com</span><br><span class="line">185.199.109.153              github.io</span><br><span class="line">140.82.114.3                 github.com</span><br><span class="line">140.82.113.5                 api.github.com</span><br><span class="line">185.199.108.133              raw.githubusercontent.com</span><br><span class="line">185.199.109.133              user-images.githubusercontent.com</span><br><span class="line">185.199.111.133              favicons.githubusercontent.com</span><br><span class="line">185.199.108.133              avatars5.githubusercontent.com</span><br><span class="line">185.199.110.133              avatars4.githubusercontent.com</span><br><span class="line">185.199.110.133              avatars3.githubusercontent.com</span><br><span class="line">185.199.110.133              avatars2.githubusercontent.com</span><br><span class="line">185.199.111.133              avatars1.githubusercontent.com</span><br><span class="line">185.199.109.133              avatars0.githubusercontent.com</span><br><span class="line">185.199.109.133              avatars.githubusercontent.com</span><br><span class="line">140.82.112.9                 codeload.github.com</span><br><span class="line">52.217.229.241               github-cloud.s3.amazonaws.com</span><br><span class="line">52.217.133.73                github-com.s3.amazonaws.com</span><br><span class="line">52.217.130.81                github-production-release-asset-2e65be.s3.amazonaws.com</span><br><span class="line">52.217.138.161               github-production-user-asset-6210df.s3.amazonaws.com</span><br><span class="line">52.217.132.241               github-production-repository-file-5c1aeb.s3.amazonaws.com</span><br><span class="line">185.199.111.153              githubstatus.com</span><br><span class="line">140.82.112.17                github.community</span><br><span class="line">185.199.108.133              media.githubusercontent.com</span><br><span class="line">185.199.111.133              objects.githubusercontent.com</span><br><span class="line">185.199.109.133              raw.github.com</span><br><span class="line">20.221.80.166                copilot-proxy.githubusercontent.com</span><br><span class="line"></span><br><span class="line"># Please Star : https://github.com/ineo6/hosts</span><br><span class="line"># Mirror Repo : https://gitlab.com/ineo6/hosts</span><br><span class="line"></span><br><span class="line"># Update at: 2023-06-25 16:14:11</span><br><span class="line"></span><br><span class="line"># GitHub Host End</span><br></pre></td></tr></table></figure><p>将内容配置到hosts中即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;  访问github的话，可以不用梯子，用配置hosts的方式来访问，hosts是变化的，可以用过gitlab地址来获取。&lt;/p&gt;
+&lt;p&gt;获取地址：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutt
+      
+    
+    </summary>
+    
+      <category term="doc" scheme="https://sukbeta.github.io/categories/doc/"/>
+    
+    
+      <category term="github" scheme="https://sukbeta.github.io/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>alluxio-install</title>
@@ -169,9 +196,9 @@
       <category term="qat" scheme="https://sukbeta.github.io/categories/qat/"/>
     
     
-      <category term="qat" scheme="https://sukbeta.github.io/tags/qat/"/>
-    
       <category term="nginx" scheme="https://sukbeta.github.io/tags/nginx/"/>
+    
+      <category term="qat" scheme="https://sukbeta.github.io/tags/qat/"/>
     
   </entry>
   
@@ -196,9 +223,9 @@
       <category term="qat" scheme="https://sukbeta.github.io/categories/qat/"/>
     
     
-      <category term="qat" scheme="https://sukbeta.github.io/tags/qat/"/>
-    
       <category term="nginx" scheme="https://sukbeta.github.io/tags/nginx/"/>
+    
+      <category term="qat" scheme="https://sukbeta.github.io/tags/qat/"/>
     
   </entry>
   
@@ -515,32 +542,6 @@
     
       <category term="marathon" scheme="https://sukbeta.github.io/categories/marathon/"/>
     
-    
-      <category term="marathon-lb" scheme="https://sukbeta.github.io/tags/marathon-lb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>marathon-lb配置多个matahon地址</title>
-    <link href="https://sukbeta.github.io/lb-confiure-many-marathon/"/>
-    <id>https://sukbeta.github.io/lb-confiure-many-marathon/</id>
-    <published>2019-07-18T10:19:34.000Z</published>
-    <updated>2019-07-19T06:21:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>marathon 在集群中，marathon可以部署多个节点。</p><p>-m 参数是指定marathon地址的，后面跟上marathon地址就可以了， 当你有多个marathon地址的时候，用“空格”隔开就可以了。</p><p>marathon json文件中是这样写的。</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;args&quot;: [</span><br><span class="line">  &quot;sse&quot;,</span><br><span class="line">  &quot;-m&quot;,</span><br><span class="line">  &quot;http://192.168.55.5:8080&quot;,</span><br><span class="line">  &quot;http://192.168.55.6:8080&quot;,</span><br><span class="line">  &quot;http://192.168.55.7:8080&quot;,</span><br><span class="line">  &quot;--group&quot;,</span><br><span class="line">  &quot;lb-name&quot;</span><br><span class="line">],</span><br></pre></td></tr></table></figure><p>这样配置完之后，当一个marathon有问题之后，可以在lb的日志中看在节点不能连接，但是会在其他节点上取到marathon数据的。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;marathon 在集群中，marathon可以部署多个节点。&lt;/p&gt;
-&lt;p&gt;-m 参数是指定marathon地址的，后面跟上marathon地址就可以了， 当你有多个marathon地址的时候，用“空格”隔开就可以了。&lt;/p&gt;
-&lt;p&gt;marathon json文件中是这样写的。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="marathon" scheme="https://sukbeta.github.io/categories/marathon/"/>
-    
-    
-      <category term="marathon" scheme="https://sukbeta.github.io/tags/marathon/"/>
     
       <category term="marathon-lb" scheme="https://sukbeta.github.io/tags/marathon-lb/"/>
     
