@@ -117,12 +117,12 @@
 <meta property="og:site_name" content="舒克贝塔">
 <meta property="og:description" content="个人笔记，自己查看使用。就不一一整理了。 hadoop">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpdzpkj20ds074q349a9e1fe9b7a16f79.jpg">
-<meta property="og:updated_time" content="2021-07-20T11:25:12.454Z">
+<meta property="og:image" content="https://i.niupic.com/images/2023/12/26/ekGL.jpeg">
+<meta property="og:updated_time" content="2023-12-26T01:38:34.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hadoop常用命令(整理笔记)">
 <meta name="twitter:description" content="个人笔记，自己查看使用。就不一一整理了。 hadoop">
-<meta name="twitter:image" content="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpdzpkj20ds074q349a9e1fe9b7a16f79.jpg">
+<meta name="twitter:image" content="https://i.niupic.com/images/2023/12/26/ekGL.jpeg">
 
 
 
@@ -461,10 +461,29 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://i.niupic.com/images/2023/12/26/ekGL.jpeg" rel="gallery_clqloi1lb0015kr1pjpxph85d"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.niupic.com/images/2023/12/26/ekGL.jpeg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
-        <center><br><img style="width:900px;height:220px" src="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpdzpkj20ds074q349a9e1fe9b7a16f79.jpg" align="center"><br></center>
-
+        <!--
+<center>
+<img style="width:900px;height:220px" src="https://file.moetu.org/images/2019/07/19/9bbc284bly1g4wuwpdzpkj20ds074q349a9e1fe9b7a16f79.jpg" align=center />
+</center>
+-->
 <p>个人笔记，自己查看使用。就不一一整理了。</p>
 <h3 id="hadoop"><a href="#hadoop" class="headerlink" title="hadoop"></a>hadoop</h3><a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">hdfs zkfc -formatZK（格式化zookeeper）</span><br><span class="line">hadoop-daemon.sh start journalnode(启动journalnode)</span><br><span class="line">hdfs namenode -format（格式化namenode metadata）</span><br><span class="line">hadoop-daemon.sh start namenode</span><br><span class="line">hadoop-daemon.sh start namenode -bootstrapStandby( standy namenode)</span><br><span class="line">stop-dfs.sh</span><br><span class="line">hadoop fsck / (检测hadoop数据状态)</span><br><span class="line">start-yarn.sh (相当jobtracker)</span><br><span class="line">start-dfs.sh (启动hdfs)</span><br><span class="line">mr-jobhistory-daemon.sh start historyserver (启动historyserver 服务)</span><br><span class="line"></span><br><span class="line">hdfs haadmin -failover nn2 nn1(切换namenode)</span><br><span class="line">hdfs zkfc -formatZK（格式化zookeeper）</span><br><span class="line"> </span><br><span class="line">hadoop-daemon.sh start journalnode(启动journalnode)</span><br><span class="line">hdfs namenode -format（格式化namenode metadata）</span><br><span class="line">hadoop-daemon.sh start namenode</span><br><span class="line">hadoop-daemon.sh start namenode -bootstrapStandby( standy namenode)</span><br><span class="line">stop-dfs.sh</span><br><span class="line">hadoop fsck / (检测hadoop数据状态)</span><br><span class="line">start-yarn.sh (相当jobtracker)</span><br><span class="line">start-dfs.sh (启动hdfs)</span><br><span class="line"> </span><br><span class="line">mr-jobhistory-daemon.sh start historyserver   启动historyserver 服务 (在 mapred-site.xml 里配置的， 在哪台机器上就在哪台机器上启动)</span><br><span class="line"></span><br><span class="line">bin/hadoop dfsadmin -safemode enter   将集群置于安全模式</span><br><span class="line">-safeadmin enter | leave | get | wait：安全模式命令。安全模式是NameNode的一种状态，在这种状态下，NameNode不接受对名字空间的更改（只读）；不复制或删除块。NameNode在启动时自动进入安全模式，当配置块的最小百分数满足最小副本数的条件时，会自动离开安全模式。enter是进入，leave是离开。</span><br><span class="line"></span><br><span class="line">bin/hadoop dfsadmin -report  显示Datanode列表   </span><br><span class="line"></span><br><span class="line">bin/hadoop dfsadmin -refreshNodes：重新读取hosts和exclude文件，使新的节点或需要退出集群的节点能够被NameNode重新识别。这个命令在新增节点或注销节点时用到。</span><br><span class="line"></span><br><span class="line">bin/hadoop dfsadmin -decommission datanodename  使Datanode节点 datanodename退役   </span><br><span class="line"></span><br><span class="line">bin/hadoop dfsadmin -help 命令能列出所有当前支持的命令。比如：</span><br><span class="line">    * -report：报告HDFS的基本统计信息。有些信息也可以在NameNode Web服务首页看到。</span><br><span class="line">    * -safemode：虽然通常并不需要，但是管理员的确可以手动让NameNode进入或离开安全模式。</span><br><span class="line">    * -finalizeUpgrade：删除上一次升级时制作的集群备份。</span><br></pre></td></tr></table></figure>
