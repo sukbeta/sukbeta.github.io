@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="A7rQGsj3dl" />
+<meta name="google-site-verification" content="6ADdF-qcnJafC3lLfZdMSOIIoObNuMBPLfZjjSYaaM4" />
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hadoop," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="舒克贝塔" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="安装 apache hadoop 2.7.2 集群这是我安装编译hadoop得意个笔记手册，和大家分享一下。 环境：      系统 Centos 7  java ： 1.8  apache hadoop 版本 ： 2.7.2 hadoop集群hosts列表   IP hostname 运行服务     192.168.77.158 namenode00.host-shining.com name">
+<meta name="keywords" content="hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码编译安装 apache hadoop">
+<meta property="og:url" content="https://sukbeta.github.io/install-apache-hadoop/index.html">
+<meta property="og:site_name" content="舒克贝塔">
+<meta property="og:description" content="安装 apache hadoop 2.7.2 集群这是我安装编译hadoop得意个笔记手册，和大家分享一下。 环境：      系统 Centos 7  java ： 1.8  apache hadoop 版本 ： 2.7.2 hadoop集群hosts列表   IP hostname 运行服务     192.168.77.158 namenode00.host-shining.com name">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-02T04:42:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="源码编译安装 apache hadoop">
+<meta name="twitter:description" content="安装 apache hadoop 2.7.2 集群这是我安装编译hadoop得意个笔记手册，和大家分享一下。 环境：      系统 Centos 7  java ： 1.8  apache hadoop 版本 ： 2.7.2 hadoop集群hosts列表   IP hostname 运行服务     192.168.77.158 namenode00.host-shining.com name">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://sukbeta.github.io/install-apache-hadoop/"/>
+
+
+
+
+
+  <title>源码编译安装 apache hadoop | 舒克贝塔</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d853781928d40e9af4612daabcef88b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+    <meta name="baidu-site-verification" content="A7rQGsj3dl" />
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">舒克贝塔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'CEX8A7y6PyxZBzheT';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/install-apache-hadoop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">源码编译安装 apache hadoop</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T15:16:23+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/install-apache-hadoop/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/install-apache-hadoop/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 游览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装-apache-hadoop-2-7-2-集群"><a href="#安装-apache-hadoop-2-7-2-集群" class="headerlink" title="安装 apache hadoop 2.7.2 集群"></a>安装 apache hadoop 2.7.2 集群</h1><p>这是我安装编译hadoop得意个笔记手册，和大家分享一下。</p>
+<p>环境：   </p>
+<p>  系统 Centos 7<br>  java ： 1.8<br>  apache hadoop 版本 ： 2.7.2</p>
+<h5 id="hadoop集群hosts列表"><a href="#hadoop集群hosts列表" class="headerlink" title="hadoop集群hosts列表"></a>hadoop集群hosts列表</h5><table>
+<thead>
+<tr>
+<th>IP</th>
+<th>hostname</th>
+<th>运行服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.77.158</td>
+<td>namenode00.host-shining.com</td>
+<td>namenode、zk、journalnode、standby-resourcemanager，hbase-master、spark-master</td>
+</tr>
+<tr>
+<td>192.168.77.159</td>
+<td>namenode01.host-shining.com</td>
+<td>namenode、zk、journalnode、resourcemanager，hbase-master、jobhistory</td>
+</tr>
+<tr>
+<td>192.168.77.161</td>
+<td>datanode00.host-shining.com</td>
+<td>datanode、nodemanager、zk、journalnode</td>
+</tr>
+<tr>
+<td>192.168.77.162</td>
+<td>datanode01.host-shining.com</td>
+<td>datanode、nodemanager、zk、journalnode</td>
+</tr>
+<tr>
+<td>192.168.77.163</td>
+<td>datanode02.host-shining.com</td>
+<td>datanode、nodemanager、zk、journalnode</td>
+</tr>
+<tr>
+<td>192.168.77.164</td>
+<td>datanode03.host-shining.com</td>
+<td>datanode、nodemanager、regionserver、spark-work</td>
+</tr>
+<tr>
+<td>192.168.77.165</td>
+<td>datanode04.host-shining.com</td>
+<td>datanode、nodemanager、regionserver、spark-work</td>
+</tr>
+<tr>
+<td>192.168.77.166</td>
+<td>datanode05.host-shining.com</td>
+<td>datanode、nodemanager、regionserver、spark-work</td>
+</tr>
+<tr>
+<td>192.168.77.167</td>
+<td>datanode06.host-shining.com</td>
+<td>datanode、nodemanager、regionserver、spark-work</td>
+</tr>
+<tr>
+<td>192.168.77.168</td>
+<td>datanode07.host-shining.com</td>
+<td>datanode、nodemanager</td>
+</tr>
+<tr>
+<td>192.168.77.169</td>
+<td>datanode08.host-shining.com</td>
+<td>datanode、nodemanager</td>
+</tr>
+<tr>
+<td>192.168.77.170</td>
+<td>datanode09.host-shining.com</td>
+<td>datanode、nodemanager</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>hosts文件并同步到每台机器上。  </p>
+</blockquote>
+<h5 id="hadoop-client-列表"><a href="#hadoop-client-列表" class="headerlink" title="hadoop client 列表"></a>hadoop client 列表</h5><table>
+<thead>
+<tr>
+<th>IP</th>
+<th>hostname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.77.160</td>
+<td>client01.host-shining.com</td>
+</tr>
+</tbody>
+</table>
+<h5 id="安装软件包和lzop软件（每台机器都执行）"><a href="#安装软件包和lzop软件（每台机器都执行）" class="headerlink" title="安装软件包和lzop软件（每台机器都执行）"></a>安装软件包和lzop软件（每台机器都执行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum -y install  wget gcc gcc-c++ gcc-g77 autoconf automake zlib* fiex* libxml* ncurses-devel libmcrypt* libtool-ltdl-devel* make cmake bind-utils ntp ntpdate lrzsz rsync gzip unzip vim telnet openssl-devel nscd g++ sysstat ncurses-libs bzip2-devel git lsof expect  </span><br><span class="line"></span><br><span class="line">yum -y install *gcc* ncurses-devel openssl-devel cmake autoconfautomake libtool bzip2-devel g++ autoconf automake libtool cmake zlib1g-dev pkg-config  </span><br><span class="line"></span><br><span class="line">yum -y install  lzo-devel zlib-devel  gcc autoconf automakelibtool lzop subversion psmisc nc</span><br></pre></td></tr></table></figure>
+<h5 id="安装jdk-1-8-（需要每台机器执行）"><a href="#安装jdk-1-8-（需要每台机器执行）" class="headerlink" title="安装jdk 1.8 （需要每台机器执行）"></a>安装jdk 1.8 （需要每台机器执行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf jdk-8u45-linux-x64.tar.gz &amp;&amp; mkdir /usr/java/ &amp;&amp; mv  jdk1.8.0_45/ /usr/java/</span><br><span class="line">echo -e &quot;export JAVA_HOME=/usr/java/jdk1.8.0_45\nexport PATH=\$JAVA_HOME/bin:\$JAVA_HOME/jre/bin:\$PATH&quot; &gt;&gt; /etc/profile</span><br></pre></td></tr></table></figure>
+<h5 id="创建hadoop用户并添加无密码登入（每台集群都执行）"><a href="#创建hadoop用户并添加无密码登入（每台集群都执行）" class="headerlink" title="创建hadoop用户并添加无密码登入（每台集群都执行）"></a>创建hadoop用户并添加无密码登入（每台集群都执行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd hadoop</span><br><span class="line">su - hadoop</span><br><span class="line">echo &quot;hadoop|xiaoaojianghu&quot; | chpasswd</span><br></pre></td></tr></table></figure>
+<p>创建添加key的脚本，每台机器添加完用户之后执行  sh key_add.sh  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">vim key_add.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">source /etc/profile</span><br><span class="line"># 创建pub  key文件</span><br><span class="line">expect -c &apos;set timeout -1;</span><br><span class="line">spawn ssh-keygen -t rsa;</span><br><span class="line">expect &quot;Enter file in which to save the key&quot;;</span><br><span class="line">send &quot;\n&quot;;</span><br><span class="line">expect &quot;(empty for no passphrase):&quot;</span><br><span class="line">send &quot;\n&quot;;</span><br><span class="line">expect &quot;Enter same passphrase again:&quot;;</span><br><span class="line">send &quot;\n&quot;;</span><br><span class="line">interact&apos;</span><br><span class="line"># 在hosts文件里找到name和data的主机名</span><br><span class="line">for ip in `cat /etc/hosts | grep -v &quot;^#&quot; |grep -E &quot;name|data&quot;|awk &apos;&#123;print $2&#125;&apos;`</span><br><span class="line">do </span><br><span class="line">    echo $ip </span><br><span class="line">    # add hadoop pub key </span><br><span class="line">    expect -c &apos;set timeout -1;</span><br><span class="line">    spawn ssh-copy-id -i .ssh/id_rsa.pub &apos;$ip&apos;;</span><br><span class="line">    expect &quot;Are you sure you want to continue connecting (yes/no)?&quot;;</span><br><span class="line">    send &quot;yes\n&quot;;</span><br><span class="line">    expect &quot;password:&quot;;</span><br><span class="line">    send &quot;xiaoaojianghu\n&quot;;</span><br><span class="line">    interact&apos;</span><br><span class="line"></span><br><span class="line">done</span><br><span class="line"> </span><br><span class="line">for ip in `cat /etc/hosts | grep -E &quot;name|data&quot;|awk &apos;&#123;print $1&#125;&apos;`;do echo $ip ;ssh-copy-id -i ~/.ssh/id_rsa.pub $ip;done</span><br></pre></td></tr></table></figure>
+<h5 id="datanode机器格式化硬盘-所有datanode节点执行"><a href="#datanode机器格式化硬盘-所有datanode节点执行" class="headerlink" title="datanode机器格式化硬盘  (所有datanode节点执行)"></a>datanode机器格式化硬盘  (所有datanode节点执行)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">vim fdisk.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">source /etc/profile</span><br><span class="line">yum install -y expect parted</span><br><span class="line"></span><br><span class="line">#for letter in b c d e f g h i j k l m   #默认列表</span><br><span class="line">for letter in `fdisk -l | grep 4000 | awk &apos;&#123;print $2&#125;&apos; | cut -c 8 | sort`  # 找到4T的硬盘并格式化。</span><br><span class="line">do</span><br><span class="line">    expect -c &apos;set timeout -1;</span><br><span class="line">    spawn parted /dev/sd&apos;$letter&apos;;</span><br><span class="line">    expect &quot;(parted)&quot;;</span><br><span class="line">    send &quot;mklabel gpt\n&quot;;</span><br><span class="line">    expect &quot;(parted)&quot;;</span><br><span class="line">    send &quot;unit GB\n&quot;;</span><br><span class="line">    expect &quot;(parted)&quot;;</span><br><span class="line">    send &quot;mkpart primary 0 -1\n&quot;;</span><br><span class="line">    expect &quot;(parted)&quot;;</span><br><span class="line">    send &quot;quit\n&quot;;</span><br><span class="line">    interact&apos;</span><br><span class="line"></span><br><span class="line">    nohup mkfs.xfs /dev/sd$&#123;letter&#125;1 &gt; sd$letter.out 2&gt;&amp;1 &amp;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h5 id="mount-挂在硬盘-所有datanode节点执行"><a href="#mount-挂在硬盘-所有datanode节点执行" class="headerlink" title="mount 挂在硬盘  (所有datanode节点执行)"></a>mount 挂在硬盘  (所有datanode节点执行)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">vim mount.sh</span><br><span class="line"></span><br><span class="line">#!/bin/bash</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line">blkid | sort | grep -v sdm| awk -F &apos;&quot;&apos; &apos;&#123;print $2&#125;&apos; &gt; /tmp/uuid</span><br><span class="line">echo &quot;/data00</span><br><span class="line">/data01</span><br><span class="line">/data02</span><br><span class="line">/data03</span><br><span class="line">/data04</span><br><span class="line">/data05</span><br><span class="line">/data06</span><br><span class="line">/data07</span><br><span class="line">/data08</span><br><span class="line">/data09</span><br><span class="line">/data10</span><br><span class="line">/data11&quot; &gt; /tmp/dir</span><br><span class="line"></span><br><span class="line">for dir in `cat /tmp/dir`</span><br><span class="line">do</span><br><span class="line">    mkdir -p $dir</span><br><span class="line">done</span><br><span class="line"># 也可以用</span><br><span class="line"># mkdir /data&#123;00..11&#125;</span><br><span class="line"></span><br><span class="line">l=$(cat /tmp/uuid | wc -l)</span><br><span class="line">for ((i=1;i&lt;=$l;i++))</span><br><span class="line">do</span><br><span class="line">    u=$(sed -n &quot;$i&quot;p /tmp/uuid)</span><br><span class="line">    d=$(sed -n &quot;$i&quot;p /tmp/dir)</span><br><span class="line">    mount UUID=$u $d</span><br><span class="line">    cp /etc/fstab /etc/fstab_backup</span><br><span class="line">    echo -e &quot;UUID=$u\t$d\t\txfs\tdefaults,noatime,nodiratime\t0 0&quot; &gt;&gt; /etc/fstab   </span><br><span class="line">    # noatime,nodiratim   禁用文件访问时间</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h5 id="下载软件包"><a href="#下载软件包" class="headerlink" title="下载软件包"></a>下载软件包</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/home/hadoop/apache-hadoop &amp;&amp; cd /home/hadoop/apache-hadoop</span><br><span class="line">wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz</span><br><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/apache/hive/stable-2/apache-hive-2.1.0-bin.tar.gz</span><br><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/apache/hive/stable-2/apache-hive-2.1.0-src.tar.gz</span><br><span class="line">wget http://apache.fayea.com/hbase/stable/hbase-1.1.5-bin.tar.gz</span><br><span class="line">wget http://apache.fayea.com/hbase/stable/hbase-1.1.5-src.tar.gz</span><br><span class="line">wget http://apache.fayea.com/mahout/0.12.2/apache-mahout-distribution-0.12.2.tar.gz</span><br><span class="line">wget http://apache.fayea.com/zookeeper/stable/zookeeper-3.4.8.tar.gz</span><br><span class="line">wget http://mirror.bit.edu.cn/apache/spark/spark-1.6.2/spark-1.6.2.tgz</span><br></pre></td></tr></table></figure>
+<h5 id="安装zookeeper"><a href="#安装zookeeper" class="headerlink" title="安装zookeeper"></a>安装zookeeper</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf zookeeper-3.4.8.tar.gz &amp;&amp; ln -s zookeeper-3.4.8 zookeeper</span><br><span class="line">cd /home/hadoop/apache-hadoop/zookeeper &amp;&amp;  mkdir -p var/&#123;data,datalog&#125;</span><br><span class="line">cd conf</span><br><span class="line">echo &quot;JAVA_HOME=/usr/java/jdk1.8.0_45&quot; &gt; java.env</span><br><span class="line">echo &quot;export JAVA_OPTS=\&quot;-Xms1000m -Xmx1000m\&quot;&quot; &gt;&gt; java.env</span><br><span class="line">cp zoo_sample.cfg zoo.cfg</span><br><span class="line">sed -i &apos;/^dataDir=/c dataDir=/home/hadoop/apache-hadoop/zookeeper/var/data&apos; zoo.cfg</span><br><span class="line">echo &quot;dataLogDir=/home/hadoop/apache-hadoop/zookeeper/var/datalog&quot; &gt;&gt; zoo.cfg </span><br><span class="line">echo &quot;maxClientCnxns=300&quot; &gt;&gt; zoo.cfg </span><br><span class="line"></span><br><span class="line">在 zoo.cfg 里添加</span><br><span class="line">server.1=namenode00.host-shining.com:2888:3888</span><br><span class="line">server.2=namenode01.host-shining.com:2888:3888</span><br><span class="line">server.3=datanode00.host-shining.com:2888:3888</span><br><span class="line">server.4=datanode01.host-shining.com:2888:3888</span><br><span class="line">server.5=datanode02.host-shining.com:2888:3888</span><br><span class="line"></span><br><span class="line">echo 1 &gt; /home/hadoop/apache-hadoop/zookeeper/var/data/myid </span><br><span class="line">每台机器安顺序排，这个文件是不一样的。   1、2、3、4、5</span><br></pre></td></tr></table></figure>
+<p>用supervisor守护zookeeper   (supervisor需要重启)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[program:zookeeper]</span><br><span class="line">command = /home/hadoop/apache-hadoop/zookeeper/bin/zkServer.sh start-foreground</span><br><span class="line">autostart = true</span><br><span class="line">autorestart = true</span><br><span class="line">startsecs = 3</span><br><span class="line">startretries = 3</span><br><span class="line">stopwaitsecs = 5</span><br><span class="line">user = hadoop</span><br><span class="line">redirect_stderr = true</span><br><span class="line">stdout_logfile = /home/shining/logs/supervisor/zookeeper.log</span><br><span class="line">stdout_logfile_maxbytes = 500MB</span><br><span class="line">stdout_logfile_backups = 5</span><br></pre></td></tr></table></figure>
+<h4 id="安装hdfs"><a href="#安装hdfs" class="headerlink" title="安装hdfs"></a>安装hdfs</h4><h6 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /home/hadoop/apache-hadoop</span><br><span class="line">tar -zxvf hadoop-2.7.2.tar.gz &amp;&amp; ln -s hadoop-2.7.2 hadoop</span><br><span class="line">mkdir -p /home/hadoop/apache-hadoop/hadoop/var/dfs/jn</span><br><span class="line">mkdir -p /home/hadoop/apache-hadoop/hadoop/var/dfs/dn</span><br><span class="line">mkdir -p /home/hadoop/apache-hadoop/hadoop/var/dfs/nn</span><br><span class="line">mkdir -p /home/hadoop/apache-hadoop/hadoop/var/run/hadoop-hdfs</span><br><span class="line">mkdir -p /home/hadoop/apache-hadoop/hadoop/var/run/hadoop-hdfs/dn_PORT</span><br><span class="line">chmod -R 755 /home/hadoop/apache-hadoop/hadoop/var/</span><br></pre></td></tr></table></figure>
+<h5 id="开始修改配置文件"><a href="#开始修改配置文件" class="headerlink" title="开始修改配置文件"></a>开始修改配置文件</h5><h6 id="hdfs-site-xml-配置文件"><a href="#hdfs-site-xml-配置文件" class="headerlink" title="hdfs-site.xml 配置文件"></a>hdfs-site.xml 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line">  you may not use this file except in compliance with the License.</span><br><span class="line">  You may obtain a copy of the License at</span><br><span class="line"></span><br><span class="line">    http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"></span><br><span class="line">  Unless required by applicable law or agreed to in writing, software</span><br><span class="line">  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line">  See the License for the specific language governing permissions and</span><br><span class="line">  limitations under the License. See accompanying LICENSE file.</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Put site-specific property overrides in this file. --&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.nameservices&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;shininghadoop&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.ha.namenodes.shininghadoop&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;nn1,nn2&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.rpc-address.shininghadoop.nn1&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;namenode00.host-shining.com:8020&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.rpc-address.shininghadoop.nn2&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;namenode01.host-shining.com:8020&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.http-address.shininghadoop.nn1&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;namenode00.host-shining.com:50070&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.http-address.shininghadoop.nn2&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;namenode01.host-shining.com:50070&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;qjournal://namenode00.host-shining.com:8485;namenode01.host-shining.com:8485;datanode00.host-shining.com:8485;datanode01.host-shining.com:8485;datanode02.host-shining.com:8485/shininghadoop&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/dfs/jn&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/data00/data,/data01/data,/data02/data,/data03/data,/data04/data,/data05/data,/data06/data,/data07/data,/data08/data,/data09/data,/data10/data,/data11/data&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/dfs/nn&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.client.failover.proxy.provider.shininghadoop&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;sshfence(hadoop)</span><br><span class="line">           shell(/bin/true)&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/home/hadoop/.ssh/id_rsa&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.ha.fencing.ssh.connect-timeout&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;60000&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;true&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;3&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;Default block replication. The actual number of replications can be specified when the file is created. The default is used if replication is not specified in create time&lt;/description&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.handler.count&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;60&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.datanode.balance.bandwidthPerSec&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;20971520&lt;/value&gt;</span><br><span class="line">    &lt;final&gt;true&lt;/final&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.block.size&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;67108864&lt;/value&gt;</span><br><span class="line">    &lt;final&gt;true&lt;/final&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;true&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.datanode.max.xcievers&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;8192&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.permissions.superusergroup&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hadoop&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.support.append&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;true&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;dfs.client.read.shortcircuit&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;dfs.domain.socket.path&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/run/hadoop-hdfs/dn_PORT&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;dfs.client.read.shortcircuit.skip.checksum&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt; </span><br><span class="line">  &lt;name&gt;dfs.ha.automatic-failover.enabled.appcluster&lt;/name&gt; </span><br><span class="line">  &lt;value&gt;true&lt;/value&gt; </span><br><span class="line">&lt;/property&gt; </span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;dfs.permissions.enabled&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;dfs.namenode.acls.enabled&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="core-site-xml-配置文件"><a href="#core-site-xml-配置文件" class="headerlink" title="core-site.xml 配置文件"></a>core-site.xml 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line">  you may not use this file except in compliance with the License.</span><br><span class="line">  You may obtain a copy of the License at</span><br><span class="line"></span><br><span class="line">    http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"></span><br><span class="line">  Unless required by applicable law or agreed to in writing, software</span><br><span class="line">  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line">  See the License for the specific language governing permissions and</span><br><span class="line">  limitations under the License. See accompanying LICENSE file.</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Put site-specific property overrides in this file. --&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;hdfs://shininghadoop&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;fs.trash.interval&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;10080&lt;/value&gt;</span><br><span class="line">   &lt;description&gt;Number of minutes between trash checkpoints.If zero, the trash feature is disabled.&lt;/description&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;namenode00.host-shining.com:2181,namenode01.host-shining.com:2181,datanode00.host-shining.com:2181,datanode01.host-shining.com:2181,datanode02.host-shining.com:2181&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;fs.trash.checkpoint.interval&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;10080&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;io.native.lib.available&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;io.compression.codecs&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.io.compress.GzipCodec,</span><br><span class="line">        org.apache.hadoop.io.compress.DefaultCodec,</span><br><span class="line">        com.hadoop.compression.lzo.LzoCodec,</span><br><span class="line">        com.hadoop.compression.lzo.LzopCodec,</span><br><span class="line">        org.apache.hadoop.io.compress.BZip2Codec</span><br><span class="line">  &lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;io.compression.codec.lzo.class&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;com.hadoop.compression.lzo.LzoCodec&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;io.compression.codecs&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.BZip2Codec&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;  </span><br><span class="line">    &lt;name&gt;hadoop.proxyuser.hadoop.hosts&lt;/name&gt;  </span><br><span class="line">    &lt;value&gt;*&lt;/value&gt;  </span><br><span class="line">&lt;/property&gt;  </span><br><span class="line">&lt;property&gt;  </span><br><span class="line">    &lt;name&gt;hadoop.proxyuser.hadoop.groups&lt;/name&gt;  </span><br><span class="line">    &lt;value&gt;*&lt;/value&gt;  </span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.permissions.umask-mode&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;022&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="hadoop-env-sh-配置文件-（去掉了注释部分）"><a href="#hadoop-env-sh-配置文件-（去掉了注释部分）" class="headerlink" title="hadoop-env.sh 配置文件 （去掉了注释部分）"></a>hadoop-env.sh 配置文件 （去掉了注释部分）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_45</span><br><span class="line">export HADOOP_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HADOOP_LOG_DIR=$&#123;HADOOP_HOME&#125;/logs</span><br><span class="line">JVM_OPTS=&quot;-server -verbose:gc</span><br><span class="line">  -XX:+PrintGCDateStamps</span><br><span class="line">  -XX:+PrintGCDetails</span><br><span class="line">  -XX:+UseGCLogFileRotation</span><br><span class="line">  -XX:NumberOfGCLogFiles=9</span><br><span class="line">  -XX:GCLogFileSize=20m&quot;</span><br><span class="line">export HADOOP_NAMENODE_OPTS=&quot;-Xmx40g -Xms10g -Xmn4g $JVM_OPTS -XX:ErrorFile=$HADOOP_LOG_DIR/nn_error_gc.log -Xloggc:$HADOOP_LOG_DIR/nn_gc.log -XX:HeapDumpPath=$HADOOP_LOG_DIR/nn_error.hprof&quot;</span><br><span class="line">export HADOOP_DATANODE_OPTS=&quot;-Xmx4g -Xms512m   $JVM_OPTS -XX:ErrorFile=$HADOOP_LOG_DIR/dn_error_gc.log -Xloggc:$HADOOP_LOG_DIR/dn_gc.log -XX:HeapDumpPath=$HADOOP_LOG_DIR/dn_error.hprof &quot;</span><br><span class="line">export HADOOP_JOB_HISTORYSERVER_OPTS=&quot;-Xmx4g -Xms2g   $JVM_OPTS -XX:ErrorFile=$HADOOP_LOG_DIR/log_error_gc.log -Xloggc:$HADOOP_LOG_DIR/log_gc.log -XX:HeapDumpPath=$HADOOP_LOG_DIR/log_error.hprof &quot;</span><br><span class="line">export HADOOP_CONF_DIR=$&#123;HADOOP_CONF_DIR:-&quot;/etc/hadoop&quot;&#125;</span><br><span class="line">for f in $HADOOP_HOME/contrib/capacity-scheduler/*.jar; do</span><br><span class="line">  if [ &quot;$HADOOP_CLASSPATH&quot; ]; then</span><br><span class="line">    export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$f</span><br><span class="line">  else</span><br><span class="line">    export HADOOP_CLASSPATH=$f</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">export HADOOP_OPTS=&quot;$HADOOP_OPTS -Djava.net.preferIPv4Stack=true&quot;</span><br><span class="line">export HADOOP_NAMENODE_OPTS=&quot;-Dhadoop.security.logger=$&#123;HADOOP_SECURITY_LOGGER:-INFO,RFAS&#125; -Dhdfs.audit.logger=$&#123;HDFS_AUDIT_LOGGER:-INFO,NullAppender&#125; $HADOOP_NAMENODE_OPTS&quot;</span><br><span class="line">export HADOOP_DATANODE_OPTS=&quot;-Dhadoop.security.logger=ERROR,RFAS $HADOOP_DATANODE_OPTS&quot;</span><br><span class="line">export HADOOP_SECONDARYNAMENODE_OPTS=&quot;-Dhadoop.security.logger=$&#123;HADOOP_SECURITY_LOGGER:-INFO,RFAS&#125; -Dhdfs.audit.logger=$&#123;HDFS_AUDIT_LOGGER:-INFO,NullAppender&#125; $HADOOP_SECONDARYNAMENODE_OPTS&quot;</span><br><span class="line">export HADOOP_NFS3_OPTS=&quot;$HADOOP_NFS3_OPTS&quot;</span><br><span class="line">export HADOOP_PORTMAP_OPTS=&quot;-Xmx2048m $HADOOP_PORTMAP_OPTS&quot;</span><br><span class="line">export HADOOP_CLIENT_OPTS=&quot;-Xmx2048m $HADOOP_CLIENT_OPTS&quot;</span><br><span class="line">export HADOOP_SECURE_DN_USER=$&#123;HADOOP_SECURE_DN_USER&#125;</span><br><span class="line">export HADOOP_SECURE_DN_LOG_DIR=$&#123;HADOOP_LOG_DIR&#125;/$&#123;HADOOP_HDFS_USER&#125;</span><br><span class="line">export HADOOP_PID_DIR=$&#123;HADOOP_PID_DIR&#125;</span><br><span class="line">export HADOOP_SECURE_DN_PID_DIR=$&#123;HADOOP_PID_DIR&#125;</span><br><span class="line">export HADOOP_IDENT_STRING=$USER</span><br><span class="line">export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:/usr/lib64:/usr/local/lib/</span><br></pre></td></tr></table></figure>
+<h6 id="mapred-site-xml-配置文件"><a href="#mapred-site-xml-配置文件" class="headerlink" title="mapred-site.xml 配置文件"></a>mapred-site.xml 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line">  you may not use this file except in compliance with the License.</span><br><span class="line">  You may obtain a copy of the License at</span><br><span class="line"></span><br><span class="line">    http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"></span><br><span class="line">  Unless required by applicable law or agreed to in writing, software</span><br><span class="line">  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line">  See the License for the specific language governing permissions and</span><br><span class="line">  limitations under the License. See accompanying LICENSE file.</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Put site-specific property overrides in this file. --&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line"> &lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.staging-dir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/user&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:10020&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:19888&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.task.tmp.dir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/yarn/task&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;  </span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.resource.mb&lt;/name&gt;  </span><br><span class="line">  &lt;value&gt;4096&lt;/value&gt;  </span><br><span class="line">&lt;/property&gt;  </span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.memory.mb&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;4096&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.memory.mb&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;4096&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.java.opts&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;-Xmx3400m&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.java.opts&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;-Xmx3400m&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapred.compress.map.output&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapred.map.output.compression.codec&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;com.hadoop.compression.lzo.LzoCodec&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapred.child.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;LD_LIBRARY_PATH=/usr/lib64&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.job.ubertask.enable&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.job.ubertask.maxmaps&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;9&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.job.ubertask.maxreduces&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;!-- 默认值为一个数据块的大小--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.job.ubertask.maxbytes&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;67108864&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="yarn-site-xml-配置文件"><a href="#yarn-site-xml-配置文件" class="headerlink" title="yarn-site.xml 配置文件"></a>yarn-site.xml 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line">  you may not use this file except in compliance with the License.</span><br><span class="line">  You may obtain a copy of the License at</span><br><span class="line"></span><br><span class="line">    http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"></span><br><span class="line">  Unless required by applicable law or agreed to in writing, software</span><br><span class="line">  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line">  See the License for the specific language governing permissions and</span><br><span class="line">  limitations under the License. See accompanying LICENSE file.</span><br><span class="line">--&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;   </span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.ha.enabled&lt;/name&gt;   </span><br><span class="line">  &lt;value&gt;true&lt;/value&gt; </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;   </span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.cluster-id&lt;/name&gt;   </span><br><span class="line">  &lt;value&gt;shininghadoop-yarn&lt;/value&gt; </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;   </span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.ha.rm-ids&lt;/name&gt;   </span><br><span class="line">  &lt;value&gt;rm1,rm2&lt;/value&gt; </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;   </span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.hostname.rm1&lt;/name&gt;   </span><br><span class="line">  &lt;value&gt;namenode00.host-shining.com&lt;/value&gt; </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;   </span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.hostname.rm2&lt;/name&gt;   </span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com&lt;/value&gt; </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.webapp.address.rm1&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode00.host-shining.com:8088&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.webapp.address.rm2&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:8088&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.recovery.enabled&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.store.class&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;   </span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.zk-address&lt;/name&gt;   </span><br><span class="line">  &lt;value&gt;namenode00.host-shining.com:2181,namenode01.host-shining.com:2181,datanode00.host-shining.com:2181,datanode01.host-shining.com:2181,datanode02.host-shining.com:2181&lt;/value&gt; </span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- &lt;property&gt;</span><br><span class="line"> &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line"> &lt;value&gt;namenode01.host-shining.com&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt; </span><br><span class="line">&lt;property&gt; </span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:8031&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.address&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:8032&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:8030&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.admin.address&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:8033&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode01.host-shining.com:8088&lt;/value&gt;</span><br><span class="line">&lt;/property&gt; --&gt;</span><br><span class="line"></span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;yarn.nodemanager.aux-services.mapreduce_shuffle.class&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;yarn.log-aggregation-enable&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;true&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;yarn.nodemanager.local-dirs&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/yarn/local-dir&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line"> &lt;property&gt;</span><br><span class="line">   &lt;name&gt;yarn.nodemanager.log-dirs&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/yarn/logs&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.nodemanager.remote-app-log-dir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/yarn/logs&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.log.aggregation-enable&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;83968&lt;/value&gt;</span><br><span class="line">    &lt;discription&gt;每个节点可用内存,单位MB&lt;/discription&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.nodemanager.resource.cpu-vcores&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;18&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;yarn.log-aggregation-enable&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">   &lt;description&gt;Where to aggregate logs to.&lt;/description&gt;</span><br><span class="line">   &lt;name&gt;yarn.nodemanager.remote-app-log-dir&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/var/yarn/logs/apps&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.application.classpath&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;$HADOOP_CONF_DIR,</span><br><span class="line">         $HADOOP_COMMON_HOME/share/hadoop/common/*,</span><br><span class="line">         $HADOOP_COMMON_HOME/share/hadoop/common/lib/*,</span><br><span class="line">         $HADOOP_HDFS_HOME/share/hadoop/hdfs/*,</span><br><span class="line">         $HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,</span><br><span class="line">         $YARN_HOME/share/hadoop/yarn/*,</span><br><span class="line">         $YARN_HOME/share/hadoop/yarn/lib/*,</span><br><span class="line">         $YARN_HOME/share/hadoop/mapreduce/*,</span><br><span class="line">         $YARN_HOME/share/hadoop/mapreduce/lib/*</span><br><span class="line">  &lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.resourcemanager.scheduler.class&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.scheduler.fair.allocation.file&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/home/hadoop/apache-hadoop/hadoop/etc/hadoop/fair-scheduler.xml&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.log.server.url&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;http://namenode01.host-shining.com:19888/jobhistory/logs&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.scheduler.minimum-allocation-mb&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;1024&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.scheduler.maximum-allocation-mb&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;16384&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.scheduler.minimum-allocation-vcores&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.scheduler.maximum-allocation-vcores&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;6&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.nodemanager.vmem-pmem-ratio&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;1.8&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.scheduler.fair.preemption&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="yarn-env-sh-配置文件"><a href="#yarn-env-sh-配置文件" class="headerlink" title="yarn-env.sh 配置文件"></a>yarn-env.sh 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_YARN_USER=$&#123;HADOOP_YARN_USER:-yarn&#125;</span><br><span class="line">export YARN_CONF_DIR=&quot;$&#123;YARN_CONF_DIR:-$HADOOP_YARN_HOME/conf&#125;&quot;</span><br><span class="line">export HADOOP_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HADOOP_LOG_DIR=$&#123;HADOOP_HOME&#125;/logs</span><br><span class="line">export YARN_LOG_DIR=$&#123;HADOOP_HOME&#125;/logs</span><br><span class="line">JVM_OPTS=&quot;-server -verbose:gc</span><br><span class="line">  -XX:+PrintGCDateStamps</span><br><span class="line">  -XX:+PrintGCDetails</span><br><span class="line">  -XX:+UseGCLogFileRotation</span><br><span class="line">  -XX:NumberOfGCLogFiles=9</span><br><span class="line">  -XX:GCLogFileSize=256m&quot;</span><br><span class="line">RESOURCEMANAGER_OPTS=&quot;-Xmx30g -Xms5g -Xmn2g $JVM_OPTS  -Xloggc:$YARN_LOG_DIR/rm_gc.log&quot;</span><br><span class="line">NODEMANAGER_OPTS=&quot;-Xmx2048m -Xms1024m -Xmn512m $JVM_OPTS  -Xloggc:$YARN_LOG_DIR/nm_gc.log&quot;</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_45</span><br><span class="line">if [ &quot;$JAVA_HOME&quot; != &quot;&quot; ]; then</span><br><span class="line">  #echo &quot;run java in $JAVA_HOME&quot;</span><br><span class="line">  JAVA_HOME=$JAVA_HOME</span><br><span class="line">fi</span><br><span class="line">  </span><br><span class="line">if [ &quot;$JAVA_HOME&quot; = &quot;&quot; ]; then</span><br><span class="line">  echo &quot;Error: JAVA_HOME is not set.&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">JAVA=$JAVA_HOME/bin/java</span><br><span class="line">JAVA_HEAP_MAX=-Xmx4096m </span><br><span class="line">if [ &quot;$YARN_HEAPSIZE&quot; != &quot;&quot; ]; then</span><br><span class="line">  JAVA_HEAP_MAX=&quot;-Xmx&quot;&quot;$YARN_HEAPSIZE&quot;&quot;m&quot;</span><br><span class="line">fi</span><br><span class="line">IFS=</span><br><span class="line">if [ &quot;$YARN_LOG_DIR&quot; = &quot;&quot; ]; then</span><br><span class="line">  YARN_LOG_DIR=&quot;$HADOOP_YARN_HOME/logs&quot;</span><br><span class="line">fi</span><br><span class="line">if [ &quot;$YARN_LOGFILE&quot; = &quot;&quot; ]; then</span><br><span class="line">  YARN_LOGFILE=&apos;yarn.log&apos;</span><br><span class="line">fi</span><br><span class="line">if [ &quot;$YARN_POLICYFILE&quot; = &quot;&quot; ]; then</span><br><span class="line">  YARN_POLICYFILE=&quot;hadoop-policy.xml&quot;</span><br><span class="line">fi</span><br><span class="line">unset IFS</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dhadoop.log.dir=$YARN_LOG_DIR&quot;</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dyarn.log.dir=$YARN_LOG_DIR&quot;</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dhadoop.log.file=$YARN_LOGFILE&quot;</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dyarn.log.file=$YARN_LOGFILE&quot;</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dyarn.home.dir=$YARN_COMMON_HOME&quot;</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dyarn.id.str=$YARN_IDENT_STRING&quot;</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dhadoop.root.logger=$&#123;YARN_ROOT_LOGGER:-INFO,console&#125;&quot;</span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dyarn.root.logger=$&#123;YARN_ROOT_LOGGER:-INFO,console&#125;&quot;</span><br><span class="line">if [ &quot;x$JAVA_LIBRARY_PATH&quot; != &quot;x&quot; ]; then</span><br><span class="line">  YARN_OPTS=&quot;$YARN_OPTS -Djava.library.path=$JAVA_LIBRARY_PATH&quot;</span><br><span class="line">fi  </span><br><span class="line">YARN_OPTS=&quot;$YARN_OPTS -Dyarn.policy.file=$YARN_POLICYFILE&quot;</span><br></pre></td></tr></table></figure>
+<h6 id="slave-配置文件"><a href="#slave-配置文件" class="headerlink" title="slave 配置文件"></a>slave 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">datanode00.host-shining.com</span><br><span class="line">datanode01.host-shining.com</span><br><span class="line">datanode02.host-shining.com</span><br><span class="line">datanode03.host-shining.com</span><br><span class="line">datanode04.host-shining.com</span><br><span class="line">datanode05.host-shining.com</span><br><span class="line">datanode06.host-shining.com</span><br><span class="line">datanode07.host-shining.com</span><br><span class="line">datanode08.host-shining.com</span><br><span class="line">datanode09.host-shining.com</span><br></pre></td></tr></table></figure>
+<h5 id="apache-maven-安装"><a href="#apache-maven-安装" class="headerlink" title="apache maven 安装"></a>apache maven 安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/hadoop</span><br><span class="line">wget http://mirror.bit.edu.cn/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz</span><br><span class="line">tar -zxvf apache-maven-3.3.9-bin.tar.gz</span><br></pre></td></tr></table></figure>
+<h5 id="设置环境变量-（每台机器都需要配置）"><a href="#设置环境变量-（每台机器都需要配置）" class="headerlink" title="设置环境变量 （每台机器都需要配置）"></a>设置环境变量 （每台机器都需要配置）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">export MAVEN_OPTS=&quot;-Xms1024m -Xmx1024m -Xss1m&quot;</span><br><span class="line"></span><br><span class="line">export OOZIE_HOME=/home/hadoop/apache-hadoop/oozie</span><br><span class="line">export MAVEN_HOME=/home/hadoop/apache-maven-3.3.9</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_45</span><br><span class="line">export ZK_HOME=/home/hadoop/apache-hadoop/zookeeper</span><br><span class="line">export HADOOP_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HBASE_HOME=/home/hadoop/apache-hadoop/hbase</span><br><span class="line">export HIVE_HOME=/home/hadoop/apache-hadoop/hive</span><br><span class="line">export HADOOP_MAPRED_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_COMMON_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_HDFS_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export YARN_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_YARN_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</span><br><span class="line">export HDFS_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</span><br><span class="line">export YARN_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR=$&#123;HADOOP_HOME&#125;/lib/native </span><br><span class="line">export SCALA_HOME=/home/hadoop/apache-hadoop/scala</span><br><span class="line">export MAHOUT_HOME=/home/hadoop/apache-hadoop/mahout</span><br><span class="line">export MAHOUT_CONF_DIR=$MAHOUT_HOME/conf</span><br><span class="line">export HADOOP_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</span><br><span class="line">export SPARK_HOME=/home/hadoop/apache-hadoop/spark</span><br><span class="line"></span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$&#123;JAVA_HOME&#125;/jre/bin:$&#123;ZK_HOME&#125;/bin:$&#123;HADOOP_HOME&#125;/bin:$&#123;HADOOP_HOME&#125;/sbin:$&#123;HBASE_HOME&#125;/bin:$MAHOUT_HOME/bin:$&#123;HIVE_HOME&#125;/bin:$&#123;SCALA_HOME&#125;/bin:$&#123;SPARK_HOME&#125;/bin:$&#123;MAVEN_HOME&#125;/bin:$&#123;OOZIE_HOME&#125;/bin:$PATH</span><br><span class="line">export classpath=$JAVA_HOME/lib/dt.jar:$HBASE_HOME/lib:$MAHOUT_HOME/lib:$PIG_HOME/lib:$HIVE_HOME/lib:$JAVA_HOME/lib/tools.jar:$HADOOP_CONF_DIR:$SPARK_HOME/lib:$HBASE_HOME/lib/native/Linux-amd64-64:/usr/local/lib:$HADOOP_HOME/lib/native</span><br><span class="line">export HBASE_LIBRARY_PATH=$&#123;HBASE_LIBRARY_PATH&#125;:$&#123;HBASE_HOME&#125;/lib/native/Linux-amd64-64:/usr/local/lib</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HADOOP_HOME/lib/native/Linux-amd64-64:$HADOOP_HOME/lib/native:/usr/local/lib</span><br></pre></td></tr></table></figure>
+<h5 id="protobuf-安装"><a href="#protobuf-安装" class="headerlink" title="protobuf 安装"></a>protobuf 安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf protobuf-2.5.0.tar.gz   （每台机器安装）</span><br><span class="line">cd protobuf-2.5.0</span><br><span class="line">./configure          (root用户执行)</span><br><span class="line">make                 (root用户执行)</span><br><span class="line">make install         (root用户执行)</span><br></pre></td></tr></table></figure>
+<h5 id="编译hdfs源码，-lib库-（编译以前需要安装maven，下载之后解压，设置环境变量即可-不需要没台机器都安装）"><a href="#编译hdfs源码，-lib库-（编译以前需要安装maven，下载之后解压，设置环境变量即可-不需要没台机器都安装）" class="headerlink" title="编译hdfs源码， lib库 （编译以前需要安装maven，下载之后解压，设置环境变量即可,不需要没台机器都安装）"></a>编译hdfs源码， lib库 （编译以前需要安装maven，下载之后解压，设置环境变量即可,不需要没台机器都安装）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget http://apache.fayea.com/hadoop/common/hadoop-2.7.2/hadoop-2.7.2-src.tar.gz</span><br><span class="line">tar -zxvf hadoop-2.7.2-src.tar.gz</span><br><span class="line">cd hadoop-2.7.2-src</span><br><span class="line">mvn package -Pdist,native -DskipTests -Dtar</span><br><span class="line">cp -a hadoop-dist/target/hadoop-2.7.2/lib/native/* ~/apache-hadoop/hadoop/lib/native/</span><br></pre></td></tr></table></figure>
+<h5 id="编译lzo压缩格式"><a href="#编译lzo压缩格式" class="headerlink" title="编译lzo压缩格式"></a>编译lzo压缩格式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">下载 lzo  https://codeload.github.com/twitter/hadoop-lzo/zip/master</span><br><span class="line">unzip hadoop-lzo-master.zip </span><br><span class="line">cd hadoop-lzo-master</span><br><span class="line">vim pom.xml     （修改hadoop版本）</span><br><span class="line">  &lt;properties&gt;</span><br><span class="line">    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">    &lt;hadoop.current.version&gt;2.7.2&lt;/hadoop.current.version&gt;</span><br><span class="line">    &lt;hadoop.old.version&gt;1.0.4&lt;/hadoop.old.version&gt;</span><br><span class="line">  &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">export CFLAGS=-m64</span><br><span class="line">export CXXFLAGS=-m64</span><br><span class="line">mvn clean package -Dmaven.test.skip=true</span><br><span class="line">cp target/native/Linux-amd64-64/lib/*  ~/apache-hadoop/hadoop/lib/native/</span><br><span class="line">cp target/hadoop-lzo-0.4.20-SNAPSHOT.jar  ~/apache-hadoop/hadoop/share/hadoop/common/lib/</span><br></pre></td></tr></table></figure>
+<h4 id="安装hbase"><a href="#安装hbase" class="headerlink" title="安装hbase"></a>安装hbase</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf  hbase-1.2.2-bin.tar.gz &amp;&amp; ln -s hbase-1.2.2 hbase</span><br><span class="line">cd hbase/conf</span><br><span class="line">cp $HADOOP_HOME/etc/hadoop/core-site.xml  $HBASE_HOME/conf/</span><br><span class="line">cp $HADOOP_HOME/etc/hadoop/hdfs-site.xml  $HBASE_HOME/conf/</span><br><span class="line">对于Hbase启用LZO</span><br><span class="line">cp -a $HADOOP_HOME/lib/native $HBASE_HOME/lib</span><br></pre></td></tr></table></figure>
+<h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><h6 id="hbase-site-xml-配置文件"><a href="#hbase-site-xml-配置文件" class="headerlink" title="hbase.site.xml 配置文件"></a>hbase.site.xml 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * Licensed to the Apache Software Foundation (ASF) under one</span><br><span class="line"> * or more contributor license agreements.  See the NOTICE file</span><br><span class="line"> * distributed with this work for additional information</span><br><span class="line"> * regarding copyright ownership.  The ASF licenses this file</span><br><span class="line"> * to you under the Apache License, Version 2.0 (the</span><br><span class="line"> * &quot;License&quot;); you may not use this file except in compliance</span><br><span class="line"> * with the License.  You may obtain a copy of the License at</span><br><span class="line"> *</span><br><span class="line"> *     http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"> *</span><br><span class="line"> * Unless required by applicable law or agreed to in writing, software</span><br><span class="line"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line"> * See the License for the specific language governing permissions and</span><br><span class="line"> * limitations under the License.</span><br><span class="line"> */</span><br><span class="line">--&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.rootdir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;hdfs://shininghadoop/hbase&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.rest.port&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;60050&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.tmp.dir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/home/hadoop/apache-hadoop/hbase/tmp&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode00.host-shining.com,namenode01.host-shining.com,datanode00.host-shining.com,datanode01.host-shining.com,datanode02.host-shining.com&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.master&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;namenode00.host-shining.com,namenode01.host-shining.com&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;3&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/home/hadoop/apache-hadoop/zookeeper&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;Property from ZooKeeper&apos;sconfigzoo.cfg.The directory where the snapshot is stored.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hbase.zookeeper.property.clientPort&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;2181&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;Property from ZooKeeper&apos;sconfigzoo.cfg.Theport at which the clients will connect.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;io.compression.codecs&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.BZip2Codec&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;io.compression.codec.lzo.class&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;com.hadoop.compression.lzo.LzoCodec&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="hbase-env-sh-修改配置文件-（取消了注释的内容）"><a href="#hbase-env-sh-修改配置文件-（取消了注释的内容）" class="headerlink" title="hbase-env.sh 修改配置文件 （取消了注释的内容）"></a>hbase-env.sh 修改配置文件 （取消了注释的内容）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_45</span><br><span class="line">export HADOOP_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HBASE_HOME=/home/hadoop/apache-hadoop/hbase</span><br><span class="line">export HBASE_HEAPSIZE=4096</span><br><span class="line">export HBASE_OPTS=&quot;-XX:+UseConcMarkSweepGC&quot;</span><br><span class="line">export HBASE_MASTER_OPTS=&quot;$HBASE_MASTER_OPTS -Xms1024m -Xmx4096m&quot;</span><br><span class="line">export HBASE_REGIONSERVER_OPTS=&quot;$HBASE_REGIONSERVER_OPTS -Xms1024m -Xmx4096m&quot;</span><br><span class="line">export HBASE_LOG_DIR=/home/hadoop/apache-hadoop/hbase/logs</span><br><span class="line">export HBASE_MANAGES_ZK=false</span><br><span class="line">export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:/usr/lib64</span><br><span class="line">export HBASE_LIBRARY_PATH=$HADOOP_HOME/lib/native:/usr/lib64</span><br><span class="line">export CLASSPATH=$CLASSPATH:$HBASE_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<h6 id="regionservers-配置文件修改"><a href="#regionservers-配置文件修改" class="headerlink" title="regionservers 配置文件修改"></a>regionservers 配置文件修改</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">datanode03.host-shining.com</span><br><span class="line">datanode04.host-shining.com</span><br><span class="line">datanode05.host-shining.com</span><br><span class="line">datanode06.host-shining.com</span><br></pre></td></tr></table></figure>
+<h6 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hbase-env.sh 中   </span><br><span class="line">#export HBASE_MASTER_OPTS=&quot;$HBASE_MASTER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m&quot;</span><br><span class="line">#export HBASE_REGIONSERVER_OPTS=&quot;$HBASE_REGIONSERVER_OPTS -XX:PermSize=128m -XX:MaxPermSize=128m&quot;</span><br><span class="line">改为</span><br><span class="line">export HBASE_MASTER_OPTS=&quot;$HBASE_MASTER_OPTS -Xms1024m -Xmx1024m&quot;</span><br><span class="line">export HBASE_REGIONSERVER_OPTS=&quot;$HBASE_REGIONSERVER_OPTS -Xms1024m -Xmx1024m&quot; </span><br><span class="line"></span><br><span class="line">////  jdk 用1.8 的 PermSize MaxPermSize 参数没有，需要用 xmx</span><br></pre></td></tr></table></figure>
+<h4 id="hive安装"><a href="#hive安装" class="headerlink" title="hive安装"></a>hive安装</h4><h6 id="数据库创建与授权"><a href="#数据库创建与授权" class="headerlink" title="数据库创建与授权"></a>数据库创建与授权</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">create database shininghadoop;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON shininghadoop.* TO &apos;shininghadoop&apos;@&quot;192.168.77.158&quot; IDENTIFIED BY &apos;shininghadoop&apos;WITH GRANT OPTION;</span><br><span class="line">GRANT ALL PRIVILEGES ON shininghadoop.* TO &apos;shininghadoop&apos;@&quot;namenode00.host-shining.com&quot; IDENTIFIED BY &apos;shininghadoop&apos;WITH GRANT OPTION;</span><br><span class="line">......   兜圈所有hadoop节点的IP地址</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<h6 id="导入hive元数据库"><a href="#导入hive元数据库" class="headerlink" title="导入hive元数据库"></a>导入hive元数据库</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-hive-2.1.0-bin.tar.gz &amp;&amp; ln -s apache-hive-2.1.0-bin hive</span><br><span class="line">创建源数据</span><br><span class="line">cd $HIVE_HOME/scripts/metastore/upgrade/mysql/</span><br><span class="line">mysql -h数据库地址 -ushininghadoop -p</span><br><span class="line">use shininghadoop;</span><br><span class="line">source hive-schema-2.1.0.mysql.sql;</span><br></pre></td></tr></table></figure>
+<h6 id="替换java-jdbc-jar"><a href="#替换java-jdbc-jar" class="headerlink" title="替换java jdbc jar"></a>替换java jdbc jar</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hive 需要 java jar</span><br><span class="line">cd $HIVE_HOME/lib</span><br><span class="line">把 mysql-connector-java-5.1.35.jar 放在这里</span><br><span class="line">ln -s mysql-connector-java-5.1.35.jar mysql-connector-java.jar</span><br></pre></td></tr></table></figure>
+<h6 id="hive-site-xml-配置文件-根据环境配置，线上用的是default文件"><a href="#hive-site-xml-配置文件-根据环境配置，线上用的是default文件" class="headerlink" title="hive-site.xml 配置文件  (根据环境配置，线上用的是default文件)"></a>hive-site.xml 配置文件  (根据环境配置，线上用的是default文件)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;jdbc:mysql://192.168.53.101:3306/testhadoop&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;the URL of the MySQL database&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;</span><br><span class="line">&lt;/property&gt; </span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;testhadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt; </span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;testhadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;datanucleus.autoCreateSchema&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;datanucleus.fixedDatastore&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt; </span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;datanucleus.autoStartMechanism&lt;/name&gt; </span><br><span class="line">  &lt;value&gt;SchemaTable&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;  </span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.metastore.schema.verification&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;true&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.authorization.enabled&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/user/hive/warehouse&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.authorization.manager&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.hive.ql.security.authorization.DefaultHiveAuthorizationProvider&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;The Hive client authorization manager class name.</span><br><span class="line">  The user defined authorization class should implement interface org.apache.hadoop.hive.ql.security.authorization.HiveAuthorizationProvider.</span><br><span class="line">  &lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.metastore.authorization.manager&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.hive.ql.security.authorization.DefaultHiveMetastoreAuthorizationProvider&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;authorization manager class name to be used in the metastore for authorization.</span><br><span class="line">  The user defined authorization class should implement interface org.apache.hadoop.hive.ql.security.authorization.HiveMetastoreAuthorizationProvider.</span><br><span class="line">  &lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.authenticator.manager&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.hive.ql.security.HadoopDefaultAuthenticator&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;hive client authenticator manager class name.</span><br><span class="line">  The user defined authenticator should implement interface org.apache.hadoop.hive.ql.security.HiveAuthenticationProvider.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.metastore.authenticator.manager&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;org.apache.hadoop.hive.ql.security.HadoopDefaultMetastoreAuthenticator&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;authenticator manager class name to be used in the metastore for authentication.</span><br><span class="line">  The user defined authenticator should implement interface org.apache.hadoop.hive.ql.security.HiveAuthenticationProvider.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.authorization.createtable.group.grants&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;the privileges automatically granted to some groups whenever a table gets created. </span><br><span class="line">   An example like &quot;groupX,groupY:select;groupZ:create&quot; will grant select privilege to groupX and groupY, </span><br><span class="line">   and grant create privilege to groupZ whenever a new table created.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.authorization.createtable.role.grants&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;the privileges automatically granted to some roles whenever a table gets created. </span><br><span class="line">   An example like &quot;roleX,roleY:select;roleZ:create&quot; will grant select privilege to roleX and roleY, </span><br><span class="line">   and grant create privilege to roleZ whenever a new table created.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.security.authorization.createtable.owner.grants&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;ALL&lt;/value&gt;</span><br><span class="line">  &lt;description&gt;the privileges automatically granted to the owner whenever a table gets created. </span><br><span class="line">   An example like &quot;select,drop&quot; will grant select and drop privilege to the owner of the table&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hive.auto.convert.join&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="hive-env-sh"><a href="#hive-env-sh" class="headerlink" title="hive-env.sh"></a>hive-env.sh</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HEAPSIZE=2048</span><br><span class="line">export HIVE_CONF_DIR=/home/hadoop/apache-hadoop/hive/conf</span><br><span class="line">export HIVE_AUX_JARS_PATH=/home/hadoop/apache-hadoop/hive/lib</span><br><span class="line">export HADOOP_PREFIX=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HADOOP_LIBEXEC_DIR=/home/hadoop/apache-hadoop/hadoop/libexec</span><br><span class="line">export HADOOP_CONF_DIR=/home/hadoop/apache-hadoop/hadoop/etc/hadoop</span><br><span class="line">export HADOOP_COMMON_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HADOOP_HDFS_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HADOOP_YARN_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HADOOP_MAPRED_HOME=/home/hadoop/apache-hadoop/hadoop</span><br></pre></td></tr></table></figure>
+<h6 id="启动-hive-metastore和-server2"><a href="#启动-hive-metastore和-server2" class="headerlink" title="启动 hive metastore和 server2"></a>启动 hive metastore和 server2</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir $HIVE_HOME/hive-logs</span><br><span class="line">nohup.sh </span><br><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">nohup  hive --service metastore &gt; /home/hadoop/apache-hadoop/hive/hive-logs/metastore.log 2&gt;&amp;1 &amp; </span><br><span class="line">echo $! &gt; /home/hadoop/apache-hadoop/hive/hive-logs/metastore.pid</span><br><span class="line">nohup hive  --service hiveserver2 &gt; /home/hadoop/apache-hadoop/hive/hive-logs/hiveserver2.log 2&gt;&amp;1 &amp; </span><br><span class="line">echo $! &gt; /home/hadoop/apache-hadoop/hive/hive-logs/hiveserver2.pid</span><br></pre></td></tr></table></figure>
+<h5 id="hadoop启动"><a href="#hadoop启动" class="headerlink" title="hadoop启动"></a>hadoop启动</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 -R /home/hadoop/apache-hadoop</span><br><span class="line">hdfs zkfc -formatZK（格式化zookeeper）</span><br><span class="line">hadoop-daemon.sh start journalnode (启动journalnode)</span><br><span class="line">hdfs namenode -format（格式化namenode metadata）</span><br><span class="line">hadoop-daemon.sh start namenode</span><br><span class="line">hadoop-daemon.sh start namenode -bootstrapStandby( standy namenode)</span><br><span class="line">如果上面log没有问题</span><br><span class="line">stop-dfs.sh</span><br><span class="line">start-dfs.sh</span><br><span class="line">start-yarn.sh   (yarn的机器上执行)</span><br><span class="line">mr-jobhistory-daemon.sh start historyserver  (namenode01 机器上执行)</span><br><span class="line">start-hbase.sh</span><br></pre></td></tr></table></figure>
+<h5 id="spark-安装"><a href="#spark-安装" class="headerlink" title="spark 安装"></a>spark 安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wget http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz    （每台机器安装）</span><br><span class="line">tar -zxvf scala-2.11.8.tgz &amp;&amp; ln -s scala-2.11.8 scala</span><br><span class="line"></span><br><span class="line">wget http://apache.fayea.com/mahout/0.12.2/apache-mahout-distribution-0.12.2.tar.gz</span><br><span class="line">tar -zxvf apache-mahout-distribution-0.12.2.tar.gz </span><br><span class="line">ln -s apache-mahout-distribution-0.12.2 mahout </span><br><span class="line">cp ~/apache-hadoop/hadoop/share/hadoop/common/lib/hadoop-lzo-0.4.20-SNAPSHOT.jar ~/apache-hadoop/mahout/lib/</span><br><span class="line"></span><br><span class="line">wget http://mirrors.hust.edu.cn/apache/spark/spark-1.6.2/spark-1.6.2.tgz</span><br><span class="line">tar -zxvf spark-1.6.2.tgz &amp;&amp; ln -s spark-1.6.2.tgz spark-1.6.2</span><br><span class="line">cd spark/conf</span><br></pre></td></tr></table></figure>
+<h6 id="spark-default-conf-配置文件"><a href="#spark-default-conf-配置文件" class="headerlink" title="spark-default.conf  配置文件"></a>spark-default.conf  配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spark.master                     spark://cd-namenode00.host-shining.com:7077</span><br><span class="line">spark.eventLog.enabled           true</span><br><span class="line">spark.eventLog.dir               hdfs://shininghadoop/spark</span><br><span class="line">spark.serializer                 org.apache.spark.serializer.KryoSerializer</span><br><span class="line">spark.driver.memory              5g</span><br><span class="line">spark.executor.extraJavaOptions  -XX:+PrintGCDetails -Dkey=value -Dnumbers=&quot;one two three&quot;</span><br></pre></td></tr></table></figure>
+<h6 id="spark-env-sh-配置文件"><a href="#spark-env-sh-配置文件" class="headerlink" title="spark-env.sh 配置文件"></a>spark-env.sh 配置文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_WORKER_MEMORY=5G</span><br><span class="line">export SPARK_MEM=$&#123;SPARK_MEM:-5g&#125;</span><br><span class="line">JAVA_OPTS=&quot;$OUR_JAVA_OPTS&quot;</span><br><span class="line">JAVA_OPTS=&quot;$JAVA_OPTS-Xms$SPARK_MEM -Xmx$SPARK_MEM&quot;</span><br><span class="line">JAVA_OPTS=&quot;$JAVA_OPTS-Djava.library.path=$SPARK_LIBRARY_PATH&quot;</span><br><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_45</span><br><span class="line">export HADOOP_HOME=/home/hadoop/apache-hadoop/hadoop</span><br><span class="line">export HBASE_HOME=/home/hadoop/apache-hadoop/hbase</span><br><span class="line">export HIVE_HOME=/home/hadoop/apache-hadoop/hive</span><br><span class="line">export HADOOP_MAPRED_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_COMMON_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_HDFS_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export YARN_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_YARN_HOME=$&#123;HADOOP_HOME&#125;</span><br><span class="line">export HADOOP_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</span><br><span class="line">export HDFS_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</span><br><span class="line">export YARN_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</span><br><span class="line">export SPARK_HOME=/home/hadoop/apache-hadoop/spark</span><br><span class="line">export SCALA_HOME=/home/hadoop/apache-hadoop/scala</span><br><span class="line">export classpath=$JAVA_HOME/lib/dt.jar:$HBASE_HOME/lib:$MAHOUT_HOME/lib:$PIG_HOME/lib:$HIVE_HOME/lib:$JAVA_HOME/lib/tools.jar:$HADOOP_CONF_DIR:$SPARK_HOME/lib:$&#123;HADOOP_HOME&#125;/lib</span><br><span class="line">export HADOOP_CLASSPATH=$JAVA_HOME/lib/dt.jar:$HBASE_HOME/lib/*:$MAHOUT_HOME/lib/*:$PIG_HOME/lib:$HIVE_HOME/lib/*:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/*:$HADOOP_CONF_DIR:$SPARK_HOME/lib/*:$&#123;HADOOP_HOME&#125;/lib/*:$HADOOP_CLASSPATH:</span><br><span class="line">export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/$OS_ARCH/server:$&#123;HADOOP_HOME&#125;/c++/Linux-$OS_ARCH-$OS_BIT/lib:/usr/local/lib:/usr/lib:$&#123;PBS_HOME&#125;/lib:/usr/lib64</span><br></pre></td></tr></table></figure>
+<h6 id="slave-节点信息"><a href="#slave-节点信息" class="headerlink" title="slave 节点信息"></a>slave 节点信息</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">datanode03.host-shining.com</span><br><span class="line">datanode04.host-shining.com</span><br><span class="line">datanode05.host-shining.com</span><br><span class="line">datanode06.host-shining.com</span><br></pre></td></tr></table></figure>
+<h6 id="spark-启动"><a href="#spark-启动" class="headerlink" title="spark 启动"></a>spark 启动</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd $SPARK_HOME/sbin</span><br><span class="line">./start-all.sh</span><br></pre></td></tr></table></figure>
+<h5 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h5><p>namenode地址    <a href="http://name00.host-shining.com:50070" target="_blank" rel="noopener">http://name00.host-shining.com:50070</a><br>spark 地址        <a href="http://name00.host-shining.com:8080" target="_blank" rel="noopener">http://name00.host-shining.com:8080</a><br>hbase地址        <a href="http://name00.host-shining.com:16010" target="_blank" rel="noopener">http://name00.host-shining.com:16010</a><br>yarn 地址        <a href="http://name01.host-shining.com:8088" target="_blank" rel="noopener">http://name01.host-shining.com:8088</a><br>jobhistory 地址    <a href="http://name01.host-shining.com:19888" target="_blank" rel="noopener">http://name01.host-shining.com:19888</a>  </p>
+<p>感觉文章还可以的话，帮忙点点下面的广告哦！ 谢谢支持！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="北极企鹅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="北极企鹅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/awk-echo-SingleQuoteMark-DoubleQuotationMarks/" rel="next" title="awk输出单引号或双引号">
+                <i class="fa fa-chevron-left"></i> awk输出单引号或双引号
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hue-installed/" rel="prev" title="Hue编译安装及Hadoop相关组建的配置">
+                Hue编译安装及Hadoop相关组建的配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+	<!-- google adsense -->
+	<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+
+	<div align="center">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sukbeta-1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:570px;height:250px"
+     data-ad-client="ca-pub-7874588734245173"
+     data-ad-slot="5382403634"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+	<!-- google adsense -->
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+          </div>
+          
+
+
+          
+
+<!-- google adsenen -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- head -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8243248314488866"
+     data-ad-slot="1571553111"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- google adsenen -->
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">北极企鹅</p>
+              <p class="site-description motion-element" itemprop="description">一步一步往前走！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:beijiqieyx@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Shining_YS" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/ys.shining" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/585da70d40fd" target="_blank" title="简书blog">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书blog</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/beijiqieyx" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/beijiqieyx" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sukbeta.github.io/web/" title="Web" target="_blank">Web</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-apache-hadoop-2-7-2-集群"><span class="nav-number">1.</span> <span class="nav-text">安装 apache hadoop 2.7.2 集群</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#hadoop集群hosts列表"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">hadoop集群hosts列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hadoop-client-列表"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">hadoop client 列表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装软件包和lzop软件（每台机器都执行）"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">安装软件包和lzop软件（每台机器都执行）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装jdk-1-8-（需要每台机器执行）"><span class="nav-number">1.0.0.0.4.</span> <span class="nav-text">安装jdk 1.8 （需要每台机器执行）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建hadoop用户并添加无密码登入（每台集群都执行）"><span class="nav-number">1.0.0.0.5.</span> <span class="nav-text">创建hadoop用户并添加无密码登入（每台集群都执行）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#datanode机器格式化硬盘-所有datanode节点执行"><span class="nav-number">1.0.0.0.6.</span> <span class="nav-text">datanode机器格式化硬盘  (所有datanode节点执行)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mount-挂在硬盘-所有datanode节点执行"><span class="nav-number">1.0.0.0.7.</span> <span class="nav-text">mount 挂在硬盘  (所有datanode节点执行)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下载软件包"><span class="nav-number">1.0.0.0.8.</span> <span class="nav-text">下载软件包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装zookeeper"><span class="nav-number">1.0.0.0.9.</span> <span class="nav-text">安装zookeeper</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装hdfs"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">安装hdfs</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建目录"><span class="nav-number">1.0.0.1.0.1.</span> <span class="nav-text">创建目录</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开始修改配置文件"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">开始修改配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hdfs-site-xml-配置文件"><span class="nav-number">1.0.0.1.1.1.</span> <span class="nav-text">hdfs-site.xml 配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#core-site-xml-配置文件"><span class="nav-number">1.0.0.1.1.2.</span> <span class="nav-text">core-site.xml 配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#hadoop-env-sh-配置文件-（去掉了注释部分）"><span class="nav-number">1.0.0.1.1.3.</span> <span class="nav-text">hadoop-env.sh 配置文件 （去掉了注释部分）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#mapred-site-xml-配置文件"><span class="nav-number">1.0.0.1.1.4.</span> <span class="nav-text">mapred-site.xml 配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#yarn-site-xml-配置文件"><span class="nav-number">1.0.0.1.1.5.</span> <span class="nav-text">yarn-site.xml 配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#yarn-env-sh-配置文件"><span class="nav-number">1.0.0.1.1.6.</span> <span class="nav-text">yarn-env.sh 配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#slave-配置文件"><span class="nav-number">1.0.0.1.1.7.</span> <span class="nav-text">slave 配置文件</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apache-maven-安装"><span class="nav-number">1.0.0.1.2.</span> <span class="nav-text">apache maven 安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置环境变量-（每台机器都需要配置）"><span class="nav-number">1.0.0.1.3.</span> <span class="nav-text">设置环境变量 （每台机器都需要配置）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#protobuf-安装"><span class="nav-number">1.0.0.1.4.</span> <span class="nav-text">protobuf 安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译hdfs源码，-lib库-（编译以前需要安装maven，下载之后解压，设置环境变量即可-不需要没台机器都安装）"><span class="nav-number">1.0.0.1.5.</span> <span class="nav-text">编译hdfs源码， lib库 （编译以前需要安装maven，下载之后解压，设置环境变量即可,不需要没台机器都安装）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译lzo压缩格式"><span class="nav-number">1.0.0.1.6.</span> <span class="nav-text">编译lzo压缩格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装hbase"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">安装hbase</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改配置文件"><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">修改配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#hbase-site-xml-配置文件"><span class="nav-number">1.0.0.2.1.1.</span> <span class="nav-text">hbase.site.xml 配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#hbase-env-sh-修改配置文件-（取消了注释的内容）"><span class="nav-number">1.0.0.2.1.2.</span> <span class="nav-text">hbase-env.sh 修改配置文件 （取消了注释的内容）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#regionservers-配置文件修改"><span class="nav-number">1.0.0.2.1.3.</span> <span class="nav-text">regionservers 配置文件修改</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#备注"><span class="nav-number">1.0.0.2.1.4.</span> <span class="nav-text">备注</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hive安装"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">hive安装</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库创建与授权"><span class="nav-number">1.0.0.3.0.1.</span> <span class="nav-text">数据库创建与授权</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#导入hive元数据库"><span class="nav-number">1.0.0.3.0.2.</span> <span class="nav-text">导入hive元数据库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#替换java-jdbc-jar"><span class="nav-number">1.0.0.3.0.3.</span> <span class="nav-text">替换java jdbc jar</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#hive-site-xml-配置文件-根据环境配置，线上用的是default文件"><span class="nav-number">1.0.0.3.0.4.</span> <span class="nav-text">hive-site.xml 配置文件  (根据环境配置，线上用的是default文件)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#hive-env-sh"><span class="nav-number">1.0.0.3.0.5.</span> <span class="nav-text">hive-env.sh</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#启动-hive-metastore和-server2"><span class="nav-number">1.0.0.3.0.6.</span> <span class="nav-text">启动 hive metastore和 server2</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hadoop启动"><span class="nav-number">1.0.0.3.1.</span> <span class="nav-text">hadoop启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#spark-安装"><span class="nav-number">1.0.0.3.2.</span> <span class="nav-text">spark 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#spark-default-conf-配置文件"><span class="nav-number">1.0.0.3.2.1.</span> <span class="nav-text">spark-default.conf  配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#spark-env-sh-配置文件"><span class="nav-number">1.0.0.3.2.2.</span> <span class="nav-text">spark-env.sh 配置文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#slave-节点信息"><span class="nav-number">1.0.0.3.2.3.</span> <span class="nav-text">slave 节点信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#spark-启动"><span class="nav-number">1.0.0.3.2.4.</span> <span class="nav-text">spark 启动</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看状态"><span class="nav-number">1.0.0.3.3.</span> <span class="nav-text">查看状态</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北极企鹅</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'O6nPM59vDnUQjwGEOR9xUDb0-gzGzoHsz',
+        appKey: 'DMJAa2u9ryrsvtE16mLGHOdQ',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

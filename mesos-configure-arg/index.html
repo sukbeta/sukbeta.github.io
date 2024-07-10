@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="A7rQGsj3dl" />
+<meta name="google-site-verification" content="6ADdF-qcnJafC3lLfZdMSOIIoObNuMBPLfZjjSYaaM4" />
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mesos," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="舒克贝塔" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Master 和 Slave 的配置选项（转）可以通过运行 mesos-master –help 或者 mesos-slave –help 可以查看相关的可用选项。每个选项可以通过以下两种方式设置  执行命令的时候使用 –-option_name=value 来传递配置选项。value 既可以是数值，也可以指定包含参数的文件 (–opthon_name=file://文件路径)。 该路径既可以是绝">
+<meta name="keywords" content="mesos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mesos master和slave的配置参数说明">
+<meta property="og:url" content="https://sukbeta.github.io/mesos-configure-arg/index.html">
+<meta property="og:site_name" content="舒克贝塔">
+<meta property="og:description" content="Master 和 Slave 的配置选项（转）可以通过运行 mesos-master –help 或者 mesos-slave –help 可以查看相关的可用选项。每个选项可以通过以下两种方式设置  执行命令的时候使用 –-option_name=value 来传递配置选项。value 既可以是数值，也可以指定包含参数的文件 (–opthon_name=file://文件路径)。 该路径既可以是绝">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.niupic.com/images/2023/12/26/ekGQ.jpg">
+<meta property="og:updated_time" content="2023-12-26T01:48:30.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mesos master和slave的配置参数说明">
+<meta name="twitter:description" content="Master 和 Slave 的配置选项（转）可以通过运行 mesos-master –help 或者 mesos-slave –help 可以查看相关的可用选项。每个选项可以通过以下两种方式设置  执行命令的时候使用 –-option_name=value 来传递配置选项。value 既可以是数值，也可以指定包含参数的文件 (–opthon_name=file://文件路径)。 该路径既可以是绝">
+<meta name="twitter:image" content="https://i.niupic.com/images/2023/12/26/ekGQ.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://sukbeta.github.io/mesos-configure-arg/"/>
+
+
+
+
+
+  <title>mesos master和slave的配置参数说明 | 舒克贝塔</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d853781928d40e9af4612daabcef88b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+    <meta name="baidu-site-verification" content="A7rQGsj3dl" />
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">舒克贝塔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'CEX8A7y6PyxZBzheT';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/mesos-configure-arg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mesos master和slave的配置参数说明</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T19:20:06+08:00">
+                2019-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mesos/" itemprop="url" rel="index">
+                    <span itemprop="name">mesos</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/mesos-configure-arg/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/mesos-configure-arg/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 游览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://i.niupic.com/images/2023/12/26/ekGQ.jpg" rel="gallery_clyfhrc5a004q0aph52rku9up"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.niupic.com/images/2023/12/26/ekGQ.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h2 id="Master-和-Slave-的配置选项（转）"><a href="#Master-和-Slave-的配置选项（转）" class="headerlink" title="Master 和 Slave 的配置选项（转）"></a>Master 和 Slave 的配置选项（转）</h2><p>可以通过运行 mesos-master –help 或者 mesos-slave –help 可以查看相关的可用选项。每个选项可以通过以下两种方式设置</p>
+<ul>
+<li>执行命令的时候使用 –-option_name=value 来传递配置选项。value 既可以是数值，也可以指定包含参数的文件 (–opthon_name=file://文件路径)。 该路径既可以是绝对路径，也可以是相对当前工作目录的相对路径。</li>
+<li>通过设定环境变量 MESOSOPTION_NAME (变量名都以 MESOS 开头)<br>执行时会先读取环境变量，然后才看命令行参数</li>
+</ul>
+<a id="more"></a>
+<h2 id="下列选项-都被-master-和-slave-所支持："><a href="#下列选项-都被-master-和-slave-所支持：" class="headerlink" title="下列选项 都被 master 和 slave 所支持："></a>下列选项 都被 master 和 slave 所支持：</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>–advertise_ip=VALUE</td>
+<td>用来触达 mesos master/slave 的 IP 广播地址。 Mesos master/slave 不会与这个 IP 地址绑定。 但是，这个 IP 地址可以被用来访问 Mesos master/slave.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–advertise_port=VALUE</td>
+<td>用来触达 mesos master/slave 的广播端口 (配合 advertise_ip). Mesos master/slave 不与这个端口绑定。 但是，这个端口 (配合 advertise_ip) 可以用于访问 Mesos master/slave.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–firewall_rules=VALUE</td>
+<td>该值是终端防火墙的规则（rules），可以为JSON 类型的 rules 或包含 JSON 类型 rules 的文件。文件路径可以为 file:///path/to/file 或者 /path/to/file。<br>规则的格式请参考文件 flags.proto 中的 Firewall 信息。<br>例如:<br>{<br>  “disabled_endpoints” : {<br>    “paths” : [<br>      “/files/browse”,<br>      “/metrics/snapshot”<br>    ]<br>  }<br>}<br></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]help</td>
+<td>输出帮助信息 (默认值: false)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–ip=VALUE</td>
+<td>监听的 IP 地址. 这个不能与–ip_discovery_command一起使用. (master默认5050，slave默认5051)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–ip_discovery_command=VALUE</td>
+<td>IP 发现可选项: 如果设置 IP 地址，master/slave 将会尝试绑定这个 IP 地址。 不能与 –ip 一起使用.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–port=VALUE</td>
+<td>监听端口</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]version</td>
+<td>显示版本并退出 (默认: false)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–hooks=VALUE</td>
+<td>一个由逗号分隔的 hook 模块列表将被安装到 master/slave。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–hostname=VALUE</td>
+<td>slave 节点报告或 master 节点在 ZooKeeper 里广播的 hostname. 如果不做设置，hostname 将解析为 master/slave 绑定的 IP 地址。 除非用户已经使用 –no-hostname_lookup 明确禁止了此功能, in which case the IP itself is used.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]hostname_lookup</td>
+<td>当没有明确指定 hostname 时(例如 –hostname)，是否查询找出服务器的 hostname。 默认值是 true; 如果设置为 false Mesos 将会使用 IP 地址信息，除非 hostname 被明确指出了。 (默认值: true)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–modules=VALUE</td>
+<td>List of modules to be loaded and be available to the internal subsystems.<br>Use –modules=filepath to specify the list of modules via a file containing a JSON-formatted string. filepath can be of the form file:///path/to/file or /path/to/file.<br>Use –modules=”{…}” to specify the list of modules inline.<br>Example:<br>{<br>  “libraries”: [<br>    {<br>      “file”: “/path/to/libfoo.so”,<br>      “modules”: [<br>        {<br>          “name”: “org_apache_mesos_bar”,<br>          “parameters”: [<br>            {<br>              “key”: “X”,<br>              “value”: “Y”<br>            }<br>          ]<br>        },<br>        {<br>          “name”: “org_apache_mesos_baz”<br>        }<br>      ]<br>    },<br>    {<br>      “name”: “qux”,<br>      “modules”: [<br>        {<br>          “name”: “org_apache_mesos_norf”<br>        }<br>      ]<br>    }<br>  ]<br>}<br></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>masters 和 slaves 同时支持以下这些日志选项 更多日志信息，请访问<br><a href="http://mesos.apache.org/documentation/latest/logging/" target="_blank" rel="noopener">http://mesos.apache.org/documentation/latest/logging/</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>–[no-]quiet</td>
+<td>禁用输出日志到 sterr （默认:false）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–log_dir=VALUE</td>
+<td>输出日志文件的位置。默认方式下，不生成日志文件。这个参数不影响输出到 stderr 的日志。 如果特别指定了，就可以通过 Mesos webUI 看到这个日志文件。 注意: 第三方日志信息 (比如，ZooKeeper) 将只能写入到 stderr!</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–logbufsecs=VALUE</td>
+<td>缓冲日志的时长（秒数）默认：0秒</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–logging_level=VALUE</td>
+<td>输出日志的起始级别，包括 INFO, WARNING, ERROR。如果使用了–quiet 标记，只会影响到输出到 –log_dir 的日志的级别（默认：INFO）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]initialize_driver_logging</td>
+<td>master/slave 是否为 Mesos scheduler 和 executor driver 初始化 Google logging. scheduler/executor drivers 将分别记录日志，不会写入 master/slave 的日志中。<br>如果使用的是 HTTP scheduler/executor APIs，这个选项将无效。 （默认：true）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–external_log_file=VALUE</td>
+<td>定位外部管理的日志文件位置。Mesos 不会直接写入这个文件，仅会通过 WebUI 和 HTTP API 将其 暴露出来。这个仅用于混合外部日志机制来记录日志到 stderr 的情况。比如，syslog 或 journald。<br>当通过 –quiet 指定后，这个选项将无效。<br>此选项在 WebUI 的优先级高于 –log_dir . 但即使这个选项被指定了，日志任然会被 写入到 –log_dir。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Master-配置选项"><a href="#Master-配置选项" class="headerlink" title="Master 配置选项"></a>Master 配置选项</h3><p>必选参数</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>–quorum=VALUE</td>
+<td>使用基于 replicated-Log 的注册表时，复制的个数。 此值需要设置为masters总数量的一半以上，也就是：quorum &gt; (number of masters)/2。 注意：单机模式下不需要设置此参数。（非HA模式）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–work_dir=VALUE</td>
+<td>Registry 中持久化信息存储的位置。（如：/var/lib/mesos/master）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–zk=VALUE</td>
+<td>ZooKeeper 的 URL地址 （用于在masters中做领导选举）可能是下面所列形式中的一种：<br><br>zk://host1:port1,host2:port2,…/path<br>zk://username:password@host1:port1,host2:port2,…/path<br>file:///path/to/file (where file contains one of the above)<br><br>注意: 单机模式下不需要设置此参数。（非HA模式）.</td>
+</tr>
+</tbody>
+</table>
+<p>可选参数</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>–acls=VALUE</td>
+<td>此参数用于认证。一般是 JSON 格式的 ACLs 的字符串或者文件。 路径一般是这样的格式：file:///path/to/file 或 /path/to/file<br>注意：如果参数 –authorizers 的值与 local 的不相同，ACLs 的内容将被忽略。<br>在 authorizer.proto 中查看 ACLs protobuf 参考格式。<br>举例:<br>{<br>  “register_frameworks”: [<br>    {<br>      “principals”: { “type”: “ANY” },<br>      “roles”: { “values”: [“a”] }<br>    }<br>  ],<br>  “run_tasks”: [<br>    {<br>      “principals”: { “values”: [“a”, “b”] },<br>      “users”: { “values”: [“c”] }<br>    }<br>  ],<br>  “teardown_frameworks”: [<br>    {<br>      “principals”: { “values”: [“a”, “b”] },<br>      “framework_principals”: { “values”: [“c”] }<br>    }<br>  ],<br>  “set_quotas”: [<br>    {<br>      “principals”: { “values”: [“a”] },<br>      “roles”: { “values”: [“a”, “b”] }<br>    }<br>  ],<br>  “remove_quotas”: [<br>    {<br>      “principals”: { “values”: [“a”] },<br>      “quota_principals”: { “values”: [“a”] }<br>    }<br>  ]<br>}<br></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–allocation_interval=VALUE</td>
+<td>（批次）执行分配（allocations）的间隔时间。（如：500ms,1秒……） 默认值：1秒</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–allocator=VALUE</td>
+<td>分配器，用于给框架分配资源。默认使用 HierarchicalDRF 分配器，也可以通过 –modules 模块来选择其他的分配器。 （默认值：HierarchicalDRF）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]authenticate</td>
+<td>如果是 true，则只有认证过的框架可以注册。 如果是 false，则未认证的框架也可以注册。（默认：false）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]authenticate_http</td>
+<td>如果是 true，则只有支持认证机制的已认证的 HTTP endpoints 请求被允许访问。 如果是 false，则未认证的 HTTP endpoint 请求也会被允许访问。 （默认：false）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]authenticate_slaves</td>
+<td>如果是 true，只有认证过的 slaves 才能注册。 如果是 false，未认证的 slaves 也可以注册。 （默认：false）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–authenticators=VALUE</td>
+<td>框架或 slave 进行认证时使用的认证器。默认是 crammd5，也可以通过使用 –modules 更换其他认证模块。 （默认：crammd5）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–authorizers=VALUE</td>
+<td>用于进行授权的 Authorizer。默认使用 local,也可以通过使用 –modules 替换成其他的 authorizer。<br>注意：如果参数 –authorizers 提供了一个与 local 不一样的值。 则通过–acls 设置的 ACLs 参数将被忽略。<br>目前并不支持多个 authorizers. （默认：local）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–cluster=VALUE</td>
+<td>集群别名，会在 WebUI上显示。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–credentials=VALUE</td>
+<td>一个存取凭证的路径。这个路径可以指向一个内容为凭证列表的文本文件，在这个文件中每一行包括由空格隔开的principal和secret。也可以指向一个包含凭证信息的 JSON 格式文件。 路径的格式可以是：file:///path/to/file 或 /path/to/file JSON 文件举例:<br>{<br>  “credentials”: [<br>    {<br>      “principal”: “sherman”,<br>      “secret”: “kitesurf”<br>    }<br>  ]<br>}<br>文本文件举例:<br><br>username secret<br></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–framework_sorter=VALUE</td>
+<td>给定 framework 之间的资源分配策略。选项与 user_allocator 相同。 （默认：drf）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–http_authenticators=VALUE</td>
+<td>HTTP 认证器用于处理已验证的 endpoints 的请求。默认值是 basic，或者通过 –modules 加载一个其他的 HTTP 认证器。</td>
+</tr>
+<tr>
+<td>目前不支持多种 HTTP 认证器。（默认：basic）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]log_auto_initialize</td>
+<td>是否自动初始化注册使用的 <em>replicated log</em> 。如果设置为否，日志将在每次使用时手动初始化。 （默认值：true）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–max_completed_frameworks=VALUE</td>
+<td>存储在内存中的完成框架的最大数量。（默认：50）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–max_completed_tasks_per_framework =VALUE</td>
+<td>存储在内存的每个框架中已完成任务的最大数量。（默认：1000）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–max_slave_ping_timeouts=VALUE</td>
+<td>一个 slave 对于master的 ping 响应失败的最大次数。 如果 slaves 没有在 max_slave_ping_timeouts 之内响应，就会尝试关机。 （默认：5）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–offer_timeout=VALUE</td>
+<td>一个 offer 撤销的超时时间。 这可以让不同的 frameworks 提供的 offer 获得更公平的响应。 如果不设置， offers 没有超时限制。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–rate_limits=VALUE</td>
+<td>该值可以为一个 JSON 格式的速率限制或一个文件路径包含了被 framework 限速 所使用的 JSON 格式的速率限制。请记住你也可以是使用 file:///path/to/file 或 /path/to/file 参数值格式来将该 JSON 写入至一个文件。<br>期望的格式请参考 mesos.proto 中的 RateLimits protobuf.<br>Example:<br>{<br>  “limits”: [<br>    {<br>      “principal”: “foo”,<br>      “qps”: 55.5<br>    },<br>    {<br>      “principal”: “bar”<br>    }<br>  ],<br>  “aggregate_default_qps”: 33.3<br>}<br></td>
+</tr>
+<tr>
+<td></td>
+<td>–recovery_slave_removal_limit=VALUE</td>
+<td>针对故障转移，限制上的百分比的 slaves 可以从注册中移除并关机在重新注册的超时时间到了之后。 如果该限制被突破， master 将实行故障转移而不是移除 slaves. 这可被用来针对生产环境提供安全保障。生产环境可能期望在 Master 故障转移过程中， 最多一定百分比的 slaves 将永久性的挂掉 (比如, 由于 rack-level 的故障)。 设定该限制可以保证一个人需要参与进来当在该集群中一个非预期的大范围的 slave 故障发生。值: [0%-100%] (默认: 100%)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–registry=VALUE</td>
+<td>注册表持久化策略。可用选项有 replicated_log,in_memory（用于测试）。 默认：replicated_log。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–registry_fetch_timeout=VALUE</td>
+<td>在操作被认为是一个失败后的为了从注册中提取数据的等待的时间间隔.(默认： 1mins)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–registry_store_timeout=VALUE</td>
+<td>等待的时间周期为了当操作被认为一个失败的时候将数据存储入注册机。 (默认：20secs)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]registry_strict</td>
+<td>无论 Master 是否将基于注册机中存储的持久信息来采取行动。设定改值为 false 意味着注册员将永远拒绝入列，出列和一个 slave 的移除。所以， false 可以用来在一个运行的集群上来引导持久化的状态。注意： 该标志位是 <em>experimental</em> 而且还不能在应用中使用.(默认: false)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–roles=VALUE</td>
+<td>其 frameworks 在这个集群中可能归属于的用逗号分离的一系列指派的角色。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]root_submissions</td>
+<td>root 是否可以提交 frameworks? (默认: true)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–slave_ping_timeout=VALUE</td>
+<td>在每个 slave 被期望从一个 master 回应一个 ping 值的超时时间。 Slaves 如果不是在 max_slave_ping_timeouts 回复，ping 从新尝试将被移除. (默认: 15secs)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–slave_removal_rate_limit=VALUE</td>
+<td>最大的比例(e.g., 1/10mins, 2/3hrs, etc) 对于那个 slaves 将被从 master 中移除当他们遇到健康检测失败。默认的是 slave 将尽可能快的被移除当它们遇到健康监测失败。值为 (Number of slaves)/(Duration) 的模式。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–slave_reregister_timeout=VALUE</td>
+<td>在所有的 slaves 被期望重新注册当一个新的 master 被选举为 leader 的超时时间。 Slaves 其不会在此超时时间内被重新注册将被从注册中移除并将被关掉如果它们尝试去与 master 通信。 注意： 该值将被设置为最少 10mins. (默认: 10mins)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–user_sorter=VALUE</td>
+<td>被用来在用户中分配资源的策略。可以为以下之一：dominant_resource_fairness (drf) (default: drf)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–webui_dir=VALUE</td>
+<td>管理页面的网页文件的目录，默认：/usr/local/share/mesos/webui</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–weights=VALUE</td>
+<td>逗号分割的角色/权重列表，成对表单 role=weight,role=weight。 weights是用来表达优先级。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–whitelist=VALUE</td>
+<td>一个 文件名器包含一系列的 slaves （每行一个）来通告 offers.该文件被观测，并周期性的重读取来刷新 slave 白名单。 默认的这里没有白名单/所有机器被接收. (默认: None) 文件路径可以是这样的形式： file:///path/to/file 或 /path/to/file.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–zk_session_timeout=VALUE</td>
+<td>zookeeper 的 session 超时时长。 (默认: 10secs)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>通过 –with-network-isolator 配置时可用的标记</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>–max_executors_per_slave=VALUE</td>
+<td>每个 Slave 上最大允许的执行器数量。网络监控和隔离机制强行限制每个执行器使用的端口资源，所以每个 slave 上只能跑一定数量的执行器。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Slave-选项"><a href="#Slave-选项" class="headerlink" title="Slave 选项"></a>Slave 选项</h3><p>必选项</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>–master=VALUE</td>
+<td>可能是其中的一种： host:port <br>zk://host1:port1,host2:port2,…/path <br>zk://username:password@host1:port1,host2:port2,…/path <br>file:///path/to/file (包含以上中的一个)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>可选项</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>–appc_store_dir=VALUE</td>
+<td>appc 提供者存储镜像的目录 (默认: /tmp/mesos/store/appc)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–attributes=VALUE</td>
+<td>slave 机器的属性,格式为： rack:2 或者rack:2;u:1</td>
+</tr>
+<tr>
+<td>–authenticatee=VALUE</td>
+<td>用于主节点身份验证，默认crammd5，或者用-—modules加载备用模块。（默认：crammd5）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no]-cgroups_cpu_enable_pids_and_tids_count</td>
+<td>Cgroups 的功能标记，可以统计容器内的进程和线程的数量。（默认：false）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no]-cgroups_enable_cfs</td>
+<td>Cgroups 的功能标记，通过限制CFS带宽来限制CPU资源. (默认: defult)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–cgroups_hierarchy=VALUE</td>
+<td>cgroups的根路径位置. 默认: /sys/fs/cgroup</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no]-cgroups_limit_swap</td>
+<td>Cgroups 的功能标记，可以对内存和swap进行限制，而不仅限制内存。（默认: false）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–cgroups_net_cls_primary_handle    一</td>
+<td>个非零，16位的句柄。形式类似于：<code>0xAAAA</code>. 这将作为 net_cls cgroup 的主句柄来使用。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–cgroups_net_cls_secondary_handles</td>
+<td>一系列的类似 0xAAAA,0xBBBB 形式的次要句柄，将与主句柄配合使用。只有在设置了 –cgroups_net_cls_primary_handle 之后，才会生效。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–cgroups_root=VALUE</td>
+<td>根cgroup的命名. 默认: mesos</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–container_disk_watch_interval=VALUE</td>
+<td>用于查询容器中磁盘配额的时间间隔. 被用于posix/disk的时间间隔, 默认: 15秒</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–container_logger=VALUE</td>
+<td>容器日志记录器的名称，日志记录器用来记录容器（如：执行器，任务）的标准输出和错误日志。 默认的日志记录器将会写入到沙盒目录中的 stdout 和 stderr。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–containerizer_path=VALUE</td>
+<td>当外部隔离机制被激活时(–isolation=external), 外部容器被执行的路径</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–containerizers=VALUE</td>
+<td>由逗号分隔的容器化实现方式列表。可选项有 mesos, external, and docker (on Linux). 排列的顺序就是容器化过程中尝试的顺序。 （默认：mesos）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–credential=VALUE</td>
+<td>一行包含principal和secret由空格隔开的文本路径. 或是包含一条凭证的JSON格式文件的路径. 路径的格式是file://path/to/file 或 /path/to/file. 例如:<br>{<br>  “principal”: “username”,<br>  “secret”: “secret”<br>}<br></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–default_container_image=VALUE</td>
+<td>当使用外部容器化器时，在任务没有特别指定的情况下所使用的默认容器镜像。 没有在一个 task 上指定 ，则使用默认的容器镜像。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–default_container_info=VALUE</td>
+<td>JSON格式的 CONTAINERINFO 将包含到任何没有指定 ContainerInfo 的 ExecutorInfo 中。<br>See the ContainerInfo protobuf in mesos.proto for the expected format.<br>例如:<br>{<br>  “type”: “MESOS”,<br>  “volumes”: [<br>    {<br>      “host_path”: “./.private/tmp”,<br>      “container_path”: “/tmp”,<br>      “mode”: “RW”<br>    }<br>  ]<br>}<br></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–default_role=VALUE</td>
+<td>任何用 –resources 标志位将忽略一个 role ，以及在 –resources 标记位中出现，但被自动检测到的资源。都将使用默认的这个 role。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–disk_watch_interval=VALUE</td>
+<td>周期性时间间隔(例如 10 S ,2 MIN 等)检查slave管理的硬盘使用情况。 这个会对存档信息和沙盒做垃圾回收。(默认: 1mins)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–docker=VALUE</td>
+<td>docker容器化的可执行文件的绝对路径。( 默认: docker )</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]docker_kill_orphans</td>
+<td>允许 docker kill 掉 orphaned containers 。当你相同的 OS 中启动多个 slave，你应该考虑将此值设为 false 。 以规避 DockerContainerizer 中的一个实例移除被其他 slaves 所启用的 docker 任务。然而，你还应该确保为 slave 启用　checkpoint，这样相同 slave id 可以被重用 。否则当 slave 重启后，docker 任务不会被清除掉。( 默认为　true ) 。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–docker_mesos_image=VALUE</td>
+<td>docker 镜像用于启动这个 mesos slave 实例。如果一个镜像被指定，docker containerizer 假定 slave 运行在 docker 容器中，并当 slave 重启和恢复时启动 executor 来恢复他们。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–docker_registry=VALUE</td>
+<td>一个下拉 Docker 镜像的默认 url. 可以是一个 Docker registry 服务的 URL（例如：<a href="https://registry.docker.io），也可以是" target="_blank" rel="noopener">https://registry.docker.io），也可以是</a> 一个包含Docker存档的本地路径（例如：/tmp/docker/images） （默认：<a href="https://registry-1.docker.io" target="_blank" rel="noopener">https://registry-1.docker.io</a> ）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–docker_remove_delay=VALUE</td>
+<td>移除 docker 前等待的时间 （ 如 3 天，2 周 等）。默认为 6 小时。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–docker_socket=VALUE</td>
+<td>一个安装在 Docker executor 容器内部的 UNIX 套接字路径。用来提供通过 CLI 访问 docker daemon 的能力。 这个必须是 slave docker 镜像用的路径。（默认：/var/run/docker.sock）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–docker_stop_timeout=VALUE</td>
+<td>杀死实例后，在停止它之前 docker 需要等待的间隔时间 （ 默认： 0 Secs ）。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–docker_store_dir=VALUE</td>
+<td>Docker provisioner 用来存储镜像的目录。（默认：/tmp/mesos/store/docker）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]enforce_container_disk_quota</td>
+<td>否为容器启用磁盘限额。这个标记位用来为 posix/disk 隔离。 （ 默认: false ）。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–executor_environment_variables=VALUE</td>
+<td>使用 JSON 对象格式的环境变量。会通过 executor 来传递之后的 task。 默认情况下，executor 会继承 slave 的环境变量。 例如:<br>{<br>  “PATH”: “/bin:/usr/bin”,<br>  “LD_LIBRARY_PATH”: “/usr/local/lib”<br>}<br></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–executor_registration_timeout=VALUE</td>
+<td>executor 挂起或者关闭前，等待其注册 slave 的时间。（ 例如，60 S，3 mins 等 ）。默认为 1 MIN 。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–executor_shutdown_grace_period=VALUE</td>
+<td>等待 executor 关闭的时间。( 例如, 60 S, 3 mins 等 )。默认为 5 S 。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–fetcher_cache_dir=VALUE</td>
+<td>fetcher cache 的父目录。（每一个slave有一个子目录）。 （默认：/tmp/mesos/fetch）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–fetcher_cache_size=VALUE</td>
+<td>以字节为单位的 fetcher cache 大小。( 默认: 2 GB )</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–frameworks_home=VALUE</td>
+<td>相对于 executor 的路径前缀的 URI 。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–gc_delay=VALUE</td>
+<td>清理 executor 目录的延迟时间（ 例如，3 天 或 2 周 等）。 注意，根据实际可用磁盘的情况，这个值可能会小些（ 默认：1 周 ）。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–gc_disk_headroom=VALUE</td>
+<td>Adjust disk headroom used to calculate maximum executor directory age. Age is calculated by: gc_delay * max(0.0, (1.0 - gc_disk_headroom - disk usage)) every –disk_watch_interval duration. gc_disk_headroom must be a value between 0.0 and 1.0 (default: 0.1)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–hadoop_home=VALUE</td>
+<td>Hadoop 的安装路径。（用于从 HDFS 提取框架 executors ） （没有默认项，在环境中查找HADOOP_HOME，或者在PATH 查询 hadoop）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–image_providers=VALUE</td>
+<td>由逗号分割的支持的镜像供应商列表。如：APPC,DOCKER.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–image_provisioner_backend=VALUE</td>
+<td>从镜像中提取容器 rootfs 的策略。 如：bind, copy. (默认: copy)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–isolation=VALUE</td>
+<td>所采用的隔离机制，如：posix/cpu,posix/mem 或 cgroups/cpu,cgroups/mem 或 network/port_mapping（通过 –with-network-isolator 标记来开启） 或 external 或者通过code&gt;–modules标记替换成另一个隔离模块。 注意：这个标记仅用于 Mesos 容器化器。（默认：posix/cpu,posix/mem）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–launcher=VALUE</td>
+<td>Mesos 容器化器所使用的启动器。可以是 linux 或 posix。 Linux 启动器需要cgroups隔离机制。每个隔离器需要 Linux 的 namespaces 如 网络，pid,等。 如果没有特别指定，slave 将选择一个作为root运行的 Linux 启动器。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–launcher_dir=VALUE</td>
+<td>Mesos 二进制目录路径。 Mesos 可以在这个目录下找到 健康检查，fetcher，容器化器，executor 的二进制文件。（ 默认： /usr/local/lib/mesos ）。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–oversubscribed_resources_interval=VALUE</td>
+<td>Slave 会定期向 master 更新自己有效的，可以分配的资源。 更新的间隔时间是由这个 flag 控制的。 （ 默认：15 S ）。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–perf_duration=VALUE</td>
+<td>一个 perf stat 例子的执行周期。持续时间必须比 perf_interval 少。（默认： 10 secs）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–perf_events=VALUE</td>
+<td>一系列命令分离的 perf 事件当使用 perf_event 分离器时候来精简每个容器。默认为 None。运行  perf list 命令查看所有事件。当在 PerfStatistics protobuf 中被通告时候事件名称将被悲观性的消除并使用下划线代替连字符。 例如，cpu-cycles 变为 cpu_cycles。在 PerfStatistics protobuf 中可以看到所有名字。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–perf_interval=VALUE</td>
+<td>Interval between the start of perf stat samples. Perf samples are obtained periodically according to perf_interval and the most recently obtained sample is returned rather than sampling on demand. For this reason, perf_interval is independent of the resource monitoring interval. (default: 60secs)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–qos_controller=VALUE</td>
+<td>Qos 控制器的名称被用来超额订阅。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–qos_correction_interval_min=VALUE</td>
+<td>slave 从 Qos 控制器投票和执行 QoS 的更正基于其已运行 tasks 的观察到的性能 这些校正之间的最小间隔有此标记位指定。 （ 默认： 0 secs ）。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–recover=VALUE</td>
+<td>是否恢复更新状态并与老的 executors 重新连接。 recover 可用的值有： reconnect：与老的还存活的 executors 重新连接。 cleanup：杀掉所有的老的还存活的 executors 并退出。 当 slave 不兼容 或 executor 更新时，使用这个选项。 （默认：reconnect）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–recovery_timeout=VALUE</td>
+<td>分配给 slave 恢复的时间。如果　slave 恢复所用的时间超过 recovery_timeout，将会被终止。( 默认：15 min )</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–registration_backoff_factor=VALUE</td>
+<td>Slave initially picks a random amount of time between [0, b], where b = registration_backoff_factor, to (re-)register with a new master. Subsequent retries are exponentially backed off based on this interval (e.g., 1st retry uses a random value between [0, b <em> 2^1], 2nd retry between [0, b </em> 2^2], 3rd retry between [0, b * 2^3], etc) up to a maximum of 1mins (default: 1secs)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–resource_estimator=VALUE</td>
+<td>用于 过度订阅 的 资源评估者 的名称。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–resources=VALUE</td>
+<td>每个 slave 总的可消耗资源。可以用 JSON 格式提供，也可以是使用分号隔开的 key:value 键值对列表，配合指定角色选项。<br>key:value 列表: name(role):value;name:value…<br>To use JSON, pass a JSON-formatted string or use –resources=filepath to specify the resources via a file containing a JSON-formatted string. ‘filepath’ can be of the form file:///path/to/file or /path/to/file.<br>Example JSON:<br>[<br>  {<br>    “name”: “cpus”,<br>    “type”: “SCALAR”,<br>    “scalar”: {<br>      “value”: 24<br>    }<br>  },<br>  {<br>    “name”: “mem”,<br>    “type”: “SCALAR”,<br>    “scalar”: {<br>      “value”: 24576<br>    }<br>  }<br>]<br></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]revocable_cpu_low_priority</td>
+<td>通过 revocable CPU 以相对低的优先级运行 containers 。 目前只支持 cgroups/cpu isolator 。( 默认: true )</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–sandbox_directory=VALUE</td>
+<td>沙盒被映射到容器中的绝对目录路径。 (默认: /mnt/mesos/sandbox)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–slave_subsystems=VALUE</td>
+<td>一系列的逗号分隔的 cgroup 子系统来从二进制运行slave。例如，memory,cpuacct 。默认为 none 。此功能用于资源的监视以及 no cgroup 下限制设置，它们从 root mesos cgroup 继承而来。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]strict</td>
+<td>如果 strict=true，任何以及所有错误恢复都被认为是致命的。反之，恢复期间，任何预期的错误都会被忽略。 ( 默认： true )</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]switch_user</td>
+<td>是否用提交它们的用户来运行 tasks 而不是使用运行 slave 的用户. ( 需要 setuid 权限)。 ( 默认: true ) If set to true, the slave will attempt to run tasks as the user who submitted them (as defined in FrameworkInfo) (this requires setuid permission and that the given user exists on the slave). If the user does not exist, an error occurs and the task will fail. If set to false, tasks will be run as the same user as the Mesos slave process. NOTE: This feature is not yet supported on Windows slave, and therefore the flag currently does not exist on that platform. (default: true)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–[no-]systemd_enable_support</td>
+<td>系统支持的最高级控制。当设置为 enabled，像 executor life-time 延期这样的功能都会设置为 enabled，除非有一个明确的 flag 设置其为 disable。这个会在 agent 作为 systemd unit 发布 时设置为 enabled。 （默认：true）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–systemd_runtime_directory=VALUE</td>
+<td>systemd 系统运行时目录路径。 （默认：/run/systemd/system）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>–work_dir=VALUE</td>
+<td>framework 工作目录的路径。( 默认: /tmp/mesos )</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>当配置了 ‘ –with-network-isolator ‘, 以下标记位才会生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--ephemeral_ports_per_container=VALUE   有网络隔离器分配临时端口给一个容器。此端口号必须是 2 的倍数。( 默认: 1024 )</span><br><span class="line">--eth0_name = VALUE             公网接口的名称 ( 如 eth0 )。如果没有指定，网络隔离器会尝试基于主机的默认网关来猜测它。</span><br><span class="line">--lo_name=VALUE                 网络 loopback 接口的名称( 例如, lo )。如果没有指定，网络隔离器会尝试猜测它。</span><br><span class="line">--egress_rate_limit_per_container=VALUE 每个容器的出口流量限制，单位是 字节/每秒。如果没有指定或指定为零，网络隔离器不会强制限制容器的出口流量。这个标记使用字节类型, 定义在 stout 。</span><br><span class="line">--[no-]network_enable_socket_statistics_summary 是否从每个容器收集 socket 统计摘要。这个标记位被用在  &apos;network/port_mapping&apos; 隔离器。 ( 默认: false )</span><br><span class="line">--[no-]network_enable_socket_statistics_details 是否从每个容器收集 socket 细节信息。该标记用于 &apos; network/port_mapping &apos; 隔离器。( 默认: false )</span><br></pre></td></tr></table></figure>
+<p>参考文章：<a href="https://mesos-cn.gitbooks.io/mesos-cn/content/document/runing-Mesos/Configuration.html" target="_blank" rel="noopener">https://mesos-cn.gitbooks.io/mesos-cn/content/document/runing-Mesos/Configuration.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="北极企鹅 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="北极企鹅 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mesos/" rel="tag"># mesos</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/lb-https-certs-1/" rel="next" title="marathon-lb上添加多证书并实现泛解析代理域名-1">
+                <i class="fa fa-chevron-left"></i> marathon-lb上添加多证书并实现泛解析代理域名-1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/nginx-deny-ip/" rel="prev" title="nginx通过x_forwarded_for实现黑白名单访问策略">
+                nginx通过x_forwarded_for实现黑白名单访问策略 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+	<!-- google adsense -->
+	<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+
+	<div align="center">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sukbeta-1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:570px;height:250px"
+     data-ad-client="ca-pub-7874588734245173"
+     data-ad-slot="5382403634"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+	<!-- google adsense -->
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+<!-- google adsense auto -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7874588734245173",
+    enable_page_level_ads: true
+  });
+</script>
+
+
+          </div>
+          
+
+
+          
+
+<!-- google adsenen -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- head -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8243248314488866"
+     data-ad-slot="1571553111"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- google adsenen -->
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">北极企鹅</p>
+              <p class="site-description motion-element" itemprop="description">一步一步往前走！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:beijiqieyx@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/Shining_YS" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/ys.shining" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/585da70d40fd" target="_blank" title="简书blog">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书blog</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/beijiqieyx" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/beijiqieyx" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sukbeta.github.io/web/" title="Web" target="_blank">Web</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Master-和-Slave-的配置选项（转）"><span class="nav-number">1.</span> <span class="nav-text">Master 和 Slave 的配置选项（转）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下列选项-都被-master-和-slave-所支持："><span class="nav-number">2.</span> <span class="nav-text">下列选项 都被 master 和 slave 所支持：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Master-配置选项"><span class="nav-number">2.1.</span> <span class="nav-text">Master 配置选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Slave-选项"><span class="nav-number">2.2.</span> <span class="nav-text">Slave 选项</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北极企鹅</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量<span id="busuanzi_value_site_pv"></span>次
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'O6nPM59vDnUQjwGEOR9xUDb0-gzGzoHsz',
+        appKey: 'DMJAa2u9ryrsvtE16mLGHOdQ',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'sukbeta',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '128aa2ae44f139e456d673ee6cefce8e98f8c8aa',
+            
+                client_id: '503ac6ca90fc540c37a4'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
