@@ -449,9 +449,9 @@
       
         <tags>
             
-            <tag> marathon </tag>
-            
             <tag> marathon-lb </tag>
+            
+            <tag> marathon </tag>
             
         </tags>
       
@@ -1024,9 +1024,9 @@
       
         <tags>
             
-            <tag> marathon </tag>
-            
             <tag> marathon-lb </tag>
+            
+            <tag> marathon </tag>
             
         </tags>
       
@@ -1133,9 +1133,9 @@
       
         <tags>
             
-            <tag> ssh </tag>
-            
             <tag> shell </tag>
+            
+            <tag> ssh </tag>
             
         </tags>
       
@@ -1638,9 +1638,9 @@
       
         <tags>
             
-            <tag> marathon </tag>
-            
             <tag> marathon-lb </tag>
+            
+            <tag> marathon </tag>
             
         </tags>
       
