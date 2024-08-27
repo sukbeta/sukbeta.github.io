@@ -356,6 +356,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/lb-https-certs-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/lb-https-certs-2/" itemprop="url">marathon-lb上添加多证书并实现泛解析代理域名-2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T14:14:41+08:00">
+                2019-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/marathon/" itemprop="url" rel="index">
+                    <span itemprop="name">marathon</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/lb-https-certs-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/lb-https-certs-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" rel="gallery_cm0bw4yej00360jsci4harktq"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <h2 id="lb上添加多证书并实现泛解析代理域名-之-marathon-lb上添加多个证书"><a href="#lb上添加多证书并实现泛解析代理域名-之-marathon-lb上添加多个证书" class="headerlink" title="lb上添加多证书并实现泛解析代理域名 之 marathon-lb上添加多个证书"></a>lb上添加多证书并实现泛解析代理域名 之 marathon-lb上添加多个证书</h2><p>marathon-lb代理https域名， 需要将证书当道lb上。nginx不需要开启443端口，nginx需要配置 vhost  才能访问。</p>
+<p>vhost 需要再nginx发布的时候通过标签形式发布的，但是一个nginx上可能多个域名，不是很灵活，（当你的服务全部都在mesos集群中的话，不用nginx，直接用LB+服务 方式，就可以在每个服务发布的时候声明vhosts。），之后我们研究了nginx发布的时候发布泛域名来解决这个问题。连接 ： <a href="https://sukbeta.github.io/lb-https-certs-1/">nginx实现marathon-lb的vhosts泛域名代理</a></p>
+<p>marathon-lb 和 nginx 域名都是通过 vhost 虚拟主机方式访问。这样nginx才能拿到 x_forwarded_for 客户端的IP地址。LB才会通过HTTP方式代理，否则会走TCP代理。</p>
+<p>marahton-lb 可以加载多个证书，–ssl-certs 用“，”逗号隔开证书路径</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/lb-https-certs-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/lb-confiure-many-marathon/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +635,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" rel="gallery_cm0353qs6004w08tikople0x5"
+                 href="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" rel="gallery_cm0bw4yek003d0jsc8k035ni3"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" itemprop="contentUrl"/>
               </a>
@@ -634,7 +809,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm0353qua00a508ti3o4p3qhc"
+                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm0bw4yf800740jsc8blltbo3"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" itemprop="contentUrl"/>
               </a>
@@ -806,7 +981,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" rel="gallery_cm0353qrm001108ti60lkngjm"
+                 href="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" rel="gallery_cm0bw4ye8000z0jscrz71fve2"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" itemprop="contentUrl"/>
               </a>
@@ -983,7 +1158,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekLz.jpeg" rel="gallery_cm0353qse006c08ticsyqee6g"
+                 href="https://i.niupic.com/images/2023/12/26/ekLz.jpeg" rel="gallery_cm0bw4yf5006g0jscbij7nrog"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekLz.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1160,7 +1335,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://static-ali.ihansen.org/app/bgdate/2019-08-19/rGmwbN9giuE.jpg" rel="gallery_cm0353qs6004t08tikk2n1dxb"
+                 href="https://static-ali.ihansen.org/app/bgdate/2019-08-19/rGmwbN9giuE.jpg" rel="gallery_cm0bw4yes004o0jscnpf1980b"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://static-ali.ihansen.org/app/bgdate/2019-08-19/rGmwbN9giuE.jpg" itemprop="contentUrl"/>
               </a>
@@ -1339,7 +1514,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" rel="gallery_cm0353qs7005108tilwpayhus"
+                 href="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" rel="gallery_cm0bw4yet004w0jscmvasvj4g"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" itemprop="contentUrl"/>
               </a>
@@ -1517,7 +1692,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm0353qsd006508ti9s54l5zh"
+                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm0bw4yf300640jscb9hsq4c7"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1862,7 +2037,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" rel="gallery_cm0353qsb005u08tiyf5ocptr"
+                 href="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" rel="gallery_cm0bw4yf300600jscsde8emqh"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1888,180 +2063,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/rsync-wget-yum-rpm/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/hadoop-log-segmentation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hadoop-log-segmentation/" itemprop="url">Hadoop日志按天分割和开启审计日志</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T18:42:22+08:00">
-                2019-04-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/hadoop-log-segmentation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/hadoop-log-segmentation/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekLf.jpeg" rel="gallery_cm0353qrp001k08tixgnufls9"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://i.niupic.com/images/2023/12/26/ekLf.jpeg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h1 id="Hadoop日志按天分割和开启审计日志"><a href="#Hadoop日志按天分割和开启审计日志" class="headerlink" title="Hadoop日志按天分割和开启审计日志"></a>Hadoop日志按天分割和开启审计日志</h1><h2 id="日志按天分割"><a href="#日志按天分割" class="headerlink" title="日志按天分割"></a>日志按天分割</h2><p>hadoop 各个组件默认日志是大小分割的，到一定大小就分割出 .1  .2  .3  .4这样的文件，这样我们在查找问题的时候不是好定位你要的那天日志在哪个文件中。要是一天一个文件，按照日志的话就很好定位了。</p>
-<p>在这里介绍一下hadoop按天切分日志的方法。</p>
-<h3 id="方法一-修改变量"><a href="#方法一-修改变量" class="headerlink" title="方法一 修改变量"></a>方法一 修改变量</h3><h5 id="hbase"><a href="#hbase" class="headerlink" title="hbase"></a>hbase</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hbase-env.sh</span><br><span class="line">添加：</span><br><span class="line">export HBASE_ROOT_LOGGER=INFO,DRFA</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hadoop-log-segmentation/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2149,7 +2150,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

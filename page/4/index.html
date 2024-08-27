@@ -356,6 +356,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/hadoop-log-segmentation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hadoop-log-segmentation/" itemprop="url">Hadoop日志按天分割和开启审计日志</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T18:42:22+08:00">
+                2019-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/hadoop-log-segmentation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/hadoop-log-segmentation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://i.niupic.com/images/2023/12/26/ekLf.jpeg" rel="gallery_cm0bw4yeb001k0jscv3s848oy"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.niupic.com/images/2023/12/26/ekLf.jpeg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <h1 id="Hadoop日志按天分割和开启审计日志"><a href="#Hadoop日志按天分割和开启审计日志" class="headerlink" title="Hadoop日志按天分割和开启审计日志"></a>Hadoop日志按天分割和开启审计日志</h1><h2 id="日志按天分割"><a href="#日志按天分割" class="headerlink" title="日志按天分割"></a>日志按天分割</h2><p>hadoop 各个组件默认日志是大小分割的，到一定大小就分割出 .1  .2  .3  .4这样的文件，这样我们在查找问题的时候不是好定位你要的那天日志在哪个文件中。要是一天一个文件，按照日志的话就很好定位了。</p>
+<p>在这里介绍一下hadoop按天切分日志的方法。</p>
+<h3 id="方法一-修改变量"><a href="#方法一-修改变量" class="headerlink" title="方法一 修改变量"></a>方法一 修改变量</h3><h5 id="hbase"><a href="#hbase" class="headerlink" title="hbase"></a>hbase</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hbase-env.sh</span><br><span class="line">添加：</span><br><span class="line">export HBASE_ROOT_LOGGER=INFO,DRFA</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hadoop-log-segmentation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/hive-external-table/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +634,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2022/05/10/9ZLl.jpg" rel="gallery_cm0353qru002n08tiv1cgo1tb"
+                 href="https://i.niupic.com/images/2022/05/10/9ZLl.jpg" rel="gallery_cm0bw4yed00200jsck2qblpwy"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2022/05/10/9ZLl.jpg" itemprop="contentUrl"/>
               </a>
@@ -634,7 +808,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekGO.jpeg" rel="gallery_cm0353qrm000v08tihw92y9e9"
+                 href="https://i.niupic.com/images/2023/12/26/ekGO.jpeg" rel="gallery_cm0bw4ye6000l0jscj2y1wyz5"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekGO.jpeg" itemprop="contentUrl"/>
               </a>
@@ -814,7 +988,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekKx.jpeg" rel="gallery_cm0353qrq001v08tin950jfy8"
+                 href="https://i.niupic.com/images/2023/12/26/ekKx.jpeg" rel="gallery_cm0bw4yeb001n0jscg89rr7cl"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekKx.jpeg" itemprop="contentUrl"/>
               </a>
@@ -990,7 +1164,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekGP.jpeg" rel="gallery_cm0353qrr002008tixiys9nne"
+                 href="https://i.niupic.com/images/2023/12/26/ekGP.jpeg" rel="gallery_cm0bw4yec001s0jscs6u1a9p0"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekGP.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1169,7 +1343,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekKA.jpeg" rel="gallery_cm0353qrj000e08tiqzrgkr7y"
+                 href="https://i.niupic.com/images/2023/12/26/ekKA.jpeg" rel="gallery_cm0bw4ye6000k0jscup8ycgde"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekKA.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1344,7 +1518,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekKw.jpeg" rel="gallery_cm0353qrp001n08tig94ordcx"
+                 href="https://i.niupic.com/images/2023/12/26/ekKw.jpeg" rel="gallery_cm0bw4ye900170jscpfts3upf"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekKw.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1524,7 +1698,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://img2.imgtp.com/2024/04/28/R68UJ41Y.jpeg" rel="gallery_cm0353qu900a008tislt862di"
+                 href="https://img2.imgtp.com/2024/04/28/R68UJ41Y.jpeg" rel="gallery_cm0bw4yf9007b0jsc441f9efp"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://img2.imgtp.com/2024/04/28/R68UJ41Y.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1906,7 +2080,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekLx.jpeg" rel="gallery_cm0353qrl000q08tiwfdesj2t"
+                 href="https://i.niupic.com/images/2023/12/26/ekLx.jpeg" rel="gallery_cm0bw4ye800110jscdu814l17"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekLx.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1930,180 +2104,6 @@ npm 安装 elasticdump先下载安装npm
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/elasticsearch-elasticdump/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/kafka-console-groups/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/kafka-console-groups/" itemprop="url">kafka查看消费组消费详情</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T19:06:47+08:00">
-                2019-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kafka/" itemprop="url" rel="index">
-                    <span itemprop="name">kafka</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/kafka-console-groups/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/kafka-console-groups/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekGM.jpg" rel="gallery_cm0353qrv002u08ti67k44248"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://i.niupic.com/images/2023/12/26/ekGM.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>kafka 在 0.9 版本之后，kafka的消费者组和offset信息就不存zookeeper了。</p>
-<h4 id="0-9-之前版本查看所有消费组："><a href="#0-9-之前版本查看所有消费组：" class="headerlink" title="0.9 之前版本查看所有消费组："></a>0.9 之前版本查看所有消费组：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./kafka-consumer-groups.sh --zookeeper 127.0.0.1:2181 --list</span><br><span class="line"></span><br><span class="line">erro-info-group</span><br><span class="line">console-consumer-64036</span><br><span class="line">console-consumer-98298</span><br><span class="line">logstash-new</span><br><span class="line">console-consumer-89310</span><br><span class="line">console-consumer-48800</span><br></pre></td></tr></table></figure>
-<h4 id="新版本-0-9-版本之后查看所有消费组"><a href="#新版本-0-9-版本之后查看所有消费组" class="headerlink" title="新版本 0.9 版本之后查看所有消费组"></a>新版本 0.9 版本之后查看所有消费组</h4>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/kafka-console-groups/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2191,7 +2191,7 @@ npm 安装 elasticdump先下载安装npm
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
