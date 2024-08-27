@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="舒克贝塔">
 <meta property="og:description" content="setfacl命令详解 setfacl命令提供了强大的工具来管理文件和目录的权限，允许比传统UNIX权限模型更细粒度的控制。通过掌握这些选项和语法，可以灵活地配置系统中的访问控制策略。 setfacl 命令用于设置或修改文件和目录的访问控制列表（ACL），ACL允许为文件或目录分配更精细的权限，超越传统的所有者、组、和其他用户权限模型。 常用选项 -m：修改ACL。用于添加或修改文件或目录的ACL">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2024-08-27T06:01:44.870Z">
+<meta property="og:updated_time" content="2024-08-27T06:04:17.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="setfacl 命令详解">
 <meta name="twitter:description" content="setfacl命令详解 setfacl命令提供了强大的工具来管理文件和目录的权限，允许比传统UNIX权限模型更细粒度的控制。通过掌握这些选项和语法，可以灵活地配置系统中的访问控制策略。 setfacl 命令用于设置或修改文件和目录的访问控制列表（ACL），ACL允许为文件或目录分配更精细的权限，超越传统的所有者、组、和其他用户权限模型。 常用选项 -m：修改ACL。用于添加或修改文件或目录的ACL">
@@ -550,7 +550,7 @@
 </ol>
 <h4 id="设置目录下所有新创建的子目录和文件的默认权限为775"><a href="#设置目录下所有新创建的子目录和文件的默认权限为775" class="headerlink" title="设置目录下所有新创建的子目录和文件的默认权限为775"></a>设置目录下所有新创建的子目录和文件的默认权限为775</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfacl -m d:u::rwx,d:g::rwx,d:o::r-x /path/to/directory</span><br></pre></td></tr></table></figure>
 <p>解释：</p>
-<p>d\:u::rwx - 设置默认的用户权限为775 (rwx表示7)。 d\:g::rwx - 设置默认的组权限为775 (rwx表示7)。 d\:o::r-x - 设置默认的其他用户权限为775 (r-x表示5)。</p>
+<p>d:u::rwx - 设置默认的用户权限为775 (rwx表示7)。<br>d:g::rwx - 设置默认的组权限为775 (rwx表示7)。<br>d:o::r-x - 设置默认的其他用户权限为775 (r-x表示5)。</p>
 
       
     </div>
