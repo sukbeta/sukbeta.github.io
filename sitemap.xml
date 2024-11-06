@@ -492,6 +492,13 @@
   </url>
   
   <url>
+    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
+    
+    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://sukbeta.github.io/logstash-configure-file/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
@@ -500,13 +507,6 @@
   
   <url>
     <loc>https://sukbeta.github.io/marathon-DockerRegistry-user/</loc>
-    
-    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
@@ -534,14 +534,14 @@
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/nginx-installed-sticky/</loc>
+    <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
+    <loc>https://sukbeta.github.io/nginx-installed-sticky/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
