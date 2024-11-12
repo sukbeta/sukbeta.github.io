@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://sukbeta.github.io/pip-install-packages/</loc>
+    <lastmod>2024-11-12T08:04:21.959Z</lastmod>
+  </url>  <url>
     <loc>https://sukbeta.github.io/get-github-ip/</loc>
-    <lastmod>2024-11-12T03:48:15.516Z</lastmod>
+    <lastmod>2024-11-12T03:48:38.857Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/macos-install-brew/</loc>
     <lastmod>2024-11-12T02:57:48.814Z</lastmod>
@@ -208,13 +211,13 @@
     <loc>https://sukbeta.github.io/docker-ulimit-configure/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
-    <loc>https://sukbeta.github.io/logstash-configure-file/</loc>
-    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
-  </url>  <url>
     <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
+    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
+  </url>  <url>
+    <loc>https://sukbeta.github.io/logstash-configure-file/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/marathon-DockerRegistry-user/</loc>
@@ -223,13 +226,13 @@
     <loc>https://sukbeta.github.io/marathon-constraints-configure/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
+    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
+    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
+  </url>  <url>
     <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/mesos-sandbox-split/</loc>
-    <lastmod>2018-12-03T07:30:14.000Z</lastmod>
-  </url>  <url>
-    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
   </url>  <url>
     <loc>https://sukbeta.github.io/nginx-installed-sticky/</loc>
