@@ -356,6 +356,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/marathon-constraints-configure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/marathon-constraints-configure/" itemprop="url">marathon 约束 constraints 限制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-28T19:15:14+08:00">
+                2018-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/marathon/" itemprop="url" rel="index">
+                    <span itemprop="name">marathon</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/marathon-constraints-configure/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/marathon-constraints-configure/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          marathon 约束 Constraints 限制Constraints控制在何处运行的应用程序，可以根据constraints属性，控制容器可以在哪个Agent节点上运行。
+（往上看来好多文档写的都很类似，我就写一些不一样的吧。）
+mesos agent 自定义 constraints 属性rpm 安装的 mesos 可以在 /etc/mesos-slave/attributes 下定义这台agent。
+1echo &quot;project:ppp1;IDC:BJ;oam:ops1&quot; &gt; /etc/mesos-slave/attributes
+重启mesos-slave服务即可，
+1systemctl start mesos-slave
+这样这台Agent就有利3个属性。
+分别是：
+
+project:ppp1
+IDC:BJ
+oam:ops1
+
+另外其他的Agent机器耶可以有相同的属性，这样就可以变成一组。（容器可以固定在相同属性的Agent机器上）
+源码安装，值需要加上 –attributes 参数即可，
+1/home/mesos/mesos-slave/sbi
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/marathon-constraints-configure/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/docker-ulimit-configure/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1751,7 +1924,7 @@ Fix “Could not Open” Error (and Add Default RSA/DSA identities)By default, w
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/WGThqPB/Cc-ETP4g-FBTU.jpg" rel="gallery_cm3drzxuc000f0nphqlizfknu"
+                 href="https://i.ibb.co/WGThqPB/Cc-ETP4g-FBTU.jpg" rel="gallery_cm3duybsv000g1nmw3ooputto"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/WGThqPB/Cc-ETP4g-FBTU.jpg" itemprop="contentUrl"/>
               </a>
@@ -1775,165 +1948,6 @@ vim /etc/cgconfig.co
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/cgroup-limit-process-resources/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/kafka-Modify-Partitions-and-ReplicationFactor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/kafka-Modify-Partitions-and-ReplicationFactor/" itemprop="url">kafka修改分区、副本数、副本迁移</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T15:13:07+08:00">
-                2018-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/kafka/" itemprop="url" rel="index">
-                    <span itemprop="name">kafka</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/kafka-Modify-Partitions-and-ReplicationFactor/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/kafka-Modify-Partitions-and-ReplicationFactor/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          kafka修改分区和副本数查看现在副本分配情况123456../bin/kafka-topics.sh --zookeeper 127.0.0.1:2181 --describe  --topic test1Topic:test1       PartitionCount:3        ReplicationFactor:2     Configs:        Topic: test1      Partition: 0    Leader: 2       Replicas: 2,4   Isr: 2,4        Topic: test1      Partition: 1    Leader: 3       Replicas: 3,5   Isr: 3,5        Topic: test1      Partition: 2    Leader: 4       Replicas: 4,1   Isr: 4,1
-topic 分区扩容1./kafka-topics.sh --zookeeper 127.0.0.1:2181 -alter --partitions
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/kafka-Modify-Partitions-and-ReplicationFactor/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2021,7 +2035,7 @@ topic 分区扩容1./kafka-topics.sh --zookeeper 127.0.0.1:2181 -alter --partiti
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

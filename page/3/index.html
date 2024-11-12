@@ -356,6 +356,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/lb-https-certs-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北极企鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="舒克贝塔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/lb-https-certs-1/" itemprop="url">marathon-lb上添加多证书并实现泛解析代理域名-1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T14:14:51+08:00">
+                2019-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/marathon/" itemprop="url" rel="index">
+                    <span itemprop="name">marathon</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/lb-https-certs-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/lb-https-certs-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" rel="gallery_cm3duybta003c1nmwlqiee1jd"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.ibb.co/rpmbxJN/k-Ptrg4-Z6j-Z0.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          <h2 id="marathon-lb上添加多证书并实现泛解析代理域名-之-nginx实现marathon-lb的vhosts泛域名代理"><a href="#marathon-lb上添加多证书并实现泛解析代理域名-之-nginx实现marathon-lb的vhosts泛域名代理" class="headerlink" title="marathon-lb上添加多证书并实现泛解析代理域名 之 nginx实现marathon-lb的vhosts泛域名代理"></a>marathon-lb上添加多证书并实现泛解析代理域名 之 nginx实现marathon-lb的vhosts泛域名代理</h2><p>marathon-lb代理https域名， 需要将证书当道lb上。nginx不需要开启443端口，nginx需要配置 vhost  才能访问。</p>
+<p>marathon添加证书连接： <a href="https://sukbeta.github.io/lb-https-certs-2/">marathon-lb上添加多个证书</a></p>
+<p>域名都是通过 vhost 虚拟主机方式访问。这样nginx才能拿到 x_forwarded_for 客户端的IP地址。LB才会通过HTTP方式代理，否则会走TCP代理。</p>
+<p>nginx上回有很多个域名，我们不能添加一个域名就修改一次 vhosts ，所以我们尝试添加 泛域名。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/lb-https-certs-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/lb-https-certs-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +635,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" rel="gallery_cm3drzxuu003o0nph6vwvx9zs"
+                 href="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" rel="gallery_cm3duybtb003p1nmwoifz7fee"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/59fLH8Z/6106a4f0ly1g4vsr1tpw4j20j90edh56.jpg" itemprop="contentUrl"/>
               </a>
@@ -635,7 +810,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" rel="gallery_cm3drzxuv003v0nph1naf4rkz"
+                 href="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" rel="gallery_cm3duybt900381nmwp3vja5ij"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/VtpwHb1/QQ20190712-0.jpg" itemprop="contentUrl"/>
               </a>
@@ -809,7 +984,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm3drzxvv009d0nphb92frvve"
+                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm3duybtu006z1nmw0h5v6fqo"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" itemprop="contentUrl"/>
               </a>
@@ -981,7 +1156,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" rel="gallery_cm3drzxui00170nph18hz3fhc"
+                 href="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" rel="gallery_cm3duybsz00161nmw6ef0pjbi"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1158,7 +1333,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekLz.jpeg" rel="gallery_cm3drzxvt008u0nphybc8ap4q"
+                 href="https://i.niupic.com/images/2023/12/26/ekLz.jpeg" rel="gallery_cm3duybts006j1nmwcar02m6k"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekLz.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1335,7 +1510,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://static-ali.ihansen.org/app/bgdate/2019-08-19/rGmwbN9giuE.jpg" rel="gallery_cm3drzxvj00780nphmqw7pr7m"
+                 href="https://static-ali.ihansen.org/app/bgdate/2019-08-19/rGmwbN9giuE.jpg" rel="gallery_cm3duybtn005d1nmww4lhz7t9"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://static-ali.ihansen.org/app/bgdate/2019-08-19/rGmwbN9giuE.jpg" itemprop="contentUrl"/>
               </a>
@@ -1514,7 +1689,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" rel="gallery_cm3drzxvk007i0nphovn4kt3m"
+                 href="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" rel="gallery_cm3duybtk004z1nmw4x2zgs6v"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.ibb.co/XjDhZF9/WX20190506-104814-2x.png" itemprop="contentUrl"/>
               </a>
@@ -1692,7 +1867,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm3drzxvq008f0nphppt4mxue"
+                 href="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" rel="gallery_cm3duybto005q1nmwnrmiiewv"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://i.niupic.com/images/2023/12/26/ekKz.jpeg" itemprop="contentUrl"/>
               </a>
@@ -1920,186 +2095,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sukbeta.github.io/rsync-wget-yum-rpm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="北极企鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="舒克贝塔">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/rsync-wget-yum-rpm/" itemprop="url">rsync、wget本地拉取yum源</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-10T10:59:08+08:00">
-                2019-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/rsync-wget-yum-rpm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/rsync-wget-yum-rpm/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" rel="gallery_cm3drzxvq008b0nphyazxxzzz"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://i.niupic.com/images/2023/12/26/ekL6.jpeg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <h1 id="rsync、wget本地拉取yum源"><a href="#rsync、wget本地拉取yum源" class="headerlink" title="rsync、wget本地拉取yum源"></a>rsync、wget本地拉取yum源</h1><!--
-<center>
-<img style="width:1400px;height:200px" src="https://w.wallhaven.cc/full/kw/wallhaven-kw1geq.jpg" align=center />
-</center>
--->
-<p>我们本地搭建yum源的时候，需要从官网拉取所有rrpm包到本地。再创建repo。这时候我们需要批量下载的方法。 有的镜像源提供了rsync接口，我们可以用rsync同步。没有的话我们可以用wget下载。</p>
-<p>centos 官网提供了所有的镜像地址 list，<a href="https://www.centos.org/download/mirrors/" target="_blank" rel="noopener">https://www.centos.org/download/mirrors/</a><br>可以上着上选择可以用的镜像地址</p>
-<p>后面有rsync的地址的镜像源，我们就可以使用rsync</p>
-<h4 id="rsync-方法"><a href="#rsync-方法" class="headerlink" title="rsync 方法"></a>rsync 方法</h4><p>现在说一下rsync。 rsync同步还是比较简单的。 找到提供rsync接口的镜像源。之后再找到你要的系统相应的版本。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/rsync-wget-yum-rpm/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2150,7 +2145,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

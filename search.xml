@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>macos-install-brew</title>
+      <link href="/macos-install-brew/"/>
+      <url>/macos-install-brew/</url>
+      <content type="html"><![CDATA[<h2 id="MacOS-安装-brew，并更换国内源"><a href="#MacOS-安装-brew，并更换国内源" class="headerlink" title="MacOS 安装 brew，并更换国内源"></a>MacOS 安装 brew，并更换国内源</h2><p>brew 官网地址是: <a href="https://brew.sh/" target="_blank" rel="noopener">https://brew.sh/</a>    上面有安装方法， 也是中文语言，但是国内经常访问不到。 我们可以用国内的地址。</p><p>国内，我们可以用gitee 上的代码：  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zsh -c <span class="string">"<span class="variable">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>"</span></span><br></pre></td></tr></table></figure><p>按照步骤一步一步往下运行即可， &#x20;</p><p>这个脚本可以判断你的系统是否已经安装了brew， 是否需要重新安装。 &#x20;</p><p>并且可以设置国内的源，这样安装软件也可以了。  </p><a id="more"></a><h3 id="手动设置国内源的方法"><a href="#手动设置国内源的方法" class="headerlink" title="手动设置国内源的方法"></a>手动设置国内源的方法</h3><p>如果想手动设置源的方法，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HOMEBREW_INSTALL_FROM_API=1</span><br><span class="line"><span class="built_in">export</span> HOMEBREW_API_DOMAIN=<span class="string">"https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"</span></span><br><span class="line"><span class="built_in">export</span> HOMEBREW_BOTTLE_DOMAIN=<span class="string">"https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"</span></span><br><span class="line"><span class="built_in">export</span> HOMEBREW_BREW_GIT_REMOTE=<span class="string">"https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"</span></span><br><span class="line"><span class="built_in">export</span> HOMEBREW_CORE_GIT_REMOTE=<span class="string">"https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"</span></span><br></pre></td></tr></table></figure><h3 id="查看安装版本"><a href="#查看安装版本" class="headerlink" title="查看安装版本"></a>查看安装版本</h3><p>安装脚本执行完成后，重启终端。（重启后才生效） &#x20;</p><p>虽然叫做’Homebrew’，但实际使用时，命令是’brew’。 &#x20;</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew -v</span><br></pre></td></tr></table></figure><p>在M1芯片上，homebrew的安装路径为：”/opt/Homebrew/“ &#x20;</p><h3 id="卸载方法"><a href="#卸载方法" class="headerlink" title="卸载方法"></a>卸载方法</h3><p>如需卸载，使用指令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c <span class="string">"<span class="variable">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)</span>"</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      <categories>
+          
+          <category> mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> shell </tag>
+            
+            <tag> mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>setfacl 命令详解</title>
       <link href="/setfacl-command/"/>
       <url>/setfacl-command/</url>
@@ -470,9 +493,9 @@
       
         <tags>
             
-            <tag> marathon-lb </tag>
-            
             <tag> marathon </tag>
+            
+            <tag> marathon-lb </tag>
             
         </tags>
       
@@ -1045,9 +1068,9 @@
       
         <tags>
             
-            <tag> marathon-lb </tag>
-            
             <tag> marathon </tag>
+            
+            <tag> marathon-lb </tag>
             
         </tags>
       
@@ -1659,9 +1682,9 @@
       
         <tags>
             
-            <tag> marathon-lb </tag>
-            
             <tag> marathon </tag>
+            
+            <tag> marathon-lb </tag>
             
         </tags>
       
