@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sukbeta.github.io/web/</loc>
+    
+    <lastmod>2024-11-14T03:43:19.545Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://sukbeta.github.io/pip-install-packages/</loc>
     
-    <lastmod>2024-11-12T08:04:21.959Z</lastmod>
+    <lastmod>2024-11-12T08:04:34.300Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>https://sukbeta.github.io/macos-install-brew/</loc>
     
     <lastmod>2024-11-12T02:57:48.814Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://sukbeta.github.io/web/</loc>
-    
-    <lastmod>2024-11-12T01:30:05.756Z</lastmod>
     
   </url>
   
@@ -506,14 +506,14 @@
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
+    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/linux-Delete-garbled-files/</loc>
+    <loc>https://sukbeta.github.io/linux-Restrict-user-command-method/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
@@ -541,14 +541,14 @@
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
+    <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sukbeta.github.io/mesos-container-port-limit/</loc>
+    <loc>https://sukbeta.github.io/mesos-dns-installed/</loc>
     
     <lastmod>2018-12-03T07:30:14.000Z</lastmod>
     
